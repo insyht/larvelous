@@ -4,7 +4,55 @@
 // Variables
 @import 'variables';
 
+$m4u-pink: #f546aa;
+
+$primary: $m4u-pink;
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
 
-@import 'dashboard';
+// Input type=range slider button (thumb) color
+input[type=range]::-webkit-slider-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+input[type=range]::-moz-range-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+input[type=range]::-ms-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+
+/* Bootstrap hacks */
+body {
+  font-size: 1rem;
+}
+
+.container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.col {
+  .row:first-child {
+    margin-top: 0;
+  }
+
+  .row:last-child {
+    margin-bottom: 0;
+  }
+}
+
+footer {
+  .container {
+    padding: 20px 0;
+  }
+}

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }} - Homepage</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous"></script>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                Op werkdagen voor 15:00 besteld, morgen in huis
+            </div>
+            <div class="col">
+                Verzendkosten vanaf &euro;1
+            </div>
+            <div class="col">
+                Gratis verzending binnen NL > &euro;50
+            </div>
+            <div class="col">
+                Afhalen mogelijk
+            </div>
+        </div>
+
+        <div class="row">
+            <nav class="navbar navbar-expand navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Musthaves4U</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Homepage</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="/voorbeeld/categorie"
+                                   id="navbarDropdown"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Categorie
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/voorbeeld/categorie">Categorie</a></li>
+                                    <li><a class="dropdown-item" href="/voorbeeld/subcategorie">Subcategorie</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/product">Product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/winkelwagen">Winkelwagen</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/klantgegevens">Klantgegevens</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/betaling">Betaling</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/bevestiging">Bevestiging</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/textpagina">Textpagina</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/landingspagina">Landingspagina</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pagina</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        @yield('content')
+    </div>
+
+    <footer class="page-footer bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="h3">Bedrijfsgegevens</p>
+                    <p><i class="bi bi-briefcase"></i> KvK: 67461247</p>
+                    <p><i class="bi bi-journal"></i> BTW: NL002216943B98</p>
+                    <p><i class="bi bi-bank"></i> NL95 RABO 0316 2961 39</p>
+                </div>
+                <div class="col">
+                    <p class="h3">Handige pagina's</p>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alles over Musthaves4u</a></li>
+                        <li><a href="#">Algemene voorwaarden</a></li>
+                        <li><a href="#">Privacybeleid</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Retourbeleid</a></li>
+                        <li><a href="#">Contact opnemen</a></li>
+                        <li><a href="#">Mijn account</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <p class="h3">Klantenservice</p>
+                    <p><i class="bi bi-geo-alt"></i> Klaproos 8, Made</p>
+                    <p><i class="bi bi-envelope-open"></i> contact@musthaves4u.nl</p>
+                    <p><i class="bi bi-telephone"></i> 06 155 74 518</p>
+                    <p><a href="#"><i class="bi bi-globe"></i> Musthaves4U.nl</a></p>
+                </div>
+                <div class="col">
+                    <p class="h3">Musthaves4U</p>
+                    <p class="lead">
+                        Gratis verzending<br>
+                        <small class="text-muted">Nederlandse orders boven 100 euro</small>
+                    </p>
+                    <p class="lead">
+                        Niet goed, geld terug<br>
+                        <small class="text-muted">100% geld terug garantie</small>
+                    </p>
+                    <p class="lead">
+                        24/7 bereikbaar<br>
+                        <small class="text-muted">Via e-mail, Whatsapp en telefonisch</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

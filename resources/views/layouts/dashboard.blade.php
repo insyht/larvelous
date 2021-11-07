@@ -20,10 +20,11 @@
     <div class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-            <p>{{ __('Welcome') }},  {{ Auth::user()->name }}</p>
+            <p>{{ __('Welcome') }},  {{ Auth::user()->name }}
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
+            </p>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
         </div>
     </div>
