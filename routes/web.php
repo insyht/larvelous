@@ -19,7 +19,6 @@ Auth::routes();
 Route::namespace('Website')->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/voorbeeld/categorie', 'VoorbeeldController@categorie');
-    Route::get('/voorbeeld/subcategorie', 'VoorbeeldController@subcategorie');
     Route::get('/voorbeeld/product', 'VoorbeeldController@product');
     Route::get('/voorbeeld/winkelwagen', 'VoorbeeldController@winkelwagen');
     Route::get('/voorbeeld/klantgegevens', 'VoorbeeldController@klantgegevens');

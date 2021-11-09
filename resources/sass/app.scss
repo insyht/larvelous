@@ -5,6 +5,7 @@
 @import 'variables';
 
 $m4u-pink: #f546aa;
+$m4u-pink-light: #ffe9f6;
 
 $primary: $m4u-pink;
 
@@ -24,6 +25,19 @@ input[type=range]::-moz-range-thumb {
 input[type=range]::-ms-thumb {
   background: $m4u-pink;
   border: 1px solid $m4u-pink;
+}
+
+.form-switch .form-check-input {
+  border-color: $m4u-pink;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28245, 70, 170, 0.35%29'/></svg>");
+}
+.form-check-input:checked {
+  background-color: $m4u-pink;
+  border-color: $m4u-pink;
+}
+
+.input-group-text {
+  background-color: $m4u-pink-light;
 }
 
 /* Bootstrap hacks */

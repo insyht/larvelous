@@ -11,10 +11,6 @@ class VoorbeeldController extends Controller
     {
         return view('templates.categorie');
     }
-    public function subcategorie()
-    {
-        return view('templates.subcategorie');
-    }
     public function product()
     {
         return view('templates.product');

@@ -44,8 +44,6 @@
 
     <div class="row">
         <div class="col-3">
-            <p class="h1">Filters</p>
-
             <p class="h3">Maat</p>
             <div class="list-group mb-4">
                 <button type="button" class="list-group-item list-group-item-action">Maat 1</button>
@@ -92,190 +90,29 @@
             </div>
         </div>
         <div class="col">
-            <div class="row">
-                <div class="col">
-                    <a href="/voorbeeld/subcategorie">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Subcategorie</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/subcategorie">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Subcategorie</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/subcategorie">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Subcategorie</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            <div class="row mb-5">
+                @include('blocks.product.category')
+                @include('blocks.product.category')
             </div>
 
             <div class="row">
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @include('blocks.product.product')
+                @include('blocks.product.product')
+                @include('blocks.product.product')
             </div>
 
             <div class="row">
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @include('blocks.product.product')
+                @include('blocks.product.product')
+                @include('blocks.product.product')
+
             </div>
 
             <div class="row">
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="/voorbeeld/product">
-                        <div class="card">
-                            <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Productnaam</h5>
-                                <p class="card-text text-center">&euro; 5,00</p>
-                                <a href="#" class="btn btn-primary btn-lg col-12"><i class="bi bi-bag"></i></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @include('blocks.product.product')
+                @include('blocks.product.product')
+                @include('blocks.product.product')
+
             </div>
 
             <div class="row">
