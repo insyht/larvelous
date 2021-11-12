@@ -107,16 +107,16 @@
         @yield('content')
     </div>
 
-    <footer class="page-footer bg-dark text-white">
+    <footer class="page-footer bg-dark text-white container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-sm">
                     <p class="h3">Bedrijfsgegevens</p>
                     <p><i class="bi bi-briefcase"></i> KvK: 67461247</p>
                     <p><i class="bi bi-journal"></i> BTW: NL002216943B98</p>
                     <p><i class="bi bi-bank"></i> NL95 RABO 0316 2961 39</p>
                 </div>
-                <div class="col">
+                <div class="col-sm">
                     <p class="h3">Handige pagina's</p>
                     <ul>
                         <li><a href="#">Home</a></li>
@@ -129,14 +129,14 @@
                         <li><a href="#">Mijn account</a></li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-sm">
                     <p class="h3">Klantenservice</p>
                     <p><i class="bi bi-geo-alt"></i> Klaproos 8, Made</p>
                     <p><i class="bi bi-envelope-open"></i> contact@musthaves4u.nl</p>
                     <p><i class="bi bi-telephone"></i> 06 155 74 518</p>
                     <p><a href="#"><i class="bi bi-globe"></i> Musthaves4U.nl</a></p>
                 </div>
-                <div class="col">
+                <div class="col-sm">
                     <p class="h3">Musthaves4U</p>
                     <p class="lead">
                         Gratis verzending<br>
