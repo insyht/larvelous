@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="app">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
               <a class="navbar-brand" href="#">Musthaves4U</a>
@@ -74,17 +74,17 @@
             </nav>
         </div>
         <div class="row">
-            <div class="col-sm">
-                Op werkdagen voor 15:00 besteld, morgen in huis
+            <div class="col-sm text-center">
+                <i class="bi bi-stopwatch"></i> Op werkdagen voor 15:00 besteld, morgen in huis
             </div>
-            <div class="col-sm">
-                Verzendkosten vanaf &euro;1
+            <div class="col-sm text-center">
+                <i class="bi bi-truck"></i> Verzendkosten vanaf &euro;1
             </div>
-            <div class="col-sm">
-                Gratis verzending binnen NL > &euro;50
+            <div class="col-sm text-center">
+                <i class="bi bi-piggy-bank"></i> Gratis verzending binnen NL > &euro;50
             </div>
-            <div class="col-sm">
-                Afhalen mogelijk
+            <div class="col-sm text-center">
+                <i class="bi bi-bag"></i> Afhalen mogelijk
             </div>
         </div>
 
