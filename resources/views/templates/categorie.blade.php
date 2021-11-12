@@ -21,7 +21,7 @@
         <div class="col">
             <p class="h3 w-100">9 Producten <small class="text-muted">12 Producten totaal</small></p>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-md-3">
             <div class="dropdown">
                 <button class="btn btn-lg btn-primary dropdown-toggle w-100" type="button" id="sortProducts"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,52 +43,101 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
-            <p class="h3">Maat</p>
-            <div class="list-group mb-4">
-                <button type="button" class="list-group-item list-group-item-action">Maat 1</button>
-                <button type="button" class="list-group-item list-group-item-action">Maat 2</button>
-                <button type="button" class="list-group-item list-group-item-action">Maat 3</button>
-                <button type="button" class="list-group-item list-group-item-action">Maat 4</button>
-            </div>
-
-            <p class="h3">Kleur</p>
-            <div class="list-group mb-4">
-                <button type="button" class="list-group-item list-group-item-action">Rood</button>
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">Groen</button>
-                <button type="button" class="list-group-item list-group-item-action">Blauw</button>
-                <button type="button" class="list-group-item list-group-item-action">Roze</button>
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">Wit</button>
-                <button type="button" class="list-group-item list-group-item-action">Geel</button>
-                <button type="button" class="list-group-item list-group-item-action">Zwart</button>
-            </div>
-
-            <p class="h3">Lengte</p>
-            <div class="list-group mb-4">
-                <label for="filter-length-min" class="form-label">Minimaal</label>
-                <div class="row mt-0 mb-0">
-                    <div class="col">
-                        <input type="range" class="form-range" min="0" max="100" value="10" id="filter-length-min" oninput="document.getElementById('filter-length-min-value').innerHTML = this.value + 'cm'">
-                    </div>
-                    <div class="col" id="filter-length-min-value">10 cm</div>
+        <div class="col-sm-3 col-md-3 accordion mb-5" id="productFilters">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersSize" aria-expanded="true"
+                            aria-controls="productFiltersSize">
+                        Maat
+                    </button>
                 </div>
-                <label for="filter-length-max" class="form-label">Maximaal</label>
-                <div class="row mt-0 mb-0">
-                    <div class="col">
-                        <input type="range" class="form-range " min="0" max="100" value="80" id="filter-length-max" oninput="document.getElementById('filter-length-max-value').innerHTML = this.value + 'cm'">
+                <div id="productFiltersSize" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <button type="button" class="list-group-item list-group-item-action">Maat 1</button>
+                        <button type="button" class="list-group-item list-group-item-action">Maat 2</button>
+                        <button type="button" class="list-group-item list-group-item-action">Maat 3</button>
+                        <button type="button" class="list-group-item list-group-item-action">Maat 4</button>
                     </div>
-                    <div class="col" id="filter-length-max-value">80 cm</div>
                 </div>
             </div>
 
-            <p class="h3">Merk</p>
-            <div class="list-group mb-4">
-                <button type="button" class="list-group-item list-group-item-action">Bibs</button>
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">Frigg
-                </button>
-                <button type="button" class="list-group-item list-group-item-action">Mushie</button>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersColor" aria-expanded="true"
+                            aria-controls="productFiltersColor">
+                        Kleur
+                    </button>
+                </div>
+                <div id="productFiltersColor" class="accordion-collapse collapse"
+                     aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <button type="button" class="list-group-item list-group-item-action">Rood</button>
+                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                            Groen
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action">Blauw</button>
+                        <button type="button" class="list-group-item list-group-item-action">Roze</button>
+                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                            Wit
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action">Geel</button>
+                        <button type="button" class="list-group-item list-group-item-action">Zwart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersLength" aria-expanded="true"
+                            aria-controls="productFiltersLength">
+                        Lengte
+                    </button>
+                </div>
+                <div id="productFiltersLength" class="accordion-collapse collapse"
+                     aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <label for="filter-length-min" class="form-label">Minimaal</label>
+                        <div class="row mt-0 mb-0">
+                            <div class="col">
+                                <input type="range" class="form-range" min="0" max="100" value="10" id="filter-length-min" oninput="document.getElementById('filter-length-min-value').innerHTML = this.value + 'cm'">
+                            </div>
+                            <div class="col" id="filter-length-min-value">10 cm</div>
+                        </div>
+                        <label for="filter-length-max" class="form-label">Maximaal</label>
+                        <div class="row mt-0 mb-0">
+                            <div class="col">
+                                <input type="range" class="form-range " min="0" max="100" value="80" id="filter-length-max" oninput="document.getElementById('filter-length-max-value').innerHTML = this.value + 'cm'">
+                            </div>
+                            <div class="col" id="filter-length-max-value">80 cm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersBrand" aria-expanded="true"
+                            aria-controls="productFiltersBrand">
+                        Merk
+                    </button>
+                </div>
+                <div id="productFiltersBrand" class="accordion-collapse collapse"
+                     aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <button type="button" class="list-group-item list-group-item-action">Bibs</button>
+                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                            Frigg
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action">Mushie</button>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="col">
             <div class="row mb-5">
                 @include('blocks.product.category')
