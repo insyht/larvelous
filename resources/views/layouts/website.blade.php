@@ -25,59 +25,69 @@
 <div id="app">
     <div class="container">
         <div class="row">
-            <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+              <a class="navbar-brand" href="#">Musthaves4U</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/">Homepage</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Categorie
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/voorbeeld/categorie">Categorie</a>
+                      <a class="dropdown-item" href="/voorbeeld/categorie">Subcategorie</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/product">Product</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/winkelwagen">Winkelwagen</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/klantgegevens">Klantgegevens</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/betaling">Betaling</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/bevestiging">Bevestiging</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/textpagina">Textpagina</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/landingspagina">Landingspagina</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/voorbeeld/contact">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 Op werkdagen voor 15:00 besteld, morgen in huis
             </div>
-            <div class="col">
+            <div class="col-sm">
                 Verzendkosten vanaf &euro;1
             </div>
-            <div class="col">
+            <div class="col-sm">
                 Gratis verzending binnen NL > &euro;50
             </div>
-            <div class="col">
+            <div class="col-sm">
                 Afhalen mogelijk
             </div>
         </div>
 
-        <div class="row">
-            <nav class="navbar navbar-expand navbar-dark bg-primary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Musthaves4U</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Homepage</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="/voorbeeld/categorie"
-                                   id="navbarDropdown"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Categorie
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/voorbeeld/categorie">Categorie</a></li>
-                                    <li><a class="dropdown-item" href="/voorbeeld/categorie">Subcategorie</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/product">Product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/winkelwagen">Winkelwagen</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/klantgegevens">Klantgegevens</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/betaling">Betaling</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/bevestiging">Bevestiging</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/textpagina">Textpagina</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/landingspagina">Landingspagina</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/voorbeeld/contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
     </div>
 
     <div class="container">
