@@ -24,10 +24,10 @@
         <div class="col-12 col-md-3">
             <div class="dropdown">
                 <button class="btn btn-lg btn-primary dropdown-toggle w-100" type="button" id="sortProducts"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                        data-bs-toggle="dropdown">
                     <i class="bi bi-sort-down"></i> Prijs (laag-hoog)
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="sortProducts">
+                <ul class="dropdown-menu">
                     <li>
                         <button class="dropdown-item active" type="button">Prijs (laag-hoog)</button>
                     </li>
@@ -46,13 +46,11 @@
         <div class="col-sm-3 col-md-3 accordion mb-5" id="productFilters">
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#productFiltersSize" aria-expanded="true"
-                            aria-controls="productFiltersSize">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#productFiltersSize">
                         Maat
                     </button>
                 </div>
-                <div id="productFiltersSize" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                <div id="productFiltersSize" class="accordion-collapse collapse" data-bs-parent="#productFilters">
                     <div class="accordion-body">
                         <button type="button" class="list-group-item list-group-item-action">Maat 1</button>
                         <button type="button" class="list-group-item list-group-item-action">Maat 2</button>
@@ -64,22 +62,20 @@
 
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#productFiltersColor" aria-expanded="true"
-                            aria-controls="productFiltersColor">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersColor">
                         Kleur
                     </button>
                 </div>
-                <div id="productFiltersColor" class="accordion-collapse collapse"
-                     aria-labelledby="panelsStayOpen-headingOne">
+                <div id="productFiltersColor" class="accordion-collapse collapse" data-bs-parent="#productFilters">
                     <div class="accordion-body">
                         <button type="button" class="list-group-item list-group-item-action">Rood</button>
-                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                        <button type="button" class="list-group-item list-group-item-action active">
                             Groen
                         </button>
                         <button type="button" class="list-group-item list-group-item-action">Blauw</button>
                         <button type="button" class="list-group-item list-group-item-action">Roze</button>
-                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                        <button type="button" class="list-group-item list-group-item-action active">
                             Wit
                         </button>
                         <button type="button" class="list-group-item list-group-item-action">Geel</button>
@@ -90,14 +86,12 @@
 
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#productFiltersLength" aria-expanded="true"
-                            aria-controls="productFiltersLength">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersLength">
                         Lengte
                     </button>
                 </div>
-                <div id="productFiltersLength" class="accordion-collapse collapse"
-                     aria-labelledby="panelsStayOpen-headingOne">
+                <div id="productFiltersLength" class="accordion-collapse collapse" data-bs-parent="#productFilters">
                     <div class="accordion-body">
                         <label for="filter-length-min" class="form-label">Minimaal</label>
                         <div class="row mt-0 mb-0">
@@ -119,17 +113,15 @@
 
             <div class="accordion-item">
                 <div class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#productFiltersBrand" aria-expanded="true"
-                            aria-controls="productFiltersBrand">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productFiltersBrand">
                         Merk
                     </button>
                 </div>
-                <div id="productFiltersBrand" class="accordion-collapse collapse"
-                     aria-labelledby="panelsStayOpen-headingOne">
+                <div id="productFiltersBrand" class="accordion-collapse collapse" data-bs-parent="#productFilters">
                     <div class="accordion-body">
                         <button type="button" class="list-group-item list-group-item-action">Bibs</button>
-                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                        <button type="button" class="list-group-item list-group-item-action active">
                             Frigg
                         </button>
                         <button type="button" class="list-group-item list-group-item-action">Mushie</button>
@@ -146,22 +138,14 @@
 
             <div class="row">
                 @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-            </div>
-
-            <div class="row">
+                @include('blocks.product.product', ['sale' => true])
                 @include('blocks.product.product')
                 @include('blocks.product.product')
                 @include('blocks.product.product')
-
-            </div>
-
-            <div class="row">
                 @include('blocks.product.product')
                 @include('blocks.product.product')
                 @include('blocks.product.product')
-
+                @include('blocks.product.product')
             </div>
 
             <div class="row">

@@ -113,8 +113,8 @@ function maxInputsCounter() {
 
 function beadsAmountAddColorChoosers() {
   var beadsAmountElements = document.querySelectorAll('input[name="beadsAmount"]');
-  beadsAmountElements.forEach(function ($amountEl) {
-    $amountEl.addEventListener('change', function () {
+  beadsAmountElements.forEach(function (amountEl) {
+    amountEl.addEventListener('change', function () {
       var beadsAmount = beadsAmountElements.length;
 
       if (document.querySelector('input[name="beadsAmount"]:checked')) {
