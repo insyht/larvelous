@@ -1,5 +1,5 @@
 <div class="col">
-    <a href="/voorbeeld/categorie">
+    <a href="{{ route('voorbeeld-categorie') }}">
         <div class="card">
             <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">

@@ -1,5 +1,5 @@
 <div class="col-12 col-sm-4 mt-3">
-    <a href="/voorbeeld/product">
+    <a href="{{ route('voorbeeld-product') }}">
         <div class="card">
             @if (isset($sale) && $sale === true)
             <div class="ribbon-wrapper">

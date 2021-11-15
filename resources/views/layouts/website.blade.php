@@ -41,33 +41,33 @@
                       Categorie
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/voorbeeld/categorie">Categorie</a>
-                      <a class="dropdown-item" href="/voorbeeld/categorie">Subcategorie</a>
+                      <a class="dropdown-item" href="{{ route('voorbeeld-categorie') }}">Categorie</a>
+                      <a class="dropdown-item" href="{{ route('voorbeeld-categorie') }}">Subcategorie</a>
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/product">Product</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-product') }}">Product</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/winkelwagen">Winkelwagen</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-winkelwagen') }}">Winkelwagen</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/klantgegevens">Klantgegevens</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-klantgegevens') }}">Klantgegevens</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/betaling">Betaling</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-betaling') }}">Betaling</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/bevestiging">Bevestiging</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-bevestiging') }}">Bevestiging</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/textpagina">Textpagina</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-textpagina') }}">Textpagina</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/landingspagina">Landingspagina</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-landingspagina') }}">Landingspagina</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/voorbeeld/contact">Contact</a>
+                    <a class="nav-link" href="{{ route('voorbeeld-contact') }}">Contact</a>
                   </li>
                 </ul>
               </div>

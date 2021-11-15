@@ -14,7 +14,7 @@
             <img src="{{url('/images/placeholder.jpg')}}" class="img-fluid" alt="...">
         </div>
         <div class="col-6 col-sm-2 text-left text-sm-left mt-3">
-            <p class="h4"><a href="/voorbeeld/product">Frigg speen daisy maat 2 Baked clay</a></p>
+            <p class="h4"><a href="{{ route('voorbeeld-product') }}">Frigg speen daisy maat 2 Baked clay</a></p>
         </div>
         <div class="col-4 col-sm-2 mt-3 d-flex align-items-center justify-content-center justify-content-sm-start">
             <p class="mb-0">&euro; 4,95</p> <span class="d-inline d-sm-none">&nbsp;x</span>
@@ -37,7 +37,7 @@
             <img src="{{url('/images/placeholder.jpg')}}" class="img-fluid" alt="...">
         </div>
         <div class="col-6 col-sm-2 text-left mt-3">
-            <p class="h4"><a href="/voorbeeld/product">Frigg speen daisy maat 2 Blush</a></p>
+            <p class="h4"><a href="{{ route('voorbeeld-product') }}">Frigg speen daisy maat 2 Blush</a></p>
         </div>
         <div class="col-4 col-sm-2 mt-3 d-flex align-items-center justify-content-center justify-content-sm-start">
             <p class="mb-0">&euro; 4,95</p> <span class="d-inline d-sm-none">&nbsp;x</span>
@@ -59,7 +59,7 @@
             <img src="{{url('/images/placeholder.jpg')}}" class="img-fluid" alt="...">
         </div>
         <div class="col-6 col-sm-2 text-left text-sm-left mt-3">
-            <p class="h4"><a href="/voorbeeld/product">Frigg speen daisy maat 2 Cream</a></p>
+            <p class="h4"><a href="{{ route('voorbeeld-product') }}">Frigg speen daisy maat 2 Cream</a></p>
         </div>
         <div class="col-4 col-sm-2 mt-3 d-flex align-items-center justify-content-center justify-content-sm-start">
             <p class="mb-0">&euro; 4,95</p> <span class="d-inline d-sm-none">&nbsp;x</span>
