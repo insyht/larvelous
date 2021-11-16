@@ -63,6 +63,9 @@ $primary: $m4u-pink;
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
 
+$bootstrap-icons-font-src: url("fonts/bootstrap-icons.woff2?a97b3594ad416896e15824f6787370e0") format("woff2"),
+url("fonts/bootstrap-icons.woff?a97b3594ad416896e15824f6787370e0") format("woff") !default;
+
 // Input type=range slider button (thumb) color
 input[type=range]::-webkit-slider-thumb {
   background: $m4u-pink;
