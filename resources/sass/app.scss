@@ -63,9 +63,6 @@ $primary: $m4u-pink;
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
 
-$bootstrap-icons-font-src: url("fonts/bootstrap-icons.woff2?a97b3594ad416896e15824f6787370e0") format("woff2"),
-url("fonts/bootstrap-icons.woff?a97b3594ad416896e15824f6787370e0") format("woff") !default;
-
 // Input type=range slider button (thumb) color
 input[type=range]::-webkit-slider-thumb {
   background: $m4u-pink;
@@ -140,3 +137,15 @@ html {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='0c63e4'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
   }
 }
+
+.btn-primary {
+  color: white;
+}
+
+.btn-outline-primary:hover, .btn-primary:hover {
+  color: white;
+}
+
+$bootstrap-icons-font-src:
+  url("fonts/bootstrap-icons.woff2?a97b3594ad416896e15824f6787370e0") format("woff2"),
+  url("fonts/bootstrap-icons.woff?a97b3594ad416896e15824f6787370e0") format("woff") !default;
