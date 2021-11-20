@@ -146,6 +146,8 @@ html {
   color: white;
 }
 
-$bootstrap-icons-font-src:
-  url("fonts/bootstrap-icons.woff2?a97b3594ad416896e15824f6787370e0") format("woff2"),
-  url("fonts/bootstrap-icons.woff?a97b3594ad416896e15824f6787370e0") format("woff") !default;
+@font-face {
+  font-family: "bootstrap-icons";
+  src: url('../fonts/vendor/bootstrap-icons/bootstrap-icons.woff2?715b7ba5cced4fcee0ee793c335aa150') format('woff2'),
+    url('../fonts/vendor/bootstrap-icons/bootstrap-icons.woff?a892cbb9df5b3b2af3e42ded0489208b') format('woff');
+}
