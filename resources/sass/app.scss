@@ -59,6 +59,22 @@ $primary: $m4u-pink;
   right: 0
 }
 
+input.mandatory, select.mandatory {
+  border: 1px solid $m4u-pink;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: $m4u-pink;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
@@ -146,8 +162,6 @@ html {
   color: white;
 }
 
-@font-face {
-  font-family: "bootstrap-icons";
-  src: url('../fonts/vendor/bootstrap-icons/bootstrap-icons.woff2?715b7ba5cced4fcee0ee793c335aa150') format('woff2'),
-    url('../fonts/vendor/bootstrap-icons/bootstrap-icons.woff?a892cbb9df5b3b2af3e42ded0489208b') format('woff');
+a {
+  text-decoration: none;
 }
