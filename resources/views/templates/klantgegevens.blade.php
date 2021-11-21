@@ -128,7 +128,6 @@
             <div class="col-12 col-sm-3 mt-3">
                 <select class="form-select" name="payment_method">
                     <option selected value="ideal">iDeal</option>
-                    <option value="banktransfer">Overboeking</option>
                     <option value="bancontact">Bancontact</option>
                 </select>
             </div>
@@ -181,7 +180,7 @@
             </div>
 
             <div class="col-12 col-sm-2 offset-sm-10">
-                <a class="btn btn-primary w-100" href="{{ route('voorbeeld-betaling') }}"><strong>Volgende stap <i class="bi bi-bank"></i></strong></a>
+                <a class="btn btn-primary w-100" href="{{ route('voorbeeld-bevestiging') }}"><strong>Afronden <i class="bi bi-arrow-right-circle-fill"></i></strong></a>
             </div>
 
         </div>

@@ -22,7 +22,6 @@ Route::namespace('Website')->group(function () {
     Route::get('/voorbeeld/product', 'VoorbeeldController@product')->name('voorbeeld-product');
     Route::get('/voorbeeld/winkelwagen', 'VoorbeeldController@winkelwagen')->name('voorbeeld-winkelwagen');
     Route::get('/voorbeeld/klantgegevens', 'VoorbeeldController@klantgegevens')->name('voorbeeld-klantgegevens');
-    Route::get('/voorbeeld/betaling', 'VoorbeeldController@betaling')->name('voorbeeld-betaling');
     Route::get('/voorbeeld/bevestiging', 'VoorbeeldController@bevestiging')->name('voorbeeld-bevestiging');
     Route::get('/voorbeeld/textpagina', 'VoorbeeldController@textpagina')->name('voorbeeld-textpagina');
     Route::get('/voorbeeld/landingspagina', 'VoorbeeldController@landingspagina')->name('voorbeeld-landingspagina');

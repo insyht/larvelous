@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel');
 
 // Variables
 @import 'variables';
@@ -75,6 +75,13 @@ ul li::before {
   width: 1em;
   margin-left: -1em;
 }
+
+.autograph {
+  color: $m4u-pink;
+  font-size: 100px;
+  font-family: 'Lovers Quarrel', cursive;
+}
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';

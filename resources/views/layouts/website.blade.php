@@ -50,9 +50,6 @@
                     <a class="nav-link" href="{{ route('voorbeeld-klantgegevens') }}">Klantgegevens</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('voorbeeld-betaling') }}">Betaling</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('voorbeeld-bevestiging') }}">Bevestiging</a>
                   </li>
                   <li class="nav-item">

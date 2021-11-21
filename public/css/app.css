@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito|Dancing+Script);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel);@charset "UTF-8";
 
 .ribbon-wrapper {
   width: 85px;
@@ -61,6 +61,12 @@ ul li::before {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
+}
+
+.autograph {
+  color: #f546aa;
+  font-size: 100px;
+  font-family: "Lovers Quarrel", cursive;
 }
 
 /*!
