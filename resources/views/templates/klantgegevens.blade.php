@@ -3,10 +3,10 @@
     <h1>Gegevens</h1>
         <div class="row">
             <div class="col-12 mb-3"><p class="h4">Factuurgegevens</p></div>
-            <div class="col-6 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_first_name" placeholder="Voornaam"></div>
-            <div class="col-6 mb-3 ps-1"><input class="form-control w-100 mandatory" type="text" name="invoice_last_name" placeholder="Achternaam"></div>
-            <div class="col-6 mb-3 pe-1"><input class="form-control w-100" type="text" name="invoice_company_name" placeholder="Bedrijfsnaam"></div>
-            <div class="col-6 mb-3 ps-1">
+            <div class="col-6 col-sm-4 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_first_name" placeholder="Voornaam"></div>
+            <div class="col-6 col-sm-4 mb-3 ps-1 pe-sm-1"><input class="form-control w-100 mandatory" type="text" name="invoice_last_name" placeholder="Achternaam"></div>
+            <div class="col-6 col-sm-4 mb-3 pe-1 ps-sm-1"><input class="form-control w-100" type="text" name="invoice_company_name" placeholder="Bedrijfsnaam"></div>
+            <div class="col-6 d-sm-none mb-3 ps-1 pe-sm-1">
                 <select class="form-select w-100 mandatory" name="invoice_country">
                     <option selected value="">Land / regio</option>
                     <option value="NL">Nederland</option>
@@ -14,15 +14,25 @@
                     <option value="Other">Overige</option>
                 </select>
             </div>
-            <div class="col-8 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_street" placeholder="Straatnaam"></div>
-            <div class="col-2 mb-3 ps-1 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_house_number" placeholder="25"></div>
-            <div class="col-2 mb-3 ps-1"><input class="form-control w-100" type="text" name="invoice_house_number_ext" placeholder="B"></div>
-            <div class="col-4 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_postal_code" placeholder="Postcode"></div>
-            <div class="col-8 mb-3 ps-1"><input class="form-control w-100 mandatory" type="text" name="invoice_city" placeholder="Plaats"></div>
-            <div class="col-12 mb-3">
+
+            <div class="col-8 col-sm-3 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_street" placeholder="Straatnaam"></div>
+            <div class="col-2 col-sm-1 mb-3 ps-1 pe-1"><input class="form-control w-100 mandatory" type="text" name="invoice_house_number" placeholder="25"></div>
+            <div class="col-2 col-sm-1 mb-3 ps-1 pe-sm-1"><input class="form-control w-100" type="text" name="invoice_house_number_ext" placeholder="B"></div>
+            <div class="col-4 col-sm-1 mb-3 pe-1 ps-sm-1"><input class="form-control w-100 mandatory" type="text" name="invoice_postal_code" placeholder="Postcode"></div>
+            <div class="col-8 col-sm-3 mb-3 ps-1 pe-sm-1"><input class="form-control w-100 mandatory" type="text" name="invoice_city" placeholder="Plaats"></div>
+            <div class="col-6 col-sm-3 d-none d-sm-flex mb-3 ps-1 pe-sm-1">
+                <select class="form-select w-100 mandatory" name="invoice_country">
+                    <option selected value="">Land / regio</option>
+                    <option value="NL">Nederland</option>
+                    <option value="BE">Belgi&euml;</option>
+                    <option value="Other">Overige</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-2 mb-3 pe-sm-1">
                 <input class="form-control w-100" type="text" name="invoice_phone" placeholder="Telefoonnummer">
             </div>
-            <div class="col-12 mb-3"><input class="form-control w-100 mandatory" type="email" name="invoice_email" placeholder="E-mailadres"></div>
+            <div class="col-12 col-sm-3 mb-3 ps-sm-1"><input class="form-control w-100 mandatory" type="email" name="invoice_email" placeholder="E-mailadres"></div>
+            <div class="col-sm-7 d-none d-sm-flex"></div>
             <div class="col-12">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="create_account">
@@ -39,10 +49,10 @@
 
             <div class="d-none row" id="shipping_address">
                 <div class="col-12 mb-3"><p class="h4">Verzendgegevens</p></div>
-                <div class="col-6 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_first_name" placeholder="Voornaam"></div>
-                <div class="col-6 mb-3 ps-1"><input class="form-control w-100 mandatory" type="text" name="shipping_last_name" placeholder="Achternaam"></div>
-                <div class="col-6 mb-3 pe-1"><input class="form-control w-100" type="text" name="shipping_company_name" placeholder="Bedrijfsnaam"></div>
-                <div class="col-6 mb-3 ps-1">
+                <div class="col-6 col-sm-4 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_first_name" placeholder="Voornaam"></div>
+                <div class="col-6 col-sm-4 mb-3 ps-1 pe-sm-1"><input class="form-control w-100 mandatory" type="text" name="shipping_last_name" placeholder="Achternaam"></div>
+                <div class="col-6 col-sm-4 mb-3 pe-1 ps-sm-1"><input class="form-control w-100" type="text" name="shipping_company_name" placeholder="Bedrijfsnaam"></div>
+                <div class="col-6 d-sm-none mb-3 ps-1 pe-sm-1">
                     <select class="form-select w-100 mandatory" name="shipping_country">
                         <option selected value="">Land / regio</option>
                         <option value="NL">Nederland</option>
@@ -50,19 +60,31 @@
                         <option value="Other">Overige</option>
                     </select>
                 </div>
-                <div class="col-8 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_street" placeholder="Straatnaam"></div>
-                <div class="col-2 mb-3 ps-1 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_house_number" placeholder="25"></div>
-                <div class="col-2 mb-3 ps-1"><input class="form-control w-100" type="text" name="shipping_house_number_ext" placeholder="B"></div>
-                <div class="col-4 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_postal_code" placeholder="Postcode"></div>
-                <div class="col-8 mb-3 ps-1"><input class="form-control w-100 mandatory" type="text" name="shipping_city" placeholder="Plaats"></div>
-                <div class="col-12 mb-3">
+
+                <div class="col-8 col-sm-3 mb-3 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_street" placeholder="Straatnaam"></div>
+                <div class="col-2 col-sm-1 mb-3 ps-1 pe-1"><input class="form-control w-100 mandatory" type="text" name="shipping_house_number" placeholder="25"></div>
+                <div class="col-2 col-sm-1 mb-3 ps-1 pe-sm-1"><input class="form-control w-100" type="text" name="shipping_house_number_ext" placeholder="B"></div>
+                <div class="col-4 col-sm-1 mb-3 pe-1 ps-sm-1"><input class="form-control w-100 mandatory" type="text" name="shipping_postal_code" placeholder="Postcode"></div>
+                <div class="col-8 col-sm-3 mb-3 ps-1 pe-sm-1"><input class="form-control w-100 mandatory" type="text" name="shipping_city" placeholder="Plaats"></div>
+                <div class="col-6 col-sm-3 d-none d-sm-flex mb-3 ps-1 pe-sm-1">
+                    <select class="form-select w-100 mandatory" name="shipping_country">
+                        <option selected value="">Land / regio</option>
+                        <option value="NL">Nederland</option>
+                        <option value="BE">Belgi&euml;</option>
+                        <option value="Other">Overige</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-sm-3 mb-3 pe-sm-1">
                     <input class="form-control w-100" type="text" name="shipping_phone" placeholder="Telefoonnummer">
                     <small><i class="bi bi-exclamation-triangle text-primary"></i> Mogelijk wordt hier verzendinfo op ontvangen</small>
                 </div>
-                <div class="col-12 mb-3">
+                <div class="col-12 col-sm-3 mb-3 ps-sm-1">
                     <input class="form-control w-100 mandatory" type="email" name="shipping_email" placeholder="E-mailadres">
                     <small><i class="bi bi-exclamation-triangle text-primary"></i> Mogelijk wordt hier verzendinfo op ontvangen</small>
                 </div>
+                <div class="col-sm-6 d-none d-sm-flex"></div>
+
                 <div class="col-12">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="is_present">
@@ -103,7 +125,7 @@
             </div>
 
             <div class="col-12 mt-3"><p class="h4">Betaling</p></div>
-            <div class="col-12 mt-3">
+            <div class="col-12 col-sm-3 mt-3">
                 <select class="form-select" name="payment_method">
                     <option selected value="ideal">iDeal</option>
                     <option value="banktransfer">Overboeking</option>
