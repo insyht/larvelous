@@ -1,4 +1,6 @@
 @extends('layouts.website')
 @section('content')
-    Textpagina
+    <h1>Tekstpagina</h1>
+    @include('blocks/paragraph')
+    @include('blocks/cta')
 @endsection
