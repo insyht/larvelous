@@ -82,6 +82,25 @@ ul li::before {
   font-family: 'Lovers Quarrel', cursive;
 }
 
+.usp-icon {
+  font-size: 7rem;
+}
+
+.header {
+  background-repeat: no-repeat;
+  background-size: 80% 101%, cover;
+  background-position: left, center;
+}
+
+.font-special {
+  font-family: 'Dancing Script', cursive;
+  color: $m4u-pink;
+}
+
+.cta {
+  background-color: $m4u-pink-light;
+}
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
@@ -171,4 +190,9 @@ html {
 
 a {
   text-decoration: none;
+}
+
+.quote {
+  border-left: 4px solid $m4u-pink;
+  padding-left: 15px;
 }

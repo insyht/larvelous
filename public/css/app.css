@@ -69,6 +69,25 @@ ul li::before {
   font-family: "Lovers Quarrel", cursive;
 }
 
+.usp-icon {
+  font-size: 7rem;
+}
+
+.header {
+  background-repeat: no-repeat;
+  background-size: 80% 101%, cover;
+  background-position: left, center;
+}
+
+.font-special {
+  font-family: "Dancing Script", cursive;
+  color: #f546aa;
+}
+
+.cta {
+  background-color: #ffe9f6;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -18488,5 +18507,10 @@ html {
 
 a {
   text-decoration: none;
+}
+
+.quote {
+  border-left: 4px solid #f546aa;
+  padding-left: 15px;
 }
 
