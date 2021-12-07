@@ -1,8 +1,8 @@
 <div class="container-fluid cta">
     <div class="row">
         <div class="col offset-sm-2 pt-3 pb-3 align-self-center">
-            <p class="display-5">Lorem ipsum dolor sit amet</p>
-            <p class="lead">
+            <p class="display-5 text-center text-sm-start">Lorem ipsum dolor sit amet</p>
+            <p class="lead text-center text-sm-start">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut magna et nibh.
             </p>
         </div>
