@@ -18375,7 +18375,8 @@ fieldset:disabled .btn {
 }
 
 input.mandatory,
-select.mandatory {
+select.mandatory,
+textarea.mandatory {
   border: 1px solid #f546aa;
 }
 
