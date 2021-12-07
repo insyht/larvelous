@@ -1,13 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel');
 
-// Variables
-@import 'variables';
-
 $m4u-pink: #f546aa;
 $m4u-pink-light: #ffe9f6;
-
 $primary: $m4u-pink;
+
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
+@import 'variables';
 
 .ribbon-wrapper {
   width: 85px;
@@ -86,10 +86,32 @@ ul li::before {
   font-size: 7rem;
 }
 
+.header-mobile {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  height: 150px;
+}
 .header {
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: 80% 101%, cover;
   background-position: left, center;
+
+  .quote {
+    background-color: transparent;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .header {
+    background-color: $m4u-pink-light;
+    background-image: none !important;
+
+    .quote {
+      background-color: white;
+    }
+  }
 }
 
 .font-special {
@@ -102,8 +124,6 @@ ul li::before {
 }
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-icons/font/bootstrap-icons';
 
 // Input type=range slider button (thumb) color
 input[type=range]::-webkit-slider-thumb {

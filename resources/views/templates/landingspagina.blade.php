@@ -1,14 +1,14 @@
 @extends('layouts.landingpage')
 @section('header')
-        <div class="col-4 offset-sm-2 mt-sm-5 mb-sm-5">
+        <div class="col-12 col-sm-4 offset-sm-2 mt-sm-5 mb-sm-5">
             <h1 class="font-special">De beste kralen, de mooiste kleuren</h1>
-            <p class="fst-italic">Kies uit onze modellen of stel zelf samen</p>
+            <p class="fst-italic text-muted">Kies uit onze modellen of stel zelf samen</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis egestas vestibulum. Praesent
                 vulputate dolor tortor, eu viverra sapien interdum at. Ut sit amet sem leo. Donec et mauris tellus.
                 Praesent ut consequat nunc. Morbi venenatis non lacus non rhoncus. Duis eu lectus sed felis consequat
                 tempor. In eget rhoncus neque, sit amet bibendum urna. </p>
 
-            <figure class="quote mt-sm-5 mb-sm-5">
+            <figure class="quote mb-5 p-3 text-center text-sm-start mt-sm-5 mb-sm-5">
                 <blockquote class="blockquote">
                     <p>Het perfecte kraamcadeau voor de kleine meid van mijn beste vriendin!</p>
                 </blockquote>

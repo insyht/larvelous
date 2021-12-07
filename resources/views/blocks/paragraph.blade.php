@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-sm"><img src="{{url('/images/placeholder.jpg')}}" class="img-fluid"></div>
-        <div class="col">
+        <div class="col mt-3">
             <h3>Lorem ipsum dolor sit amet</h3>
             <p>
                 Consectetur adipiscing elit. Proin ut magna et nibh dictum dignissim.

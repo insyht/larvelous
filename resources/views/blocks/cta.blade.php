@@ -9,7 +9,7 @@
         <div class="col-sm pt-3 pb-3 align-self-center">
             <img src="{{url('/images/placeholder.jpg')}}" class="img-fluid img-thumbnail">
         </div>
-        <div class="col pt-3 pb-3 align-self-center">
+        <div class="col pt-3 pb-3 align-self-center text-center text-sm-start">
             <p class="h4">Linda Vishers <small class="text-muted">CEO</small></p>
             <p>06 12 34 56 78</p>
             <p>linda@musthaves4u.nl</p>
