@@ -18533,3 +18533,7 @@ a {
   padding-left: 15px;
 }
 
+.form-control:disabled {
+  background-color: #ffe9f6;
+}
+

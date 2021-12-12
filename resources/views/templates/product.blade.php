@@ -1,12 +1,12 @@
 @extends('layouts.website')
 @section('content')
     <div class="row">
-        <div class="col-7">
+        <div class="col-12 col-sm-7">
             @include('blocks.product.images')
         </div>
-        <div class="col-5">
+        <div class="col-12 col-sm-5">
             <h1 class="h3">Frigg speen daisy maat 2 Baked clay</h1>
-            <p>&euro; 5,00</p>
+            <p class="d-none d-sm-block text-primary">&euro; 5,00</p>
             @include('blocks.product.options')
             @include('blocks.product.buy')
             @include('blocks.product.intro')

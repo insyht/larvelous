@@ -216,3 +216,7 @@ a {
   border-left: 4px solid $m4u-pink;
   padding-left: 15px;
 }
+
+.form-control:disabled {
+  background-color: $m4u-pink-light;
+}

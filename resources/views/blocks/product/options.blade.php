@@ -85,48 +85,6 @@
                   </select>
                 </div>
                 </div>
-
-
-{{--            <div class="colorChooser" style="display: none;">--}}
-{{--                <label class="form-check-label" for="beadoption">Kleur voor kraal 1:</label>--}}
-{{--                <select class="form-select" aria-label="beadoption">--}}
-{{--                    <option value="1">1. Transparant wit</option>--}}
-{{--                    <option value="2" selected>2. Transparant blauw</option>--}}
-{{--                    <option value="3">Wit</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
-{{--            <div class="colorChooser" style="display: none;">--}}
-{{--                <label class="form-check-label" for="beadoption">Kleur voor kraal 2:</label>--}}
-{{--                <select class="form-select" aria-label="beadoption">--}}
-{{--                    <option value="1" selected>1. Transparant wit</option>--}}
-{{--                    <option value="2">2. Transparant blauw</option>--}}
-{{--                    <option value="3">Wit</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
-{{--            <div class="colorChooser" style="display: none;">--}}
-{{--                <label class="form-check-label" for="beadoption">Kleur voor kraal 3:</label>--}}
-{{--                <select class="form-select" aria-label="beadoption">--}}
-{{--                    <option value="1">1. Transparant wit</option>--}}
-{{--                    <option value="2">2. Transparant blauw</option>--}}
-{{--                    <option value="3" selected>Wit</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
-{{--            <div class="colorChooser" style="display: none;">--}}
-{{--                <label class="form-check-label" for="beadoption">Kleur voor kraal 4:</label>--}}
-{{--                <select class="form-select" aria-label="beadoption">--}}
-{{--                    <option value="1" selected>1. Transparant wit</option>--}}
-{{--                    <option value="2">2. Transparant blauw</option>--}}
-{{--                    <option value="3">Wit</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
-{{--            <div class="colorChooser" style="display: none;">--}}
-{{--                <label class="form-check-label" for="beadoption">Kleur voor kraal 5:</label>--}}
-{{--                <select class="form-select" aria-label="beadoption">--}}
-{{--                    <option value="1">1. Transparant wit</option>--}}
-{{--                    <option value="2">2. Transparant blauw</option>--}}
-{{--                    <option value="3">Wit</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
         </div>
 
     </div>

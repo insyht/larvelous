@@ -2,6 +2,7 @@
     <div class="col">
         <div class="input-group input-group-md">
             <input class="form-control" value="1" min="1" max="999" type="number" name="amount">
+            <input class="form-control input-group-text d-block d-sm-none" value="x &euro; 5,00" type="text" disabled>
             <button class="btn btn-primary pl-5 pr-5" type="button"><i class="bi bi-cart3"></i> In winkelwagen</button>
         </div>
         <button class="btn btn-lg btn-outline-primary w-100 mt-3" type="button">
