@@ -25,6 +25,13 @@ class PageController extends Controller
             App::abort(404);
         }
 
+        // Preload
+        foreach ($page->template->blocks()->get() as $block) {
+            if ($this->getTemplateName($block->blade_template) === null) {
+                App::abort(404);
+            }
+        }
+
 //        $template = $page->template;
 //        $block = $template->blocks()->first();
 //        $blockVariable = $block->blockvariables->first();
