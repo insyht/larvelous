@@ -33,8 +33,11 @@ Dus:
         Pagina  Pagina  Pagina  Pagina  Pagina          Pagina  Pagina  Pagina  Pagina  Pagina
 
 
-Deze boomstructuur wordt in de database opgeslagen in de models, en intern als JSON doorgestuurd naar de 
-website voor in de cache. Een voorbeeld:
+Deze boomstructuur wordt in de database opgeslagen in de models, en intern als JSON aangeboden via de website API, 
+waarmee het CMS een connectie aan kan gaan. Het CMS heeft de website data dus zelf niet, maar baseert alles op de 
+JSON die hij krijgt van de verbonden website. Eventueel zou ik deze JSON ook kunnen gebruiken als cache mechanisme 
+op de site om deze sneller te maken (geen db queries meer nodig).
+Een voorbeeld:
 
 {
   "website": {
@@ -197,3 +200,56 @@ website voor in de cache. Een voorbeeld:
     "plugins": {}
   }
 }
+
+Database opbouw:
+  pages
+      id
+      language_id
+      template_id
+      title
+      url (of misschien juist de route?)
+
+  templates (dit is het soort pagina, bijvoorbeeld een textuele pagina of productpagina)
+    id
+    resource_id (hiermee kan een template specifieke data opvragen)
+    label
+    blade_template (pad van de Blade template vanaf de root, bijvoorbeeld resources/views/templates/winkelwagen.blade.php)
+  
+  blocks
+      id
+      resource_id (hiermee kan een template specifieke data opvragen)
+      blade_template (pad van de Blade template vanaf de root, bijvoorbeeld resources/views/blocks/product/buy.blade.php)
+      label
+      description  
+  
+  block_variables
+      id
+      block_id
+      name (naam van de var in de Blade template maar dan zonder het dollarteken)
+      label (naam vna het veld zoals de gebruiker het ziet in het CMS)
+      type (textfield, textarea, imageselector, pageselector)
+      required (boolean)
+  
+  block_variable_values
+      id
+      block_variable_id
+      language_id
+      value
+  
+  block_variable_value_template_block (koppeltabel tussen template_blocks en block_variable_values)
+      id
+      template_block_id
+      block_variable_value_id
+      ordering (Voor als je van 1 block meerdere in een template hebt)
+
+  block_templates (koppeltabel tussen templates en blocks)
+      id
+      page_id
+      block_id
+      enabled
+      ordering
+  
+  languages
+      id
+      name
+      abbreviation (ISO-639-1)
