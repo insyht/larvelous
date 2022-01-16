@@ -26,6 +26,7 @@ Route::namespace('Website')->group(function () {
     Route::get('/voorbeeld/textpagina', 'VoorbeeldController@textpagina')->name('voorbeeld-textpagina');
     Route::get('/voorbeeld/landingspagina', 'VoorbeeldController@landingspagina')->name('voorbeeld-landingspagina');
     Route::get('/voorbeeld/contact', 'VoorbeeldController@contact')->name('voorbeeld-contact');
+    Route::get('/{pageName}', 'PageController@load')->where('pageName', '.*');
 });
 
 /**
