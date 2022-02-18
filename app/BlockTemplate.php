@@ -13,7 +13,7 @@ class BlockTemplate extends Pivot
 
     public function block()
     {
-        return $this->belongsToMany(Block::class);
+        return $this->belongsTo(Block::class);
     }
 
     public function template()

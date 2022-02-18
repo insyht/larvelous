@@ -62,20 +62,20 @@ Een voorbeeld:
           "url": "/",
           "blocks": [
             {
-              "bladeTemplate": "introblock.blade.php",
+              "view": "introblock",
               "data": [
                 {
-                  "name": "title", // In de template heb je een variabele met als naam "title"
+                  "name": "title", // In de view heb je een variabele met als naam "title"
                   "value": "Dit is de titel van het intro blok"
                 },
                 {
-                  "name": "content", // In de template heb je een variabele met als naam "content"
+                  "name": "content", // In de view heb je een variabele met als naam "content"
                   "value": "Dit is een paragraaf voor de intro"
                 }
               ]
             },
             {
-              "bladeTemplate": "paragraph.blade.php",
+              "view": "paragraph",
               "data": [
                 {
                   "name": "title",
@@ -112,7 +112,7 @@ Een voorbeeld:
               ]
             },
             {
-              "bladeTemplate": "cta.blade.php",
+              "view": "cta",
               "data": [
                 {
                   "name": "question",
@@ -213,19 +213,19 @@ Database opbouw:
     id
     resource_id (hiermee kan een template specifieke data opvragen)
     label
-    blade_template (pad van de Blade template vanaf de root, bijvoorbeeld resources/views/templates/winkelwagen.blade.php)
+    view (pad van de Blade View, bijvoorbeeld templates/winkelwagen voor resources/views/templates/winkelwagen.blade.php)
   
   blocks
       id
       resource_id (hiermee kan een template specifieke data opvragen)
-      blade_template (pad van de Blade template vanaf de root, bijvoorbeeld resources/views/blocks/product/buy.blade.php)
+      view (pad van de Blade view vanaf de root, bijvoorbeeld iws/resources/views/paragraph voor vendor/iws/resources/views/paragraph.blade.php)
       label
       description  
   
   block_variables
       id
       block_id
-      name (naam van de var in de Blade template maar dan zonder het dollarteken)
+      name (naam van de var in de Blade view maar dan zonder het dollarteken)
       label (naam vna het veld zoals de gebruiker het ziet in het CMS)
       type (textfield, textarea, imageselector, pageselector)
       required (boolean)

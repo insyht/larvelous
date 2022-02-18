@@ -21,6 +21,9 @@ class Template extends Model
 
     public function blocks()
     {
-        return $this->belongsToMany(Block::class)->using(BlockTemplate::class);
+        return $this->belongsToMany(Block::class)
+                    ->using(BlockTemplate::class)
+                    ->where('enabled', 1)
+                    ->orderBy('ordering');
     }
 }
