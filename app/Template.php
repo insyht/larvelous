@@ -16,7 +16,7 @@ class Template extends Model
 
     public function blockTemplates()
     {
-        return $this->hasMany(BlockTemplate::class);
+        return $this->hasMany(BlockTemplate::class)->orderBy('ordering');
     }
 
     public function blocks()
