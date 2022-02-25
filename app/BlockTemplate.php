@@ -10,10 +10,16 @@ class BlockTemplate extends Pivot
     use HasFactory;
 
     public $incrementing = true;
+    protected $blockValuesInternal;
 
     public function block()
     {
         return $this->belongsTo(Block::class);
+    }
+
+    public function getView()
+    {
+        return $this->block->view;
     }
 
     public function template()
@@ -23,6 +29,16 @@ class BlockTemplate extends Pivot
 
     public function blockVariableValueTemplateBlocks()
     {
-        return $this->hasMany(BlockVariableValueTemplateBlock::class);
+        return $this->hasMany(BlockVariableValueTemplateBlock::class, 'template_block_id');
+    }
+
+    public function getBlockValues(): BlockValues
+    {
+        return $this->blockValuesInternal ?? new BlockValues();
+    }
+
+    public function addValues(BlockValues $values): void
+    {
+        $this->blockValuesInternal = $values;
     }
 }

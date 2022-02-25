@@ -253,3 +253,8 @@ Database opbouw:
       id
       name
       abbreviation (ISO-639-1)
+
+
+
+
+SQL om bepaalde blokken te maken:

@@ -9,8 +9,6 @@ class Block extends Model
 {
     use HasFactory;
 
-    protected $blockValuesInternal = [];
-
     public function blockVariables()
     {
         return $this->hasMany(BlockVariable::class);
@@ -39,34 +37,5 @@ class Block extends Model
     public function getDottedViewPath(): string
     {
         return str_replace('/', '.', $this->view);
-    }
-
-    public function get(Template $template, string $variableName)
-    {
-        $values = [];
-
-        $variableValues = $this->blockVariableValuesForVariable($variableName)->get();
-        foreach ($variableValues as $variableValue) {
-            $valuesMatchedByTemplate = $variableValue->blockVariableValueTemplateBlocks->where(
-                'template_block_id',
-                $template->id
-            );
-            foreach ($valuesMatchedByTemplate as $templateValue) {
-                $index = $templateValue->ordering;
-                $values[$index] = $templateValue->blockVariableValue;
-            }
-        }
-
-        return $values;
-    }
-
-    public function getBlockValues(int $index): BlockValues
-    {
-        return $this->blockValuesInternal[$index] ?? new BlockValues();
-    }
-
-    public function addValues(BlockValues $values): void
-    {
-        $this->blockValuesInternal[] = $values;
     }
 }

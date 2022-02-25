@@ -11,7 +11,8 @@ class BlockVariableValueTemplateBlock extends Model
 
     public function blockVariableValue()
     {
-        return $this->belongsTo(BlockVariableValue::class);
+        // todo Fetch de juiste language_id ergens vandaan, is hier nog hardcoded op 3
+        return $this->belongsTo(BlockVariableValue::class)->where('language_id', 3);
     }
 
     public function templateBlock()

@@ -13,4 +13,9 @@ class Page extends Model
     {
         return $this->belongsTo(Template::class);
     }
+
+    public function getBlocks()
+    {
+        return $this->template->blockTemplates;
+    }
 }

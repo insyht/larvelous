@@ -16,7 +16,7 @@ class Template extends Model
 
     public function blockTemplates()
     {
-        return $this->belongsToMany(BlockTemplate::class);
+        return $this->hasMany(BlockTemplate::class);
     }
 
     public function blocks()
