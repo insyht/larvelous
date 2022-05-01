@@ -18,4 +18,9 @@ class BlockVariable extends Model
     {
         return $this->hasMany(BlockVariableValue::class);
     }
+
+    public function blockVariableOptions()
+    {
+        return $this->hasMany(BlockVariableOption::class);
+    }
 }

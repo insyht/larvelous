@@ -31,4 +31,9 @@
   <component name="SvnConfiguration">
     <configuration>C:\Users\thYs\AppData\Roaming\Subversion</configuration>
   </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
+  </component>
 </project>
