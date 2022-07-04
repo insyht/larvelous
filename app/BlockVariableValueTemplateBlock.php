@@ -9,6 +9,8 @@ class BlockVariableValueTemplateBlock extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function blockVariableValue()
     {
         // todo Fetch de juiste language_id ergens vandaan, is hier nog hardcoded op 3

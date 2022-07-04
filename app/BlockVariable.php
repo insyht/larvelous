@@ -9,6 +9,8 @@ class BlockVariable extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function block()
     {
         return $this->belongsTo(Block::class);

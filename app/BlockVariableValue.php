@@ -9,6 +9,8 @@ class BlockVariableValue extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected static function booted()
     {
         static::saving(function (self $blockVariableValue) {

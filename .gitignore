@@ -14,4 +14,4 @@ yarn-error.log
 .idea/*
 .php_cs.cache
 .htaccess
-
+.idea

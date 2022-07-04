@@ -9,6 +9,8 @@ class Template extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function pages()
     {
         return $this->hasMany(Page::class);

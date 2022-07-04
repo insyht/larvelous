@@ -9,6 +9,7 @@ class BlockTemplate extends Pivot
 {
     use HasFactory;
 
+    public $timestamps = false;
     public $incrementing = true;
     protected $blockValuesInternal;
 

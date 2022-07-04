@@ -1,1 +1,4 @@
-- Alle migraties invullen (zijn nu nog kaal)
+- Migraties testen (o.a. kijken of je na alle migraties dezelfde db export hebt als nu)
+  - Commando 1: php artisan migrate:reset (daarna ff de migrations tabel truncaten)
+  - Commando 2: php artisan migrate --seed
+- Alle pagina's nabouwen in de database d.m.v. blokken (zie /test waarin ik de homepage nabouw)

@@ -9,6 +9,8 @@ class Page extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function template()
     {
         return $this->belongsTo(Template::class);
