@@ -1,4 +1,3 @@
-- Migraties testen (o.a. kijken of je na alle migraties dezelfde db export hebt als nu)
-  - Commando 1: php artisan migrate:reset (daarna ff de migrations tabel truncaten)
-  - Commando 2: php artisan migrate --seed
+- Iets maken waarmee ik alle plugins kan opvragen, zodat ik o.a. weet waar ik de seeders van elke plugin kan vinden
 - Alle pagina's nabouwen in de database d.m.v. blokken (zie /test waarin ik de homepage nabouw)
+  - Maak hier ook migraties / seeds voor!

@@ -17,7 +17,6 @@ Auth::routes();
  * Dashboard routes
  */
 Route::namespace('Website')->group(function () {
-    Route::get('/', 'HomeController@index')->name('index');
     Route::get('/voorbeeld/categorie', 'VoorbeeldController@categorie')->name('voorbeeld-categorie');
     Route::get('/voorbeeld/product', 'VoorbeeldController@product')->name('voorbeeld-product');
     Route::get('/voorbeeld/winkelwagen', 'VoorbeeldController@winkelwagen')->name('voorbeeld-winkelwagen');

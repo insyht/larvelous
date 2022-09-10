@@ -33,7 +33,7 @@ class CmsSeeder extends Seeder
         $template = new Template();
         $template->resource_id = 'iws_home';
         $template->label = 'Homepage';
-        $template->view = 'iws/resources/views/test';
+        $template->view = 'iws/resources/views/home';
         $template->save();
         $template->refresh();
 
@@ -41,7 +41,7 @@ class CmsSeeder extends Seeder
         $page->language_id = $language->id;
         $page->template_id = $template->id;
         $page->title = 'Home';
-        $page->url = 'test';
+        $page->url = '';
         $page->save();
     }
 }

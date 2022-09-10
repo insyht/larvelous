@@ -12,7 +12,7 @@ class PageController extends Controller
     /**
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function load(string $pageName)
+    public function load(string $pageName = '')
     {
         $page = Page::where('url', $pageName)->first();
         if ($page === null) {
