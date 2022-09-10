@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b61e7a5ba3ca6ef263a0ff21ac2bf9d7",
+    "content-hash": "029ef0a2dd969dd53a22047457d72238",
     "packages": [
         {
             "name": "brick/math",
@@ -559,6 +559,25 @@
                 }
             ],
             "time": "2021-10-17T19:48:54+00:00"
+        },
+        {
+            "name": "insyht/larvelous-base-blocks",
+            "version": "dev-firsttry",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/insyht/larvelous-base-blocks.git",
+                "reference": "4f351cb22a8d7809bcda3cdad630d2d684f95002"
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "type": "project",
+            "description": "Basic blocks for the Larvelous CMS.",
+            "keywords": [
+                "cms",
+                "larvelous"
+            ],
+            "time": "2022-09-10T21:46:19+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7281,10 +7300,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "insyht/larvelous-base-blocks": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

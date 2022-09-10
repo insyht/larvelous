@@ -28,9 +28,9 @@ class PageServiceProvider extends ServiceProvider
     {
         // Add the composer vendor directory to the places to search for Blade views. This way, every developer
         // can add Blade views to the CMS, for blocks for instance. For example, if I place a Blade view in:
-        // vendor/iws/resources/views/welcome.blade.php
+        // vendor/insyht/larvelous-base-blocks/resources/views/welcome.blade.php
         // The view can be loaded using the path:
-        // iws/resources/views/welcome
+        // insyht/larvelous-base-blocks/resources/views/welcome
         // This way, even if my view has the same name as a view from someone else (including in /resources/views),
         // they won't interfere with each other.
         view()->addLocation(__DIR__ . '/../../vendor');
