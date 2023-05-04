@@ -1,0 +1,222 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel');
+
+$m4u-pink: #f546aa;
+$m4u-pink-light: #ffe9f6;
+$primary: $m4u-pink;
+
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
+@import 'variables';
+
+.ribbon-wrapper {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px
+}
+
+.ribbon {
+  font-size: 24px;
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  line-height: 15px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  right: -11px;
+  top: 10px;
+  width: 100px;
+  height: 28px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+  background-color: $m4u-pink;
+}
+
+.ribbon:before,
+.ribbon:after {
+  content: "";
+  border-top: 3px solid $m4u-pink;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  position: absolute;
+  bottom: -3px
+}
+
+.ribbon:before {
+  left: 0
+}
+
+.ribbon:after {
+  right: 0
+}
+
+input.mandatory, select.mandatory, textarea.mandatory {
+  border: 1px solid $m4u-pink;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: $m4u-pink;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.autograph {
+  color: $m4u-pink;
+  font-size: 100px;
+  font-family: 'Lovers Quarrel', cursive;
+}
+
+.usp-icon {
+  font-size: 7rem;
+}
+
+.header-mobile {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  height: 150px;
+}
+.header {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80% 101%, cover;
+  background-position: left, center;
+
+  .quote {
+    background-color: transparent;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .header {
+    background-color: $m4u-pink-light;
+    background-image: none !important;
+
+    .quote {
+      background-color: white;
+    }
+  }
+}
+
+.font-special {
+  font-family: 'Dancing Script', cursive;
+  color: $m4u-pink;
+}
+
+.cta {
+  background-color: $m4u-pink-light;
+}
+
+// Bootstrap
+
+// Input type=range slider button (thumb) color
+input[type=range]::-webkit-slider-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+input[type=range]::-moz-range-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+input[type=range]::-ms-thumb {
+  background: $m4u-pink;
+  border: 1px solid $m4u-pink;
+}
+
+.form-switch .form-check-input {
+  border-color: $m4u-pink;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28245, 70, 170, 0.35%29'/></svg>");
+}
+.form-check-input:checked {
+  background-color: $m4u-pink;
+  border-color: $m4u-pink;
+}
+
+.input-group-text {
+  background-color: $m4u-pink-light;
+}
+
+/* Bootstrap hacks */
+body {
+  font-size: 1rem;
+}
+
+.container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.col {
+  .row:first-child {
+    margin-top: 0;
+  }
+
+  .row:last-child {
+    margin-bottom: 0;
+  }
+}
+
+footer {
+  .container {
+    padding: 20px 0;
+  }
+}
+
+html {
+  height: 100%;
+}
+
+#app {
+  margin-top: -25px;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: $m4u-pink-light;
+  color: $gray-700;
+
+  &:after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='0c63e4'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+  }
+}
+
+.btn-primary {
+  color: white;
+}
+
+.btn-outline-primary:hover, .btn-primary:hover {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.quote {
+  border-left: 4px solid $m4u-pink;
+  padding-left: 15px;
+}
+
+.form-control:disabled {
+  background-color: $m4u-pink-light;
+}

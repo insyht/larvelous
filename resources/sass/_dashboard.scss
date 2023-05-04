@@ -1,0 +1,15 @@
+.dashboard {
+  .contents {
+    margin-top: 20px;
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .menu {
+    float: left;
+  }
+
+  main {
+    width: 100%;
+  }
+}
