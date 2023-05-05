@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ class BlockVariableValue extends Model
     protected static function booted()
     {
         static::saving(function (self $blockVariableValue) {
-            /** @var \Illuminate\Database\Eloquent\Collection|\App\BlockVariableOption[] $options */
+            /** @var \Illuminate\Database\Eloquent\Collection|\App\Models\BlockVariableOption[] $options */
             $options = $blockVariableValue->blockVariable->blockVariableOptions;
             if (!$options->isEmpty()) {
                 $valueIsAllowed = false;

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Language;
-use App\Menu;
+use App\Models\Language;
+use App\Models\Menu;
 use Illuminate\Database\Seeder;
 
 class CmsSeeder extends Seeder
