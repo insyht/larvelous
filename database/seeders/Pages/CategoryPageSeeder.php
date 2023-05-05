@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Pages;
 
-use App\Language;
-use App\Page;
-use App\Template;
+use App\Models\Language;
+use App\Models\Page;
+use App\Models\Template;
 use Illuminate\Database\Seeder;
 
 class CategoryPageSeeder extends Seeder

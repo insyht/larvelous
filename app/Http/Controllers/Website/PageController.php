@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Page;
+use App\Models\Page;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 

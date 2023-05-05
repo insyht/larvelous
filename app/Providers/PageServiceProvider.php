@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\BlockValues;
-use App\BlockVariableValueTemplateBlock;
+use App\Models\BlockValues;
+use App\Models\BlockVariableValueTemplateBlock;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -40,17 +40,19 @@ class PageServiceProvider extends ServiceProvider
                 return;
             }
             $page = $view->offsetGet('page');
-            // Get the template for this page and get all blocks within that template. Then fetch all values for all
-            // blocks and save it to those blocks so that the views can show them
-            foreach ($page->template->blockTemplates as $blockTemplate) {
-                /** @var \App\Block $block */
-                if ($view->getName() === $blockTemplate->block->getDottedViewPath()) {
-                    $blockValues = new BlockValues();
-                    foreach ($blockTemplate->blockVariableValueTemplateBlocks as $blockVariableValueTemplateBlock) {
-                        $value = $blockVariableValueTemplateBlock->blockVariableValue;
-                        $blockValues->{$value->blockVariable->name} = $value->value;
+            if (is_object($page)) {
+                // Get the template for this page and get all blocks within that template. Then fetch all values for all
+                // blocks and save it to those blocks so that the views can show them
+                foreach ($page->template->blockTemplates as $blockTemplate) {
+                    /** @var \App\Models\Block $block */
+                    if ($view->getName() === $blockTemplate->block->getDottedViewPath()) {
+                        $blockValues = new BlockValues();
+                        foreach ($blockTemplate->blockVariableValueTemplateBlocks as $blockVariableValueTemplateBlock) {
+                            $value = $blockVariableValueTemplateBlock->blockVariableValue;
+                            $blockValues->{$value->blockVariable->name} = $value->value;
+                        }
+                        $blockTemplate->addValues($blockValues);
                     }
-                    $blockTemplate->addValues($blockValues);
                 }
             }
         });
