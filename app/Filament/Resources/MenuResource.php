@@ -2,23 +2,24 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\LanguageFormField;
 use App\Filament\Resources\MenuResource\Pages;
 use App\Filament\Resources\MenuResource\RelationManagers;
-use App\Models\Language;
 use App\Models\Menu;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 
 class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-menu';
 
     protected static array $positionOptions = ['main_menu' => 'Hoofdmenu', 'footer_menu' => 'Footermenu',];
 
@@ -26,14 +27,12 @@ class MenuResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Hidden::make('language_id')
-                                       ->default(Language::firstWhere('name', 'Nederlands')->id)
-                                       ->required(),
-                Forms\Components\TextInput::make('name')
+                 LanguageFormField::create(),
+                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label(__('cms.name')),
-                Forms\Components\Select::make('position')
+                 Forms\Components\Select::make('position')
                     ->options(static::$positionOptions)
                     ->required()
                     ->label(__('cms.position')),
@@ -44,32 +43,33 @@ class MenuResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                                          ->label(__('cms.name'))
                                          ->sortable()
                                          ->searchable(isIndividual: true),
-                Tables\Columns\TextColumn::make('position')
+                TextColumn::make('position')
                                          ->enum(static::$positionOptions)
                                          ->label(__('cms.position'))
                                          ->sortable(),
+
+
 
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                ViewAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PagesRelationManager::class,
         ];
     }
 
@@ -81,5 +81,26 @@ class MenuResource extends Resource
             'view' => Pages\ViewMenu::route('/{record}'),
             'edit' => Pages\EditMenu::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(Model $record) : bool
+    {
+        return false;
+    }
+
+
+    public static function getModelLabel() : string
+    {
+        return __('cms.menu');
+    }
+
+    public static function getPluralModelLabel() : string
+    {
+        return __('cms.menus');
     }
 }
