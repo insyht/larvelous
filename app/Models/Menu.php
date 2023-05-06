@@ -17,4 +17,9 @@ class Menu extends Model
     {
         return $this->belongsTo(Language::class);
     }
+
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class)->withPivot('ordering');
+    }
 }

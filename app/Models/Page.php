@@ -20,4 +20,10 @@ class Page extends Model
     {
         return $this->template->blockTemplates;
     }
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class)->withPivot('ordering');
+    }
+
 }

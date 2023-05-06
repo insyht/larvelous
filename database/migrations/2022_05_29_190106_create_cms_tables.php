@@ -141,6 +141,20 @@ class CreateCmsTables extends Migration
             $table->index('language_id');
             $table->foreign('language_id')->references('id')->on('languages')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        Schema::create('menu_page', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('menu_id', false, true);
+            $table->bigInteger('page_id', false, true);
+            $table->integer('ordering')->unsigned();
+
+            $table->unique(['menu_id', 'page_id']);
+            $table->index('menu_id');
+            $table->index('page_id');
+
+            $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('page_id')->references('id')->on('pages')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
@@ -152,6 +166,7 @@ class CreateCmsTables extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
+        Schema::dropIfExists('menu_page');
         Schema::dropIfExists('menus');
         Schema::dropIfExists('block_variable_value_template_blocks');
         Schema::dropIfExists('block_variable_values');
