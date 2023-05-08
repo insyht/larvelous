@@ -78,12 +78,12 @@ class PageResource extends Resource
     }
 
 
-    public static function getModelLabel() : string
+    public static function getModelLabel(): string
     {
         return __('cms.page');
     }
 
-    public static function getPluralModelLabel() : string
+    public static function getPluralModelLabel(): string
     {
         return __('cms.pages');
     }
