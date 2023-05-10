@@ -69,7 +69,7 @@ class MenuResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\PagesRelationManager::class,
+            RelationManagers\MenuItemsRelationManager::class,
         ];
     }
 

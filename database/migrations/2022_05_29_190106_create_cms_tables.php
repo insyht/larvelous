@@ -142,19 +142,32 @@ class CreateCmsTables extends Migration
             $table->foreign('language_id')->references('id')->on('languages')->cascadeOnUpdate()->cascadeOnDelete();
         });
 
-        Schema::create('menu_page', function (Blueprint $table) {
+        Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('menu_id', false, true);
-            $table->bigInteger('page_id', false, true);
+            $table->bigInteger('item_id', false, true);
+            $table->string('item_type');
             $table->integer('ordering')->unsigned();
+            $table->timestamps();
 
-            $table->unique(['menu_id', 'page_id']);
+            $table->unique(['menu_id', 'item_id', 'item_type']);
             $table->index('menu_id');
-            $table->index('page_id');
+            $table->index('item_id');
 
             $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('page_id')->references('id')->on('pages')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        Schema::create('menu_item_types', function (Blueprint $table) {
+            $table->id();
+            $table->text('classname');
+            $table->string('title_column');
+
+            $table->unique(['classname']);
+        });
+        $type = new \App\Models\MenuItemType();
+        $type->classname = '\App\Models\Page::class';
+        $type->title_column = 'title';
+        $type->save();
     }
 
     /**
@@ -166,7 +179,8 @@ class CreateCmsTables extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::dropIfExists('menu_page');
+        Schema::dropIfExists('menu_item_types');
+        Schema::dropIfExists('menu_items');
         Schema::dropIfExists('menus');
         Schema::dropIfExists('block_variable_value_template_blocks');
         Schema::dropIfExists('block_variable_values');
