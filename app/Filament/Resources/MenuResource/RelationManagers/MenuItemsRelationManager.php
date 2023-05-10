@@ -12,6 +12,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 
@@ -78,9 +79,19 @@ class MenuItemsRelationManager extends RelationManager
                                  ->label(__('cms.menuItemType'))
                                  ->required(),
                     TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
-                ]),
+                ])
             ])
             ->actions([
+                EditAction::make()->form(function (EditAction $action): array
+                {
+                    return [
+                        MorphToSelect::make('menuitemable')
+                                     ->types(static::getMenuItemTypes())
+                                     ->label(__('cms.menuItemType'))
+                                     ->required(),
+                        TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
+                    ];
+                }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
