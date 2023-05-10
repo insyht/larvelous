@@ -18,8 +18,8 @@ class Menu extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function pages()
+    public function items()
     {
-        return $this->belongsToMany(Page::class)->withPivot('ordering');
+        return $this->hasMany(MenuItem::class);
     }
 }

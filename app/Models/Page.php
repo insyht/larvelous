@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\IsMenuItemable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Page extends Model
 {
     use HasFactory;
+    use IsMenuItemable;
 
     public $timestamps = false;
 
@@ -21,9 +24,8 @@ class Page extends Model
         return $this->template->blockTemplates;
     }
 
-    public function menus()
+    public function menuitems(): MorphMany
     {
-        return $this->belongsToMany(Menu::class)->withPivot('ordering');
+        return $this->morphMany(MenuItem::class, 'menuitemable');
     }
-
 }
