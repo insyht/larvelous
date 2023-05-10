@@ -52,6 +52,7 @@ class MenuItemsRelationManager extends RelationManager
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('ordering')
             ->columns([
                 TextColumn::make('title')
                                          ->getStateUsing(function (Model $record): string {
