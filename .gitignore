@@ -16,3 +16,6 @@ yarn-error.log
 .htaccess
 .idea
 .php-cs-fixer.cache
+_ide_helper.php
+.phpstorm.meta.php
+storage/debugbar
