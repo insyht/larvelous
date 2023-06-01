@@ -6,5 +6,4 @@
 
 Filament:
 - Voor "pagina bewerken" (http://iwscms.local/admin/pages/3/edit) iets anders gebruiken dan cards voor de blokken?
-- Op "Pagina bewerken" laat ie nu niet de blokken zien maar alle values van alle blokken. Eigenlijk zou ik hier per
-  blok een card moeten maken, en daarin de values tonen.
+- Op "Pagina bewerken" kan ik een blok editen, maar ik denk dat het opslaan nog niet zal werken

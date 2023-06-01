@@ -11,6 +11,8 @@ class BlockVariableOption extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['block_variable_id', 'label', 'value'];
+
     public function blockVariable()
     {
         return $this->belongsTo(BlockVariable::class);

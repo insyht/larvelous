@@ -26,6 +26,6 @@ class Template extends Model
         return $this->belongsToMany(Block::class)
                     ->using(BlockTemplate::class)
                     ->where('enabled', 1)
-                    ->orderBy('ordering');
+                    ->orderBy('block_template.ordering');
     }
 }

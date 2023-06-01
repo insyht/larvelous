@@ -30,7 +30,7 @@ class BlockTemplate extends Pivot
 
     public function blockVariableValueTemplateBlocks()
     {
-        return $this->hasMany(BlockVariableValueTemplateBlock::class, 'template_block_id');
+        return $this->hasMany(BlockVariableValueTemplateBlock::class, 'block_template_id');
     }
 
     public function getBlockValues(): BlockValues
