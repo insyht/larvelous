@@ -4,8 +4,7 @@
   - Zie als voorbeeld van een nieuwe pagina met een nieuw block: https://github.com/insyht/larvelous/commit/edae3ff538bf5139e9a551200bfbe855ee890185
 
 
-
-
-Momenteel mee bezig:
-  - Vertalingen in resources/lang/nl/validation.php
-  - Admin paneel maken met Filament. Zie als voorbeeld app/Filament/Resources/MenuResource.
+Filament:
+- Voor "pagina bewerken" (http://iwscms.local/admin/pages/3/edit) iets anders gebruiken dan cards voor de blokken?
+- Op "Pagina bewerken" laat ie nu niet de blokken zien maar alle values van alle blokken. Eigenlijk zou ik hier per
+  blok een card moeten maken, en daarin de values tonen.

@@ -65,7 +65,7 @@ class MenuItemsRelationManager extends RelationManager
                                          ->getStateUsing(function (Model $record): string {
                                              return __($record->menuitemable->getTypeTranslation());
                                          })
-                                         ->label(__('cms.title'))
+                                         ->label(__('cms.type'))
                                          ->sortable()
                                          ->searchable(isIndividual: true, isGlobal: false),
                 TextColumn::make('ordering')->label(__('cms.ordering'))->sortable(),
