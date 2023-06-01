@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\JoinClause;
 
 class Block extends Model
 {
@@ -16,7 +17,7 @@ class Block extends Model
         return $this->hasMany(BlockVariable::class);
     }
 
-    public function blockVariableValues()
+    public function variableValues()
     {
         return $this->hasManyThrough(BlockVariableValue::class, BlockVariable::class);
     }
@@ -39,5 +40,10 @@ class Block extends Model
     public function getDottedViewPath(): string
     {
         return str_replace('/', '.', $this->view);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 }

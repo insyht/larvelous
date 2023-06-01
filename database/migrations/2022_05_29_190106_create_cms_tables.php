@@ -111,15 +111,15 @@ class CreateCmsTables extends Migration
 
         Schema::create('block_variable_value_template_blocks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('template_block_id', false, true);
+            $table->bigInteger('block_template_id', false, true);
             $table->bigInteger('block_variable_value_id', false, true);
             $table->integer('ordering', false, true)->default(1);
 
             $table->unique('block_variable_value_id', 'bvvtbbvviu');
-            $table->index('template_block_id');
+            $table->index('block_template_id');
             $table->index('block_variable_value_id', 'bvvtbbvvii');
 
-            $table->foreign('template_block_id')
+            $table->foreign('block_template_id')
                   ->references('id')
                   ->on('block_template')
                   ->cascadeOnUpdate()
