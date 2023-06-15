@@ -1,0 +1,4 @@
+Contact: mailto:whoops@insyht.nl
+Expires: 2028-06-14T22:00:00.000Z
+Acknowledgments: https://www.insyht.nl/thanks
+Preferred-Languages: en, nl
