@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,5 +41,13 @@ class BlockVariableValue extends Model
     public function blockVariableValueTemplateBlocks()
     {
         return $this->hasMany(BlockVariableValueTemplateBlock::class);
+    }
+    protected function value(): Attribute
+    {
+        return Attribute::make(
+            function ($value) {
+                return $this->blockVariable->variableType()->first()->modify($value);
+            }
+        );
     }
 }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Query\JoinClause;
 
 class Page extends Model
 {
@@ -28,6 +27,11 @@ class Page extends Model
     public function blocks()
     {
         return $this->template->blocks();
+    }
+
+    public function getBlocks()
+    {
+        return $this->template->blockTemplates;
     }
 
     public function getBlocksContents(): array

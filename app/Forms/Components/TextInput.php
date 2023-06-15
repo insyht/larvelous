@@ -10,4 +10,9 @@ class TextInput extends \Filament\Forms\Components\TextInput implements BlockFie
     {
         return $this;
     }
+
+    public function modify($value)
+    {
+        return $value;
+    }
 }

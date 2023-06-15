@@ -25,4 +25,9 @@ class BlockVariable extends Model
     {
         return $this->hasMany(BlockVariableOption::class);
     }
+
+    public function variableType()
+    {
+        return $this->belongsTo(BlockVariableType::class, 'type', 'name');
+    }
 }

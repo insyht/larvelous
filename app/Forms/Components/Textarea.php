@@ -10,4 +10,9 @@ class Textarea extends \Filament\Forms\Components\Textarea implements BlockField
     {
         return $this;
     }
+
+    public function modify($value)
+    {
+        return $value;
+    }
 }

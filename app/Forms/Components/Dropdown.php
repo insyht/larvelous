@@ -18,4 +18,9 @@ class Dropdown extends \Filament\Forms\Components\Select implements BlockFieldIn
 
         return $this;
     }
+
+    public function modify($value)
+    {
+        return $value;
+    }
 }

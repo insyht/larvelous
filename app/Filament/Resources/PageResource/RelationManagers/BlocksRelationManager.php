@@ -4,13 +4,20 @@ namespace App\Filament\Resources\PageResource\RelationManagers;
 
 use App\Custom\PageBlockValue;
 use App\Forms\Components\BlockFieldInterface;
+use App\Models\BlockTemplate;
+use App\Models\BlockVariable;
 use App\Models\BlockVariableType;
+use App\Models\BlockVariableValue;
+use App\Models\BlockVariableValueTemplateBlock;
+use App\Models\Page;
 use Filament\Forms\Components\Field;
+use Filament\Forms\Components\Hidden;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 
 class BlocksRelationManager extends RelationManager
 {
@@ -45,6 +52,9 @@ class BlocksRelationManager extends RelationManager
                                     $normalizedValue = new PageBlockValue($value);
                                     $fields[] = static::createFormField($normalizedValue);
                                 }
+                                $fields[] = Hidden::make('block_id');
+                                $fields[] = Hidden::make('page_id');
+                                $fields[] = Hidden::make('page_block_ordering');
 
                                 return $fields;
                             })->mutateRecordDataUsing(function (array $data, RelationManager $livewire) {
@@ -54,12 +64,59 @@ class BlocksRelationManager extends RelationManager
                                 $currentPage = $livewire->getOwnerRecord();
                                 foreach ($currentBlock->getValues($currentPage) as $value) {
                                     $data[$value->name] = $value->value;
+                                    $data['values'][$value->name] = $value->toArray();
                                 }
+                                $data['block_id'] = $currentBlock->id;
+                                $data['page_id'] = $currentPage->id;
+                                $data['page_block_ordering'] = $currentBlock->ordering;
+                                $data['block_template_id'] = BlockTemplate::where('block_id', $currentBlock->id)
+                                                                          ->where('template_id', $currentPage->template_id)
+                                                                          ->where('ordering', $currentBlock->ordering)
+                                                                          ->first()
+                                                                          ->id;
 
                                 return $data;
+                            })->using(function (Model $record, array $data): Model {
+                                $page = Page::find($data['page_id']);
+                                $blockTemplate = BlockTemplate::where('template_id', $page->template_id)
+                                                              ->where('block_id', $data['block_id'])
+                                                              ->where('ordering', $data['page_block_ordering'])
+                                                              ->first();
+                                $systemValues = ['block_id', 'page_id', 'page_block_ordering'];
+                                foreach ($data as $key => $value) {
+                                    if (!in_array($key, $systemValues)) {
+                                        $blockVariable = BlockVariable::where('block_id', $data['block_id'])
+                                                                      ->where('name', $key)
+                                                                      ->first();
+
+                                        $blockVariableValues = BlockVariableValue::where(
+                                            'block_variable_id',
+                                            $blockVariable->id
+                                        )->get();
+
+                                        $blockVariableValueTemplateBlocks = BlockVariableValueTemplateBlock::where(
+                                            'block_template_id',
+                                            $blockTemplate->id
+                                        )->whereIn('block_variable_value_id', $blockVariableValues->pluck('id'))->get();
+
+                                        $blockVariableValue = BlockVariableValue::where(
+                                            'block_variable_id',
+                                            $blockVariable->id
+                                        )->whereIn(
+                                            'id',
+                                            $blockVariableValueTemplateBlocks->pluck('block_variable_value_id')
+                                        )->first();
+
+                                        $blockVariableValue->value = $data[$blockVariable->name];
+                                        $blockVariableValue->save();
+                                    }
+                                }
+
+                                return $record;
                             }),
             ])
-            ->filters([])->bulkActions([]);
+            ->filters([])
+            ->bulkActions([]);
     }
 
     protected function getDefaultTableSortColumn(): ?string
@@ -67,12 +124,12 @@ class BlocksRelationManager extends RelationManager
         return 'ordering';
     }
 
-    public static function getModelLabel() : string
+    public static function getModelLabel(): string
     {
         return __('cms.block');
     }
 
-    public static function getPluralModelLabel() : string
+    public static function getPluralModelLabel(): string
     {
         return __('cms.blocks');
     }

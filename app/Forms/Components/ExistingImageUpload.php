@@ -5,12 +5,12 @@ namespace App\Forms\Components;
 use App\Custom\PageBlockValue;
 use Closure;
 use Filament\Forms\Components\FileUpload;
+use Storage;
 
 class ExistingImageUpload extends FileUpload implements BlockFieldInterface
 {
-    protected string $view = 'forms.components.existing-image-upload';
-
     protected string | Closure | null $value = '';
+    protected string | null $preview = '';
 
 
     public function value(string | Closure | null $value): static
@@ -25,10 +25,21 @@ class ExistingImageUpload extends FileUpload implements BlockFieldInterface
         return $this->evaluate($this->value);
     }
 
+    public function getPreview(): ?string
+    {
+        return $this->evaluate(Storage::url($this->value));
+    }
+
     public function setExtraData(PageBlockValue $data): static
     {
-        $this->preserveFilenames()->image();
+        $this->preserveFilenames()->image()->directory('images');
+        $this->value($data->value);
 
         return $this;
+    }
+
+    public function modify($value)
+    {
+        return Storage::url($value);
     }
 }

@@ -23,4 +23,11 @@ class BlockVariableType extends Model
     {
         return $this->id;
     }
+
+    /** This function is used to modify a BlockVariableValue's value if needed */
+    public function modify($value)
+    {
+        $fqn = $this->fqn;
+        return (new $fqn(''))->modify($value);
+    }
 }

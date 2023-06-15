@@ -5,5 +5,7 @@
 
 
 Filament:
-- Voor "pagina bewerken" (http://iwscms.local/admin/pages/3/edit) iets anders gebruiken dan cards voor de blokken?
-- Op "Pagina bewerken" kan ik een blok editen, maar ik denk dat het opslaan nog niet zal werken
+- Op "Pagina bewerken" kan ik een blok editen, maar het opslaan werkt nog niet. Alles werkt nu behalve image, daar 
+  is er gezeik met CORS. Blijkbaar wordt er op sommige plekken http://iwscms.local gebruikt ipv https://iwscms.local?
+- Voor "pagina bewerken" (https://iwscms.local/admin/pages/3/edit) iets anders gebruiken dan cards voor de blokken?
+- tabel block_template hernoemen naar block_templates?
