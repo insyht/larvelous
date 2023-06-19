@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Custom\HasManyThroughMultipleTrait;
 use App\Traits\IsMenuItemable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\View\View;
 
 class Page extends Model
 {
@@ -34,42 +36,6 @@ class Page extends Model
         return $this->template->blockTemplates;
     }
 
-    public function getBlocksContents(): array
-    {
-        $contents = [];
-
-        $pageBlocksSettings = $this->template->blockTemplates;
-        foreach ($pageBlocksSettings as $pageBlockSetting) {
-            $pageBlockDataSettings = $pageBlockSetting->blockVariableValueTemplateBlocks;
-            $blockArray = [
-                'enabled' => (bool) $pageBlockSetting->enabled,
-                'fieldsPrefix' => $pageBlockSetting->block_id . '_' . $pageBlockSetting->ordering . '_',
-                'fields' => [],
-            ];
-            foreach ($pageBlockDataSettings as $pageBlockDataSetting) {
-                $value = $pageBlockDataSetting->blockVariableValue->value ?? null;
-                $variable = $pageBlockDataSetting->blockVariableValue->blockVariable;
-                $options = [];
-                if ($variable->blockVariableOptions) {
-                    foreach ($variable->blockVariableOptions as $option) {
-                        $options[$option->value] = $option->label;
-                    }
-                }
-                $blockArray['fields'][$pageBlockDataSetting->ordering] = [
-                    'type' => $variable->type,
-                    'required' => (bool) $variable->required,
-                    'name' => $variable->name,
-                    'label' => $variable->label,
-                    'value' => $value,
-                    'options' => $options,
-                ];
-            }
-            $contents[(int) $pageBlockSetting->ordering] = $blockArray;
-        }
-
-        return $contents;
-    }
-
     public function menuitems(): MorphMany
     {
         return $this->morphMany(MenuItem::class, 'menuitemable');
@@ -83,5 +49,28 @@ class Page extends Model
             get: fn (?string $value) => (string) $value,
             set: fn (?string $value) => (string) $value,
         );
+    }
+
+    /**
+     * Get the template for this page and get all blocks within that template. Then fetch all values for all
+     * blocks and save it to those blocks so that the views can show them
+     */
+    public function setContents(View $view): static
+    {
+        foreach ($this->template->blockTemplates as $blockTemplate) {
+            if ($view->getName() === $blockTemplate->block->getDottedViewPath()) {
+                $blockValues = new BlockValues();
+                foreach ($blockTemplate->block->blockVariables()->get() as $pageBlockVariable) {
+                    $blockValue = $pageBlockVariable->blockVariableValues()
+                                                    ->forPageAndBlockTemplate($this, $blockTemplate)
+                                                    ->first();
+                    /** @var \App\Models\BlockVariable $pageBlockVariable */
+                    $blockValues->{$pageBlockVariable->name} = $blockValue->value;
+                }
+                $blockTemplate->addValues($blockValues);
+            }
+        }
+
+        return $this;
     }
 }

@@ -21,6 +21,7 @@ return [
     'blocks' => 'Blokken',
     'value' => 'Waarde',
     'description' => 'Omschrijving',
+    'viewPage' => 'Bekijk pagina',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

@@ -2,11 +2,11 @@
 
 namespace App\Forms\Components;
 
-use App\Custom\PageBlockValue;
+use App\Models\BlockVariableValue;
 
 class Textarea extends \Filament\Forms\Components\Textarea implements BlockFieldInterface
 {
-    public function setExtraData(PageBlockValue $data): static
+    public function setExtraData(BlockVariableValue $data): static
     {
         return $this;
     }

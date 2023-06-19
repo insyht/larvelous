@@ -40,20 +40,9 @@ class PageServiceProvider extends ServiceProvider
             }
             $page = $view->offsetGet('page');
             if (is_object($page)) {
-                // Get the template for this page and get all blocks within that template. Then fetch all values for all
-                // blocks and save it to those blocks so that the views can show them
-                // todo Maybe I can improve on this. See Page->blocks() for an example.
-                foreach ($page->template->blockTemplates as $blockTemplate) {
-                    /** @var \App\Models\Block $block */
-                    if ($view->getName() === $blockTemplate->block->getDottedViewPath()) {
-                        $blockValues = new BlockValues();
-                        foreach ($blockTemplate->blockVariableValueTemplateBlocks as $blockVariableValueTemplateBlock) {
-                            $value = $blockVariableValueTemplateBlock->blockVariableValue;
-                            $blockValues->{$value->blockVariable->name} = $value->value;
-                        }
-                        $blockTemplate->addValues($blockValues);
-                    }
-                }
+                /** @var \App\Models\Page $page */
+                // Fetch all values for all blocks of this page and save it to those blocks so the views can show them
+                $page->setContents($view);
             }
         });
     }

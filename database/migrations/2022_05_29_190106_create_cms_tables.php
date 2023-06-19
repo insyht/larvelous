@@ -34,8 +34,9 @@ class CreateCmsTables extends Migration
             $table->string('label', 100);
             $table->string('type', 50);
             $table->boolean('required')->unsigned();
+            $table->integer('required')->unsigned();
 
-            $table->unique(['block_id', 'name']);
+            $table->unique(['block_id', 'name', 'ordering']);
             $table->index('block_id');
 
             $table->foreign('block_id')->references('id')->on('blocks')->onUpdate('cascade')->onDelete('cascade');
@@ -102,10 +103,14 @@ class CreateCmsTables extends Migration
             $table->id();
             $table->bigInteger('block_variable_id', false, true);
             $table->bigInteger('language_id', false, true);
-            $table->text('value');
+            $table->bigInteger('page_id', false, true);
+            $table->bigInteger('block_template_id', false, true);
+            $table->text('value')->default('');
 
             $table->index('block_variable_id');
             $table->index('language_id');
+            $table->index('page_id');
+            $table->index('block_template_id');
 
             $table->foreign('block_variable_id')
                   ->references('id')
@@ -113,27 +118,10 @@ class CreateCmsTables extends Migration
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
             $table->foreign('language_id')->references('id')->on('languages')->cascadeOnUpdate()->cascadeOnDelete();
-        });
-
-        Schema::create('block_variable_value_template_blocks', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('block_template_id', false, true);
-            $table->bigInteger('block_variable_value_id', false, true);
-            $table->integer('ordering', false, true)->default(1);
-
-            $table->unique('block_variable_value_id', 'bvvtbbvviu');
-            $table->index('block_template_id');
-            $table->index('block_variable_value_id', 'bvvtbbvvii');
-
+            $table->foreign('page_id')->references('id')->on('pages')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('block_template_id')
                   ->references('id')
                   ->on('block_template')
-                  ->cascadeOnUpdate()
-                  ->cascadeOnDelete();
-
-            $table->foreign('block_variable_value_id', 'bvvtbbvvif')
-                  ->references('id')
-                  ->on('block_variable_values')
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();
         });

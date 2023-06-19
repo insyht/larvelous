@@ -2,7 +2,7 @@
 
 namespace App\Forms\Components;
 
-use App\Custom\PageBlockValue;
+use App\Models\BlockVariableValue;
 use Closure;
 use Filament\Forms\Components\FileUpload;
 use Storage;
@@ -25,12 +25,7 @@ class ExistingImageUpload extends FileUpload implements BlockFieldInterface
         return $this->evaluate($this->value);
     }
 
-    public function getPreview(): ?string
-    {
-        return $this->evaluate(Storage::url($this->value));
-    }
-
-    public function setExtraData(PageBlockValue $data): static
+    public function setExtraData(BlockVariableValue $data): static
     {
         $this->preserveFilenames()->image()->directory('images');
         $this->value($data->value);
@@ -40,6 +35,12 @@ class ExistingImageUpload extends FileUpload implements BlockFieldInterface
 
     public function modify($value)
     {
+        if (str_contains(url()->full(), 'livewire')) {
+            // Livewire cannot handle the correct url, it wants the url without the Storage prepended to it
+
+            return $value;
+        }
+
         return Storage::url($value);
     }
 }

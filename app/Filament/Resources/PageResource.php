@@ -3,22 +3,20 @@
 namespace App\Filament\Resources;
 
 use App\Filament\LanguageFormField;
-use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\Pages\CreatePage;
 use App\Filament\Resources\PageResource\Pages\EditPage;
 use App\Filament\Resources\PageResource\Pages\ListPages;
 use App\Filament\Resources\PageResource\Pages\ViewPage;
-use App\Filament\Resources\PageResource\RelationManagers;
 use App\Filament\Resources\PageResource\RelationManagers\BlocksRelationManager;
 use App\Models\Page;
 use App\Models\Template;
-use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
@@ -43,40 +41,32 @@ class PageResource extends Resource
             ])
             ->actions([
                 ViewAction::make(),
-                EditAction::make()->form(function (EditAction $action): array {
-                    $cards = [
-                        Card::make()->schema([
-                            LanguageFormField::create(),
-                            Select::make('template_id')
-                                ->options(Template::all()->pluck('label', 'id'))
-                                ->required()
-                                ->label(__('cms.template')),
-                            TextInput::make('title')
-                                ->required()
-                                ->maxLength(100)
-                                ->label(__('cms.title')),
-                            TextInput::make('url')
-                                ->maxLength(250)
-                                ->label(__('cms.url'))
-                                ->prefix(url('/') . '/'),
-                        ]),
-                    ];
-
-                    /** @var Page $page */
-                    $page = $action->getModel();
-                    $contents = $page->getBlocksContents();
-                    foreach ($contents as $block) {
-                        $cardSchema = [];
-                        foreach ($block['fields'] as $field) {
-                            $cardSchema[] = static::createField($field, $block['fieldsPrefix']);
-                        }
-                        $cards[] = Card::make()->schema($cardSchema);
-                    }
-                    return $cards;
-                }),
+                EditAction::make()
             ])
             ->bulkActions([
                 DeleteBulkAction::make(),
+            ]);
+    }
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('title')->required(),
+                TextInput::make('url')->unique()
+                                      ->prefix(env('APP_URL') . '/')
+                                      ->suffixAction(
+                                          function (?string $state): Action {
+                                              return Action::make(__('cms.viewPage'))
+                                                           ->icon('heroicon-s-external-link')
+                                                           ->url(
+                                                               filled($state)
+                                                                    ? env('APP_URL') . '/' . $state
+                                                                    : env('APP_URL') . '/',
+                                                               shouldOpenInNewTab: true
+                                                           );
+                                          }
+                                      ),
             ]);
     }
 

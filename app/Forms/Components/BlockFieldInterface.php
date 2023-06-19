@@ -2,11 +2,12 @@
 
 namespace App\Forms\Components;
 
-use App\Custom\PageBlockValue;
+
+use App\Models\BlockVariableValue;
 
 interface BlockFieldInterface
 {
-    public function setExtraData(PageBlockValue $data): static;
+    public function setExtraData(BlockVariableValue $data): static;
 
     /** This function is used to modify a BlockVariableValue's value if needed */
     public function modify($value);

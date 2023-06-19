@@ -28,11 +28,6 @@ class BlockTemplate extends Pivot
         return $this->belongsToMany(Template::class);
     }
 
-    public function blockVariableValueTemplateBlocks()
-    {
-        return $this->hasMany(BlockVariableValueTemplateBlock::class, 'block_template_id');
-    }
-
     public function getBlockValues(): BlockValues
     {
         return $this->blockValuesInternal ?? new BlockValues();

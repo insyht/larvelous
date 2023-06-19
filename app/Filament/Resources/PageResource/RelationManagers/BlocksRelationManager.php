@@ -2,13 +2,12 @@
 
 namespace App\Filament\Resources\PageResource\RelationManagers;
 
-use App\Custom\PageBlockValue;
 use App\Forms\Components\BlockFieldInterface;
 use App\Models\BlockTemplate;
+use App\Models\BlockValues;
 use App\Models\BlockVariable;
 use App\Models\BlockVariableType;
 use App\Models\BlockVariableValue;
-use App\Models\BlockVariableValueTemplateBlock;
 use App\Models\Page;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Hidden;
@@ -47,14 +46,31 @@ class BlocksRelationManager extends RelationManager
                                 $currentBlock = $livewire->getMountedTableActionRecord();
                                 /** @var \App\Models\Page $currentPage */
                                 $currentPage = $livewire->getOwnerRecord();
-                                $fields = [];
-                                foreach ($currentBlock->getValues($currentPage) as $value) {
-                                    $normalizedValue = new PageBlockValue($value);
-                                    $fields[] = static::createFormField($normalizedValue);
+                                $fields = [
+                                    Hidden::make('block_id'),
+                                    Hidden::make('page_id'),
+                                    Hidden::make('page_block_ordering'),
+                                ];
+                                $blockTemplate = BlockTemplate::where('block_id', $currentBlock->id)
+                                                              ->where('template_id', $currentPage->template_id)
+                                                              ->where('ordering', $currentBlock->ordering)
+                                                              ->first();
+                                foreach ($currentBlock->blockVariables()->get() as $pageBlockVariable) {
+                                    $blockValue = $pageBlockVariable->blockVariableValues()
+                                                                    ->forPageAndBlockTemplate($currentPage, $blockTemplate)
+                                                                    ->first();
+                                    if ($blockValue === null) {
+                                        $blockValue = new BlockVariableValue();
+                                        $blockValue->block_variable_id = $pageBlockVariable->id;
+                                        $blockValue->language_id = $currentPage->language_id;
+                                        $blockValue->page_id = $currentPage->id;
+                                        $blockValue->value = '';
+                                        $blockValue->block_template_id = $blockTemplate->id;
+                                        $blockValue->save();
+                                        $blockValue->refresh();
+                                    }
+                                    $fields[] = static::createFormField($blockValue);
                                 }
-                                $fields[] = Hidden::make('block_id');
-                                $fields[] = Hidden::make('page_id');
-                                $fields[] = Hidden::make('page_block_ordering');
 
                                 return $fields;
                             })->mutateRecordDataUsing(function (array $data, RelationManager $livewire) {
@@ -62,18 +78,45 @@ class BlocksRelationManager extends RelationManager
                                 $currentBlock = $livewire->getMountedTableActionRecord();
                                 /** @var \App\Models\Page $currentPage */
                                 $currentPage = $livewire->getOwnerRecord();
-                                foreach ($currentBlock->getValues($currentPage) as $value) {
-                                    $data[$value->name] = $value->value;
-                                    $data['values'][$value->name] = $value->toArray();
-                                }
+
+                                $blockTemplate = BlockTemplate::where('block_id', $currentBlock->id)
+                                                              ->where('template_id', $currentPage->template_id)
+                                                              ->where('ordering', $currentBlock->ordering)
+                                                              ->first();
+
                                 $data['block_id'] = $currentBlock->id;
                                 $data['page_id'] = $currentPage->id;
                                 $data['page_block_ordering'] = $currentBlock->ordering;
-                                $data['block_template_id'] = BlockTemplate::where('block_id', $currentBlock->id)
-                                                                          ->where('template_id', $currentPage->template_id)
-                                                                          ->where('ordering', $currentBlock->ordering)
-                                                                          ->first()
-                                                                          ->id;
+                                $data['block_template_id'] = $blockTemplate->id;
+
+                                foreach ($currentBlock->blockVariables()->get() as $pageBlockVariable) {
+                                    $blockValue = $pageBlockVariable->blockVariableValues()
+                                                                    ->forPageAndBlockTemplate($currentPage, $blockTemplate)
+                                                                    ->first();
+                                    if ($blockValue === null) {
+                                        $blockValue = new BlockVariableValue();
+                                        $blockValue->block_variable_id = $pageBlockVariable->id;
+                                        $blockValue->language_id = $currentPage->language_id;
+                                        $blockValue->page_id = $currentPage->id;
+                                        $blockValue->value = 'x';
+                                        $blockValue->block_template_id = $blockTemplate->id;
+                                        $blockValue->save();
+                                        $blockValue->refresh();
+                                    }
+                                    $data['block_variable_id'] = $pageBlockVariable->id;
+
+                                    $data[$blockValue->blockVariable->name] = $blockValue->value;
+                                    $data['values'][$pageBlockVariable->name] = [
+                                        'block_id' => $currentBlock->id,
+                                        'block_template_ordering' => $blockTemplate->ordering,
+                                        'block_variable_value_template_block_ordering' => $pageBlockVariable->ordering,
+                                        'value' => $blockValue->value,
+                                        'name' => $pageBlockVariable->name,
+                                        'block_variable_label' => $pageBlockVariable->label,
+                                        'type' => $pageBlockVariable->type,
+                                        'require' => $pageBlockVariable->required,
+                                    ];
+                                }
 
                                 return $data;
                             })->using(function (Model $record, array $data): Model {
@@ -82,34 +125,28 @@ class BlocksRelationManager extends RelationManager
                                                               ->where('block_id', $data['block_id'])
                                                               ->where('ordering', $data['page_block_ordering'])
                                                               ->first();
-                                $systemValues = ['block_id', 'page_id', 'page_block_ordering'];
+                                $systemValues = ['block_id', 'page_id', 'page_block_ordering', 'block_variable_id'];
+                                $blockVariablesCounter = 1;
                                 foreach ($data as $key => $value) {
-                                    if (!in_array($key, $systemValues)) {
-                                        $blockVariable = BlockVariable::where('block_id', $data['block_id'])
-                                                                      ->where('name', $key)
-                                                                      ->first();
-
-                                        $blockVariableValues = BlockVariableValue::where(
-                                            'block_variable_id',
-                                            $blockVariable->id
-                                        )->get();
-
-                                        $blockVariableValueTemplateBlocks = BlockVariableValueTemplateBlock::where(
-                                            'block_template_id',
-                                            $blockTemplate->id
-                                        )->whereIn('block_variable_value_id', $blockVariableValues->pluck('id'))->get();
-
-                                        $blockVariableValue = BlockVariableValue::where(
-                                            'block_variable_id',
-                                            $blockVariable->id
-                                        )->whereIn(
-                                            'id',
-                                            $blockVariableValueTemplateBlocks->pluck('block_variable_value_id')
-                                        )->first();
-
-                                        $blockVariableValue->value = $data[$blockVariable->name];
-                                        $blockVariableValue->save();
+                                    if (in_array($key, $systemValues)) {
+                                        continue;
                                     }
+                                    $blockVariable = BlockVariable::where('block_id', $data['block_id'])
+                                                                  ->where('name', $key)
+                                                                  ->where('ordering', $blockVariablesCounter)
+                                                                  ->first();
+                                    $blockVariablesCounter++;
+                                    $blockVariableValue = BlockVariableValue::where('language_id', $page->language_id)
+                                                                            ->where('page_id', $data['page_id'])
+                                                                            ->where('block_template_id', $blockTemplate->id)
+                                                                            ->where('block_variable_id', $blockVariable->id)
+                                                                            ->first();
+
+                                    $blockVariableValue->value = $value;
+                                    if ($value === null) {
+                                        $blockVariableValue->value = '';
+                                    }
+                                    $blockVariableValue->save();
                                 }
 
                                 return $record;
@@ -134,16 +171,17 @@ class BlocksRelationManager extends RelationManager
         return __('cms.blocks');
     }
 
-    protected static function createFormField($data): Field
+    protected static function createFormField(BlockVariableValue $data): Field
     {
-        $type = BlockVariableType::find($data->type);
+        $type = BlockVariableType::find($data->blockVariable->type);
 
         if (!class_exists($type->fqn) || !is_subclass_of($type->fqn, BlockFieldInterface::class)) {
             $type = BlockVariableType::find(BlockVariableType::TYPE_TEXTFIELD);
         }
-        $field = $type->fqn::make($data->name);
-        $field->label(__($data->blockVariableLabel));
-        if ($data->required) {
+
+        $field = $type->fqn::make($data->blockVariable->name);
+        $field->label(__($data->blockVariable->label));
+        if ($data->blockVariable->required) {
             $field->required();
         }
         $field->setExtraData($data);
