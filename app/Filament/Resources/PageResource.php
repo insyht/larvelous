@@ -19,6 +19,7 @@ use Filament\Forms\Components\TextInput\Mask;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
@@ -44,7 +45,8 @@ class PageResource extends Resource
             ])
             ->actions([
                 ViewAction::make(),
-                EditAction::make()
+                EditAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 DeleteBulkAction::make(),
