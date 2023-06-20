@@ -5,5 +5,3 @@
 
 
 Filament:
-- Voor "pagina bewerken" (https://iwscms.local/admin/pages/3/edit) iets anders gebruiken dan cards voor de blokken?
-    

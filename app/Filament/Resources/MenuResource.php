@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\LanguageFormField;
 use App\Filament\Resources\MenuResource\Pages;
 use App\Filament\Resources\MenuResource\RelationManagers;
+use App\Forms\Components\Dropdown;
+use App\Forms\Components\TextInput;
 use App\Models\Menu;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -28,11 +30,11 @@ class MenuResource extends Resource
         return $form
             ->schema([
                  LanguageFormField::create(),
-                 Forms\Components\TextInput::make('name')
+                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label(__('cms.name')),
-                 Forms\Components\Select::make('position')
+                 Dropdown::make('position')
                     ->options(static::$positionOptions)
                     ->required()
                     ->label(__('cms.position')),

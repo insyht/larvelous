@@ -2,9 +2,9 @@
 
 namespace App\Filament;
 
+use App\Forms\Components\Hidden;
 use App\Models\Language;
 use Filament\Forms\Components\Field;
-use Filament\Forms\Components\Hidden;
 
 class LanguageFormField
 {

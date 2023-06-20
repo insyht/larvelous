@@ -2,11 +2,10 @@
 
 namespace App\Filament\Resources\MenuResource\RelationManagers;
 
+use App\Forms\Components\TextInput;
 use App\Models\MenuItemType;
-use Filament\Forms;
 use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\MorphToSelect\Type;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
@@ -42,7 +41,7 @@ class MenuItemsRelationManager extends RelationManager
 
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->required()
                     ->maxLength(255),
                 MorphToSelect::make('menuitemable')->types(static::getMenuItemTypes())

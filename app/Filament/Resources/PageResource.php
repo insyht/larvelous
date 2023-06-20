@@ -8,12 +8,14 @@ use App\Filament\Resources\PageResource\Pages\EditPage;
 use App\Filament\Resources\PageResource\Pages\ListPages;
 use App\Filament\Resources\PageResource\Pages\ViewPage;
 use App\Filament\Resources\PageResource\RelationManagers\BlocksRelationManager;
+use App\Forms\Components\Dropdown;
+use App\Forms\Components\Hidden;
+use App\Forms\Components\TextInput;
 use App\Models\Page;
 use App\Models\Template;
+use Closure;
 use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TextInput\Mask;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -21,6 +23,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
 
 class PageResource extends Resource
 {
@@ -52,8 +55,17 @@ class PageResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required(),
-                TextInput::make('url')->unique()
+                TextInput::make('title')
+                         ->required()
+                         ->reactive()
+                         ->afterStateUpdated(function (Closure $set, $state, $context) {
+                             if ($context === 'edit') {
+                                 return;
+                             }
+
+                             $set('url', Str::slug($state));
+                         }),
+                TextInput::make('url')->unique(ignorable: fn ($record) => $record)
                                       ->prefix(env('APP_URL') . '/')
                                       ->suffixAction(
                                           function (?string $state): Action {
@@ -66,7 +78,12 @@ class PageResource extends Resource
                                                                shouldOpenInNewTab: true
                                                            );
                                           }
-                                      ),
+                                      )
+                                      ->rules('alpha_dash'),
+                Dropdown::make('template_id')->required()
+                                             ->options(Template::all()->pluck('label', 'id'))
+                                             ->label(__('cms.template')),
+                LanguageFormField::create(),
             ]);
     }
 
