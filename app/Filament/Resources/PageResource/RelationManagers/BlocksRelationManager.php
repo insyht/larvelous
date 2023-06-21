@@ -24,7 +24,6 @@ class BlocksRelationManager extends RelationManager
     protected static ?string $recordTitleAttribute = '';
     protected static bool $shouldIgnorePolicies = true;
     protected bool $allowsDuplicates = true;
-    public $tableSortColumn = 'jordy';
 
     public static function form(Form $form): Form
     {

@@ -18,7 +18,7 @@ class Block extends Model
 
     public function templates()
     {
-        return $this->belongsToMany(Template::class)->using(BlockTemplate::class);
+        return $this->belongsToMany(Template::class)->using(BlockTemplate::class)->withPivot(['id', 'ordering']);
     }
 
     public function getDottedViewPath(): string

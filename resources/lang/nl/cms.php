@@ -22,6 +22,12 @@ return [
     'value' => 'Waarde',
     'description' => 'Omschrijving',
     'viewPage' => 'Bekijk pagina',
+    'label' => 'Label',
+    'resourceId' => 'Bron id',
+    'templateView' => 'View',
+    'on' => 'Aan',
+    'off' => 'Uit',
+    'enabled' => 'Actief',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

@@ -25,7 +25,14 @@ class Template extends Model
     {
         return $this->belongsToMany(Block::class)
                     ->using(BlockTemplate::class)
+                    ->orderBy('block_template.ordering')->withPivot(['enabled', 'ordering', 'id']);
+    }
+
+    public function enabledBlocks()
+    {
+        return $this->belongsToMany(Block::class)
+                    ->using(BlockTemplate::class)
                     ->where('enabled', 1)
-                    ->orderBy('block_template.ordering');
+                    ->orderBy('block_template.ordering')->withPivot(['enabled', 'ordering', 'id']);
     }
 }

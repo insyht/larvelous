@@ -25,7 +25,7 @@ class BlockTemplate extends Pivot
 
     public function template()
     {
-        return $this->belongsToMany(Template::class);
+        return $this->belongsTo(Template::class);
     }
 
     public function getBlockValues(): BlockValues
