@@ -10,6 +10,12 @@ class ListTemplates extends ListRecords
 {
     protected static string $resource = TemplateResource::class;
 
+    public function mount() : void
+    {
+        parent::mount();
+        abort_unless(auth()->user()->hasRole('Admin'), 403);
+    }
+
     protected function getActions(): array
     {
         return [

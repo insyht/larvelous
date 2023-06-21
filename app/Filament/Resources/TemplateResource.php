@@ -79,4 +79,14 @@ class TemplateResource extends Resource
             'edit' => EditTemplate::route('/{record}/edit'),
         ];
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Admin');
+    }
+
+    public function mount(): void
+    {
+        abort_unless(auth()->user()->hasRole('Admin'), 403);
+    }
 }
