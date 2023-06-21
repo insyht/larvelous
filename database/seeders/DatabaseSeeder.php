@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CmsSeeder::class);
         $this->call(HomePageSeeder::class);
         $this->call(CategoryPageSeeder::class);
-        $this->call(RolesAndPermissionsSeeder::class);
 
         // todo This should be loaded dynamically, in a nicer way, for every module
         require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/DatabaseSeeder.php';
