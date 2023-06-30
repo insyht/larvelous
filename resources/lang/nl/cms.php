@@ -28,6 +28,10 @@ return [
     'on' => 'Aan',
     'off' => 'Uit',
     'enabled' => 'Actief',
+    'password' => 'Wachtwoord',
+    'role' => 'Rol',
+    'emailVerified' => 'Geverifieerd via email?',
+    'passwordOnlyOnChange' => 'Alleen invullen indien het wachtwoord veranderd moet worden',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

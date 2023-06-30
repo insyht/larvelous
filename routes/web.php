@@ -22,13 +22,14 @@ use App\Http\Controllers\Dashboard\PluginController;
 use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\StatisticsController;
 use App\Http\Controllers\Dashboard\TemplateController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Auth::routes();
 
 /**
  * Dashboard routes
  */
-Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function() {
+Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     Route::get('/blocks', [BlockController::class, 'index'])->name('blocks.index');
@@ -46,6 +47,12 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
 });
 
 Auth::routes();
+
+Route::get('/admin/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/admin');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
