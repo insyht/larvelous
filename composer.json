@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "deployer/deployer": "^7.3",
         "filament/filament": "^2.0",
         "insyht/larvelous-base-blocks": "dev-firsttry",
         "jeffgreco13/filament-breezy": "^1.5",
