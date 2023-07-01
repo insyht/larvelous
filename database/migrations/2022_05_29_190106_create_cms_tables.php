@@ -153,7 +153,7 @@ class CreateCmsTables extends Migration
 
         Schema::create('menu_item_types', function (Blueprint $table) {
             $table->id();
-            $table->text('classname');
+            $table->string('classname');
             $table->string('title_column');
 
             $table->unique(['classname']);
