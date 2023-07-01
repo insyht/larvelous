@@ -28,7 +28,7 @@ tasks:
     - deploy:publish
     - php-fpm:reload
   npm:run:prod:
-    script:
+    - script:
       - 'cd {{release_or_current_path}} && npm run prod'
 
 after:
