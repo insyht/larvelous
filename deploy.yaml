@@ -1,7 +1,7 @@
 import:
-    - recipe/laravel.php
-    - contrib/php-fpm.php
-    - contrib/npm.php
+  - recipe/laravel.php
+  - contrib/php-fpm.php
+  - contrib/npm.php
 
 config:
   repository: 'git@github.com:insyht/larvelous.git'
