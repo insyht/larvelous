@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "750fb429511d8c8bc61ac2a0039b47b5",
+    "content-hash": "d4752ecfbff1bee068ff6720646162f7",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1401,11 +1401,11 @@
         },
         {
             "name": "insyht/larvelous-base-blocks",
-            "version": "dev-firsttry",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/insyht/larvelous-base-blocks.git",
-                "reference": "36a6003b72c0ff341b2bf1583bb470d332a97d7a"
+                "reference": "7eeb6836a018e051340e85581d1342e71f240f87"
             },
             "require": {
                 "php": ">=8.0"
@@ -1416,7 +1416,7 @@
                 "cms",
                 "larvelous"
             ],
-            "time": "2022-09-10T22:07:22+00:00"
+            "time": "2023-07-01T21:33:16+00:00"
         },
         {
             "name": "jeffgreco13/filament-breezy",
@@ -9643,9 +9643,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "insyht/larvelous-base-blocks": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
