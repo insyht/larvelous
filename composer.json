@@ -11,7 +11,7 @@
         "php": "^8.2",
         "deployer/deployer": "^7.3",
         "filament/filament": "^2.0",
-        "insyht/larvelous-base-blocks": "*",
+        "insyht/larvelous-base-blocks": "^1.0",
         "jeffgreco13/filament-breezy": "^1.5",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.0",
