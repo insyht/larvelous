@@ -73,11 +73,5 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
         ]
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/insyht/larvelous-base-blocks.git"
-        }
-    ]
+    }
 }
