@@ -12,6 +12,7 @@ hosts:
     remote_user: deployer
     hostname: larvelous.app
     deploy_path: '/var/www/{{hostname}}'
+    branch: 'develop'
 
 tasks:
   deploy:
