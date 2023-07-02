@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "797fa313815429e6ca3b3ad5f3bb729c",
+    "content-hash": "cfec3e716c401d40ec24e3cccc9f2ecf",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1407,15 +1407,26 @@
                 "url": "https://github.com/insyht/larvelous-base-blocks.git",
                 "reference": "32616bd54c95c5edbe9d2b9682d51cb21921f32f"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/insyht/larvelous-base-blocks/zipball/32616bd54c95c5edbe9d2b9682d51cb21921f32f",
+                "reference": "32616bd54c95c5edbe9d2b9682d51cb21921f32f",
+                "shasum": ""
+            },
             "require": {
                 "php": ">=8.0"
             },
             "type": "project",
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Basic blocks for the Larvelous CMS.",
             "keywords": [
                 "cms",
                 "larvelous"
             ],
+            "support": {
+                "issues": "https://github.com/insyht/larvelous-base-blocks/issues",
+                "source": "https://github.com/insyht/larvelous-base-blocks/tree/1.0.1"
+            },
             "time": "2023-07-01T21:59:34+00:00"
         },
         {
