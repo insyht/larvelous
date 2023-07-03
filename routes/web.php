@@ -1,28 +1,30 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use App\Http\Controllers\Dashboard\BlockController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DesignController;
 use App\Http\Controllers\Dashboard\FormController;
 use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\MenuController;
-use App\Http\Controllers\Dashboard\PageController;
+use App\Http\Controllers\Dashboard\PageController as DashboardPageController;
 use App\Http\Controllers\Dashboard\PluginController;
 use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\StatisticsController;
 use App\Http\Controllers\Dashboard\TemplateController;
+use App\Http\Controllers\Website\PageController as WebsitePageController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
 Auth::routes();
 
@@ -35,7 +37,7 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::get('/blocks', [BlockController::class, 'index'])->name('blocks.index');
     Route::get('/forms', [FormController::class, 'index'])->name('forms.index');
     Route::get('/templates', [TemplateController::class, 'index'])->name('templates.index');
-    Route::get('/pages', [PageController::class, 'index'])->name('pages.index');
+    Route::get('/pages', [DashboardPageController::class, 'index'])->name('pages.index');
     Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
 
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
@@ -65,5 +67,5 @@ Route::namespace('Website')->group(function () {
     Route::get('/voorbeeld/textpagina', 'VoorbeeldController@textpagina')->name('voorbeeld-textpagina');
     Route::get('/voorbeeld/landingspagina', 'VoorbeeldController@landingspagina')->name('voorbeeld-landingspagina');
     Route::get('/voorbeeld/contact', 'VoorbeeldController@contact')->name('voorbeeld-contact');
-    Route::get('/{pageName}', 'PageController@load')->where('pageName', '.*');
+    Route::get('/{pageName}', [WebsitePageController::class, 'load'])->where('pageName', '.*');
 });
