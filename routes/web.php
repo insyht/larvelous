@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\StatisticsController;
 use App\Http\Controllers\Dashboard\TemplateController;
 use App\Http\Controllers\Website\PageController as WebsitePageController;
+use App\Http\Controllers\Website\VoorbeeldController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -59,13 +60,13 @@ Route::get('/admin/email/verify/{id}/{hash}', function (EmailVerificationRequest
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace('Website')->group(function () {
-    Route::get('/voorbeeld/categorie', 'VoorbeeldController@categorie')->name('voorbeeld-categorie');
-    Route::get('/voorbeeld/product', 'VoorbeeldController@product')->name('voorbeeld-product');
-    Route::get('/voorbeeld/winkelwagen', 'VoorbeeldController@winkelwagen')->name('voorbeeld-winkelwagen');
-    Route::get('/voorbeeld/klantgegevens', 'VoorbeeldController@klantgegevens')->name('voorbeeld-klantgegevens');
-    Route::get('/voorbeeld/bevestiging', 'VoorbeeldController@bevestiging')->name('voorbeeld-bevestiging');
-    Route::get('/voorbeeld/textpagina', 'VoorbeeldController@textpagina')->name('voorbeeld-textpagina');
-    Route::get('/voorbeeld/landingspagina', 'VoorbeeldController@landingspagina')->name('voorbeeld-landingspagina');
-    Route::get('/voorbeeld/contact', 'VoorbeeldController@contact')->name('voorbeeld-contact');
+    Route::get('/voorbeeld/categorie', [VoorbeeldController::class, 'categorie'])->name('voorbeeld-categorie');
+    Route::get('/voorbeeld/product', [VoorbeeldController::class, 'product'])->name('voorbeeld-product');
+    Route::get('/voorbeeld/winkelwagen', [VoorbeeldController::class, 'winkelwagen'])->name('voorbeeld-winkelwagen');
+    Route::get('/voorbeeld/klantgegevens', [VoorbeeldController::class, 'klantgegevens'])->name('voorbeeld-klantgegevens');
+    Route::get('/voorbeeld/bevestiging', [VoorbeeldController::class, 'bevestiging'])->name('voorbeeld-bevestiging');
+    Route::get('/voorbeeld/textpagina', [VoorbeeldController::class, 'textpagina'])->name('voorbeeld-textpagina');
+    Route::get('/voorbeeld/landingspagina', [VoorbeeldController::class, 'landingspagina'])->name('voorbeeld-landingspagina');
+    Route::get('/voorbeeld/contact', [VoorbeeldController::class, 'contact'])->name('voorbeeld-contact');
     Route::get('/{pageName}', [WebsitePageController::class, 'load'])->where('pageName', '.*');
 });
