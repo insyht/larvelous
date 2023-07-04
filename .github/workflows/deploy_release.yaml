@@ -1,4 +1,4 @@
-name: Test run v1
+name: Deploy (Release)
 
 on:
   release:
