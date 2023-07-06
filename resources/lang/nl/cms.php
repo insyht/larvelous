@@ -7,6 +7,7 @@ return [
     'template' => 'Template',
     'ordering' => 'Positie',
     'title' => 'Titel',
+    'subtitle' => 'Subtitel',
     'type' => 'Type',
     'page' => 'Pagina',
     'pages' => 'Pagina\'s',
@@ -32,6 +33,8 @@ return [
     'role' => 'Rol',
     'emailVerified' => 'Geverifieerd via email?',
     'passwordOnlyOnChange' => 'Alleen invullen indien het wachtwoord veranderd moet worden',
+    'quote' => 'Quote',
+    'city' => 'Woonplaats',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',
