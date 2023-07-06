@@ -13,7 +13,7 @@ class Block extends Model
 
     public function blockVariables()
     {
-        return $this->hasMany(BlockVariable::class);
+        return $this->hasMany(BlockVariable::class)->orderBy('ordering');
     }
 
     public function templates()
