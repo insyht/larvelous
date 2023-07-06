@@ -5,12 +5,7 @@
 
 
 Filament:
-- Werkend krijgen op iwsklanten.nl. Er is nu CORS gezeik wanneer je naar Pagina's > Home > ImageAttention bewerken
-  gaat. Ik zie ook dat ik geen config/cors.php heb, die is mogelijk niet meegekomen toen ik een upgrade gedaan had
-  naar Laravel 10?
+- Bezig met het namaken van Landingspagina. Heb een landing page header blok gemaakt, nu nog de template ervoor 
+  maken en daarna een subtitle blokje, een blok met 4 afbeeldingen ("exposé?"), een blok met title en tekst en een 
+  blok met 3 usps.
 
-- Ik wil automatisch deployen naar larvelous.app via Deployer. Zie:
-  - https://deployer.org/docs/7.x/ci-cd
-  - larvelous.app deploy.yaml
-  - https://lorisleiva.com/deploy-your-laravel-app-from-scratch/install-and-configure-deployer (Our main deploy task)
-  - https://stefanzweifel.dev/posts/2021/05/24/deployer-on-github-actions
