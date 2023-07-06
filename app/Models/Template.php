@@ -11,6 +11,8 @@ class Template extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['resource_id', 'label', 'view'];
+
     public function pages()
     {
         return $this->hasMany(Page::class);
