@@ -67,7 +67,7 @@ class BlocksRelationManager extends RelationManager
                                         $blockValue->save();
                                         $blockValue->refresh();
                                     }
-                                    $fields[] = static::createFormField($blockValue);
+                                    $fields[] = static::createFormField($blockValue, $fields);
                                 }
 
                                 return $fields;
@@ -103,17 +103,44 @@ class BlocksRelationManager extends RelationManager
                                     }
                                     $data['block_variable_id'] = $pageBlockVariable->id;
 
-                                    $data[$blockValue->blockVariable->name] = $blockValue->value;
-                                    $data['values'][$pageBlockVariable->name] = [
-                                        'block_id' => $currentBlock->id,
-                                        'block_template_ordering' => $blockTemplate->ordering,
-                                        'block_variable_value_template_block_ordering' => $pageBlockVariable->ordering,
-                                        'value' => $blockValue->value,
-                                        'name' => $pageBlockVariable->name,
-                                        'block_variable_label' => $pageBlockVariable->label,
-                                        'type' => $pageBlockVariable->type,
-                                        'require' => $pageBlockVariable->required,
-                                    ];
+                                    if (isset($data['values']) && array_key_exists($pageBlockVariable->name, $data['values'])) {
+                                        // We have more than one of this variable for this block.
+                                        if (isset($data['values'][$pageBlockVariable->name]['block_id'])) {
+                                            // This is the second time we've encountered this variable, convert to array
+                                            $backup = $data['values'][$pageBlockVariable->name];
+                                            $ordering = $backup['block_variable_value_template_block_ordering'];
+                                            $data['values'][$pageBlockVariable->name] = [];
+                                            $data['values'][$pageBlockVariable->name][$ordering] = $backup;
+
+                                            //                                            $backup2 = $data[$pageBlockVariable->name];
+                                            //                                            $name = $pageBlockVariable->name . '[' . $ordering . ']';
+                                            //                                            unset($data[$pageBlockVariable->name]);
+                                            //                                            $data[$name] = $backup2;
+                                        }
+                                        $data['values'][$pageBlockVariable->name][$pageBlockVariable->ordering] = [
+                                            'block_id' => $currentBlock->id,
+                                            'block_template_ordering' => $blockTemplate->ordering,
+                                            'block_variable_value_template_block_ordering' => $pageBlockVariable->ordering,
+                                            'value' => $blockValue->value,
+                                            'name' => $pageBlockVariable->name,
+                                            'block_variable_label' => $pageBlockVariable->label,
+                                            'type' => $pageBlockVariable->type,
+                                            'require' => $pageBlockVariable->required,
+                                        ];
+                                        $data[$pageBlockVariable->name . '[' . $pageBlockVariable->ordering . ']'] = $blockValue->value;
+                                    } else {
+                                        $data['values'][$pageBlockVariable->name] = [
+                                            'block_id' => $currentBlock->id,
+                                            'block_template_ordering' => $blockTemplate->ordering,
+                                            'block_variable_value_template_block_ordering' => $pageBlockVariable->ordering,
+                                            'value' => $blockValue->value,
+                                            'name' => $pageBlockVariable->name,
+                                            'block_variable_label' => $pageBlockVariable->label,
+                                            'type' => $pageBlockVariable->type,
+                                            'require' => $pageBlockVariable->required,
+                                        ];
+                                        $data[$blockValue->blockVariable->name] = $blockValue->value;
+                                    }
                                 }
 
                                 return $data;
@@ -124,16 +151,24 @@ class BlocksRelationManager extends RelationManager
                                                               ->where('ordering', $data['page_block_ordering'])
                                                               ->first();
                                 $systemValues = ['block_id', 'page_id', 'page_block_ordering', 'block_variable_id'];
-                                $blockVariablesCounter = 1;
+                                $counter = 1;
                                 foreach ($data as $key => $value) {
                                     if (in_array($key, $systemValues)) {
                                         continue;
                                     }
+                                    if (strpos($key, '[') !== false && strpos($key, ']') !== false) {
+                                        $orderingWithArrayNotation = substr($key, strpos($key, '['), strpos($key, ']'));
+                                        $ordering = (int) str_replace(['[', ']'], '', $orderingWithArrayNotation);
+                                        $keyWithoutOrdering = str_replace($orderingWithArrayNotation, '', $key);
+                                    } else {
+                                        $ordering = $counter;
+                                        $keyWithoutOrdering = $key;
+                                    }
+                                    $counter++;
                                     $blockVariable = BlockVariable::where('block_id', $data['block_id'])
-                                                                  ->where('name', $key)
-                                                                  ->where('ordering', $blockVariablesCounter)
+                                                                  ->where('name', $keyWithoutOrdering)
+                                                                  ->where('ordering', $ordering)
                                                                   ->first();
-                                    $blockVariablesCounter++;
                                     $blockVariableValue = BlockVariableValue::where('language_id', $page->language_id)
                                                                             ->where('page_id', $data['page_id'])
                                                                             ->where('block_template_id', $blockTemplate->id)
@@ -169,7 +204,7 @@ class BlocksRelationManager extends RelationManager
         return __('cms.blocks');
     }
 
-    protected static function createFormField(BlockVariableValue $data): Field
+    protected static function createFormField(BlockVariableValue $data, array $existingFields): Field
     {
         $type = BlockVariableType::find($data->blockVariable->type);
 
@@ -177,7 +212,20 @@ class BlocksRelationManager extends RelationManager
             $type = BlockVariableType::find(BlockVariableType::TYPE_TEXTFIELD);
         }
 
-        $field = $type->fqn::make($data->blockVariable->name);
+        $fieldNameAlreadyExists = false;
+        /** @var Field[] $existingFields */
+        foreach ($existingFields as $existingField) {
+            if ($existingField->getName() === $data->blockVariable->name) {
+                $fieldNameAlreadyExists = true;
+                break;
+            }
+        }
+
+        $fieldName = $data->blockVariable->name;
+        if ($fieldNameAlreadyExists) {
+            $fieldName .= '[' . $data->blockVariable->ordering . ']';
+        }
+        $field = $type->fqn::make($fieldName);
         $field->label(__($data->blockVariable->label));
         if ($data->blockVariable->required) {
             $field->required();
