@@ -35,6 +35,7 @@ return [
     'passwordOnlyOnChange' => 'Alleen invullen indien het wachtwoord veranderd moet worden',
     'quote' => 'Quote',
     'city' => 'Woonplaats',
+    'icon' => 'Icoon',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

@@ -2479,16 +2479,16 @@
         },
         {
             "name": "insyht/larvelous-base-blocks",
-            "version": "1.0.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/insyht/larvelous-base-blocks.git",
-                "reference": "32616bd54c95c5edbe9d2b9682d51cb21921f32f"
+                "reference": "4350b4dc7c63d36fca10705e34739cf023dd9145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/insyht/larvelous-base-blocks/zipball/32616bd54c95c5edbe9d2b9682d51cb21921f32f",
-                "reference": "32616bd54c95c5edbe9d2b9682d51cb21921f32f",
+                "url": "https://api.github.com/repos/insyht/larvelous-base-blocks/zipball/4350b4dc7c63d36fca10705e34739cf023dd9145",
+                "reference": "4350b4dc7c63d36fca10705e34739cf023dd9145",
                 "shasum": ""
             },
             "require": {
@@ -2503,9 +2503,9 @@
             ],
             "support": {
                 "issues": "https://github.com/insyht/larvelous-base-blocks/issues",
-                "source": "https://github.com/insyht/larvelous-base-blocks/tree/1.0.1"
+                "source": "https://github.com/insyht/larvelous-base-blocks/tree/1.2.0"
             },
-            "time": "2023-07-01T21:59:34+00:00"
+            "time": "2023-07-09T18:24:45+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
