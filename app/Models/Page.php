@@ -63,8 +63,16 @@ class Page extends Model
                     $blockValue = $pageBlockVariable->blockVariableValues()
                                                     ->forPageAndBlockTemplate($this, $blockTemplate)
                                                     ->first();
-                    /** @var \App\Models\BlockVariable $pageBlockVariable */
-                    $blockValues->{$pageBlockVariable->name} = $blockValue->value;
+                    if (isset($blockValues->{$pageBlockVariable->name})) {
+                        if (!is_array($blockValues->{$pageBlockVariable->name})) {
+                            $backup = $blockValues->{$pageBlockVariable->name};
+                            $blockValues->{$pageBlockVariable->name} = [$backup];
+                        }
+                        $blockValues->{$pageBlockVariable->name}[] = $blockValue->value;
+                    } else {
+                        /** @var \App\Models\BlockVariable $pageBlockVariable */
+                        $blockValues->{$pageBlockVariable->name} = $blockValue->value;
+                    }
                 }
                 $blockTemplate->addValues($blockValues);
             }

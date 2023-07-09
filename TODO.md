@@ -5,7 +5,4 @@
 
 
 Filament:
-- Bezig met het namaken van Landingspagina. Heb een landing page header blok gemaakt, nu nog de template ervoor 
-  maken en daarna een subtitle blokje, een blok met 4 afbeeldingen ("exposé?"), een blok met title en tekst en een 
-  blok met 3 usps.
 
