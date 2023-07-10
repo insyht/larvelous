@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3edbf1da449865be7a5ad0f7a514e766",
+    "content-hash": "4aabb35da1f5d849e3216dbaf702074f",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2506,6 +2506,40 @@
                 "source": "https://github.com/insyht/larvelous-base-blocks/tree/1.2.0"
             },
             "time": "2023-07-09T18:24:45+00:00"
+        },
+        {
+            "name": "insyht/larvelous-shop",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/insyht/larvelous-shop.git",
+                "reference": "fd0c2bff75f0f5afc9cde9cf7aad42818c33e50c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/insyht/larvelous-shop/zipball/fd0c2bff75f0f5afc9cde9cf7aad42818c33e50c",
+                "reference": "fd0c2bff75f0f5afc9cde9cf7aad42818c33e50c",
+                "shasum": ""
+            },
+            "require": {
+                "insyht/larvelous": "dev-develop",
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Shop plugin for the Larvelous CMS.",
+            "keywords": [
+                "cms",
+                "ecommerce",
+                "larvelous",
+                "shop",
+                "webshop"
+            ],
+            "support": {
+                "issues": "https://github.com/insyht/larvelous-shop/issues",
+                "source": "https://github.com/insyht/larvelous-shop/tree/0.1.1"
+            },
+            "time": "2023-07-10T17:36:27+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",

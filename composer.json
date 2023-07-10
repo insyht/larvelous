@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "insyht/larvelous",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
@@ -11,6 +11,7 @@
         "filament/filament": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "insyht/larvelous-base-blocks": "^1.0",
+        "insyht/larvelous-shop": "^0.1.1",
         "jeffgreco13/filament-breezy": "^1.5",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
