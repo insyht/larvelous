@@ -12,7 +12,7 @@ class Plugin extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['base', 'name', 'path', 'github_url', 'active', 'author'];
+    protected $fillable = ['base', 'name', 'path', 'namespace', 'github_url', 'active', 'author'];
 
     protected $casts = [
         'active' => 'boolean',
@@ -21,5 +21,10 @@ class Plugin extends Model
     public function scopeActive(Builder $query)
     {
         return $query->where('active', true);
+    }
+
+    public function getFullPath(bool $appendSlash = true): string
+    {
+        return base_path() . '/vendor/' . $this->path . ($appendSlash ? '/' : '');
     }
 }

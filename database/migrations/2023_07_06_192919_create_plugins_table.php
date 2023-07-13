@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('base', 50);
             $table->string('name', 50);
             $table->string('path', 50);
+            $table->text('namespace');
             $table->text('github_url');
             $table->boolean('active')->default(1);
             $table->string('author', 100);

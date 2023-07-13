@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\BlockValues;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
