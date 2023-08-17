@@ -9,16 +9,24 @@ abstract class AbstractPluginController extends Controller
 {
     protected function getPluginViewPath(): string
     {
+        return $this->getPluginPath('.') . '.resources.views';
+    }
+
+    protected function getPluginPath(string $separator = '/', bool $fullPath = false): string
+    {
         // Full path to the plugin controller from where this method is called
         $fullControllerPath = dirname((new ReflectionClass($this))->getFileName());
         $explode = explode('/', $fullControllerPath);
         // Find the key where the value is 'vendor'
-        $vendorElementKey = array_search('vendor', $explode);
+        $splitKey = array_search('vendor', $explode) + 1;
+        if ($fullPath) {
+            $splitKey = array_search('vendor', $explode) - 1;
+        }
         // Remove the path up until vendor/
-        $relativePathArray = array_slice($explode, $vendorElementKey + 1);
+        $relativePathArray = array_slice($explode, $splitKey);
         // Remove "Controller" directory
         array_pop($relativePathArray);
-        $relativePath = implode('.', $relativePathArray) . '.resources.views';
+        $relativePath = implode($separator, $relativePathArray);
 
         return $relativePath;
     }

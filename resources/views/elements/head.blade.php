@@ -9,12 +9,12 @@
 
     <title>{{ config('app.name', 'Laravel') }} - Homepage</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/m4u.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if (isset($jsIncludes))
+        @foreach ($jsIncludes as $jsInclude)
+            <script src="{{ $jsInclude }}" defer></script>
+        @endforeach
+    @endif
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">

@@ -1,14 +1,10 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel');
 
-$m4u-pink: #f546aa;
-$m4u-pink-light: #ffe9f6;
-$primary: $m4u-pink;
-
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-icons/font/bootstrap-icons';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'variables';
-@import 'larveous';
+@import 'bootstrap/scss/bootstrap';
+@import 'larvelous';
 
 .ribbon-wrapper {
   width: 85px;
@@ -21,7 +17,7 @@ $primary: $m4u-pink;
 
 .ribbon {
   font-size: 24px;
-  color: white;
+  color: $white;
   font-family: 'Dancing Script', cursive;
   line-height: 15px;
   text-align: center;
@@ -39,13 +35,13 @@ $primary: $m4u-pink;
   height: 28px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .3);
   box-shadow: 0 0 3px rgba(0, 0, 0, .3);
-  background-color: $m4u-pink;
+  background-color: $primary;
 }
 
 .ribbon:before,
 .ribbon:after {
   content: "";
-  border-top: 3px solid $m4u-pink;
+  border-top: 3px solid $primary;
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
   position: absolute;
@@ -61,7 +57,7 @@ $primary: $m4u-pink;
 }
 
 input.mandatory, select.mandatory, textarea.mandatory {
-  border: 1px solid $m4u-pink;
+  border: 1px solid $primary;
 }
 
 ul {
@@ -70,7 +66,7 @@ ul {
 
 ul li::before {
   content: "\2022";
-  color: $m4u-pink;
+  color: $primary;
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -78,7 +74,7 @@ ul li::before {
 }
 
 .autograph {
-  color: $m4u-pink;
+  color: $primary;
   font-size: 100px;
   font-family: 'Lovers Quarrel', cursive;
 }
@@ -106,51 +102,51 @@ ul li::before {
 
 @include media-breakpoint-down(sm) {
   .header {
-    background-color: $m4u-pink-light;
+    background-color: $primary-light;
     background-image: none !important;
 
     .quote {
-      background-color: white;
+      background-color: $white;
     }
   }
 }
 
 .font-special {
   font-family: 'Dancing Script', cursive;
-  color: $m4u-pink;
+  color: $primary;
 }
 
 .cta {
-  background-color: $m4u-pink-light;
+  background-color: $primary-light;
 }
 
 // Bootstrap
 
 // Input type=range slider button (thumb) color
 input[type=range]::-webkit-slider-thumb {
-  background: $m4u-pink;
-  border: 1px solid $m4u-pink;
+  background: $primary;
+  border: 1px solid $primary;
 }
 input[type=range]::-moz-range-thumb {
-  background: $m4u-pink;
-  border: 1px solid $m4u-pink;
+  background: $primary;
+  border: 1px solid $primary;
 }
 input[type=range]::-ms-thumb {
-  background: $m4u-pink;
-  border: 1px solid $m4u-pink;
+  background: $primary;
+  border: 1px solid $primary;
 }
 
 .form-switch .form-check-input {
-  border-color: $m4u-pink;
+  border-color: $primary;
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28245, 70, 170, 0.35%29'/></svg>");
 }
 .form-check-input:checked {
-  background-color: $m4u-pink;
-  border-color: $m4u-pink;
+  background-color: $primary;
+  border-color: $primary;
 }
 
 .input-group-text {
-  background-color: $m4u-pink-light;
+  background-color: $primary-light;
 }
 
 /* Bootstrap hacks */
@@ -193,7 +189,7 @@ html {
 }
 
 .accordion-button:not(.collapsed) {
-  background-color: $m4u-pink-light;
+  background-color: $primary-light;
   color: $gray-700;
 
   &:after {
@@ -201,12 +197,31 @@ html {
   }
 }
 
+.accordion-button.active {
+  background-color: $secondary-light;
+  color: $primary-light;
+  // Hack to change the active accordion icon color from black to white
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+
+  &:after {
+    color: $white;
+  }
+}
+
+.accordion-body {
+  //background-color: $secondary-light;
+}
+
 .btn-primary {
-  color: white;
+  color: $white;
+  background-color: $primary;
+  border-color: $primary;
 }
 
 .btn-outline-primary:hover, .btn-primary:hover {
-  color: white;
+  color: $white;
+  background-color: $secondary;
+  border-color: $secondary;
 }
 
 a {
@@ -214,10 +229,49 @@ a {
 }
 
 .quote {
-  border-left: 4px solid $m4u-pink;
+  border-left: 4px solid $primary;
   padding-left: 15px;
 }
 
 .form-control:disabled {
-  background-color: $m4u-pink-light;
+  background-color: $primary-light;
+}
+
+// Fix for input sliders being invisible because of their border and background colors
+.form-range {
+  &::-webkit-slider-runnable-track {
+    background-color: $secondary-light;
+    border: 1px solid $primary !important;
+  }
+
+  &::-moz-range-track {
+    background-color: $secondary-light;
+    border: 1px solid $primary !important;
+  }
+}
+
+.btn-filter {
+  color: $primary;
+  background-color: $primary-light;
+  border-color: $primary;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  &:hover {
+    color: $primary-light;
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  &.active {
+    color: $secondary;
+    background-color: $secondary-light;
+    border-color: $primary;
+
+    &:hover {
+        color: $secondary-light;
+        background-color: $secondary;
+        border-color: $primary;
+    }
+  }
 }

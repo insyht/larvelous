@@ -6,4 +6,8 @@
 ## Create symbolic link for uploaded images and more
 - php artisan storage:link
 
+## Build the CSS and JS
+- npm run build
+
 - Run a password reset for the IWS account, so that a new password can be set
+

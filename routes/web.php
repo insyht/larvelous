@@ -69,4 +69,5 @@ Route::namespace('Website')->group(function () {
     Route::get('/voorbeeld/landingspagina', [VoorbeeldController::class, 'landingspagina'])->name('voorbeeld-landingspagina');
     Route::get('/voorbeeld/contact', [VoorbeeldController::class, 'contact'])->name('voorbeeld-contact');
     Route::get('/{pageName}', [WebsitePageController::class, 'load'])->where('pageName', '.*');
+    Route::any('/{pageName}', [WebsitePageController::class, 'load']);
 });

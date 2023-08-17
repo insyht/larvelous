@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PageServiceProvider::class,
         \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        App\Providers\PluginServiceProvider::class,
     ])->toArray(),
 
     /*
