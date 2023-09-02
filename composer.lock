@@ -2513,12 +2513,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/insyht/larvelous-shop.git",
-                "reference": "53bba75c60e46d0461916035c4645ade7378bdc3"
+                "reference": "a608c62c8f16188b4aae5842764d788efa3c4b91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/insyht/larvelous-shop/zipball/53bba75c60e46d0461916035c4645ade7378bdc3",
-                "reference": "53bba75c60e46d0461916035c4645ade7378bdc3",
+                "url": "https://api.github.com/repos/insyht/larvelous-shop/zipball/a608c62c8f16188b4aae5842764d788efa3c4b91",
+                "reference": "a608c62c8f16188b4aae5842764d788efa3c4b91",
                 "shasum": ""
             },
             "require": {
@@ -2544,7 +2544,7 @@
                 "issues": "https://github.com/insyht/larvelous-shop/issues",
                 "source": "https://github.com/insyht/larvelous-shop/tree/develop"
             },
-            "time": "2023-08-16T20:18:08+00:00"
+            "time": "2023-09-02T20:45:32+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
