@@ -138,10 +138,14 @@ input[type=range]::-ms-thumb {
 
 .form-switch .form-check-input {
   border-color: $primary;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28245, 70, 170, 0.35%29'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{rgba($primary, 0.35)}'/></svg>");
+
+  &:checked {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{rgba($primary, 0.99)}'/></svg>");
+  }
 }
 .form-check-input:checked {
-  background-color: $primary;
+  background-color: $white;
   border-color: $primary;
 }
 
