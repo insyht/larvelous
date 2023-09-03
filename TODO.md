@@ -3,4 +3,5 @@
   - php artisan vendor:publish --tag=insyht-larvelous-shop --force
 - Even de TODOs nalopen in larvelous-shop
 - Deployment werkt niet meer, hij loopt te zeuren over een missende versie van insyht/larvelous
-- Larvelous-base-blocks en Larvelous-shop (en Larvelous zelf) ombouwen tot Laravel packages: https://laravel.com/docs/10.x/packages
+- Larvelous-base-blocks (en Larvelous zelf) ombouwen tot Laravel packages: https://laravel.com/docs/10.x/packages
+- Unit en feature test in larvelous-shop werkend maken

@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\PluginController;
 use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\StatisticsController;
 use App\Http\Controllers\Dashboard\TemplateController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Website\PageController as WebsitePageController;
 use App\Http\Controllers\Website\VoorbeeldController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -57,9 +58,10 @@ Route::get('/admin/email/verify/{id}/{hash}', function (EmailVerificationRequest
     return redirect('/admin');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::namespace('Website')->group(function () {
+    Route::get('/', [WebsitePageController::class, 'load']);
     Route::get('/voorbeeld/categorie', [VoorbeeldController::class, 'categorie'])->name('voorbeeld-categorie');
     Route::get('/voorbeeld/product', [VoorbeeldController::class, 'product'])->name('voorbeeld-product');
     Route::get('/voorbeeld/winkelwagen', [VoorbeeldController::class, 'winkelwagen'])->name('voorbeeld-winkelwagen');
@@ -68,6 +70,6 @@ Route::namespace('Website')->group(function () {
     Route::get('/voorbeeld/textpagina', [VoorbeeldController::class, 'textpagina'])->name('voorbeeld-textpagina');
     Route::get('/voorbeeld/landingspagina', [VoorbeeldController::class, 'landingspagina'])->name('voorbeeld-landingspagina');
     Route::get('/voorbeeld/contact', [VoorbeeldController::class, 'contact'])->name('voorbeeld-contact');
-    Route::get('/{pageName}', [WebsitePageController::class, 'load'])->where('pageName', '.*');
+    Route::get('/{page:url}', [WebsitePageController::class, 'load']);
     Route::any('/{pageName}', [WebsitePageController::class, 'load']);
 });
