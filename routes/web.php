@@ -28,7 +28,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
 
 /**
  * Dashboard routes
@@ -50,7 +49,6 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics.index');
 });
 
-Auth::routes();
 
 Route::get('/admin/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
