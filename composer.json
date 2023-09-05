@@ -5,6 +5,12 @@
   "keywords": [
     "larvelous"
   ],
+  "authors": [
+    {
+      "name": "Jordy Thijs",
+      "email": "jordy@insyht.nl"
+    }
+  ],
   "require": {
     "php": "^8.2",
     "barryvdh/laravel-ide-helper": "^2.13",
@@ -34,7 +40,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Insyht\\Larvelous\\": "src/"
+      "Insyht\\Larvelous\\": "src"
     }
   },
   "autoload-dev": {
@@ -45,7 +51,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Insyht\\Larvelous\\LarvelousServiceProvider"
+        "Insyht\\Larvelous\\Providers\\LarvelousServiceProvider"
+
       ]
     }
   },
