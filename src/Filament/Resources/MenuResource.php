@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace Insyht\Larvelous\Filament\Resources;
 
-use App\Filament\LanguageFormField;
-use App\Filament\Resources\MenuResource\Pages;
-use App\Filament\Resources\MenuResource\RelationManagers;
-use App\Forms\Components\Dropdown;
-use App\Forms\Components\TextInput;
-use App\Models\Menu;
+use Insyht\Larvelous\Filament\LanguageFormField;
+use Insyht\Larvelous\Filament\Resources\MenuResource\Pages;
+use Insyht\Larvelous\Filament\Resources\MenuResource\RelationManagers;
+use Insyht\Larvelous\Forms\Components\Dropdown;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\Menu;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;

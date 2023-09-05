@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\TemplateResource\Pages;
+namespace Insyht\Larvelous\Filament\Resources\TemplateResource\Pages;
 
-use App\Filament\Resources\TemplateResource;
+use Insyht\Larvelous\Filament\Resources\TemplateResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 

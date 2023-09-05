@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\PageResource\RelationManagers;
+namespace Insyht\Larvelous\Filament\Resources\PageResource\RelationManagers;
 
-use App\Forms\Components\BlockFieldInterface;
-use App\Forms\Components\Hidden;
-use App\Models\BlockTemplate;
-use App\Models\BlockVariable;
-use App\Models\BlockVariableType;
-use App\Models\BlockVariableValue;
-use App\Models\Page;
+use Insyht\Larvelous\Forms\Components\BlockFieldInterface;
+use Insyht\Larvelous\Forms\Components\Hidden;
+use Insyht\Larvelous\Models\BlockTemplate;
+use Insyht\Larvelous\Models\BlockVariable;
+use Insyht\Larvelous\Models\BlockVariableType;
+use Insyht\Larvelous\Models\BlockVariableValue;
+use Insyht\Larvelous\Models\Page;
 use Filament\Forms\Components\Field;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -40,9 +40,9 @@ class BlocksRelationManager extends RelationManager
             ->actions([
                   EditAction::make()
                             ->form(function (EditAction $action, RelationManager $livewire): array {
-                                /** @var \App\Models\Block $currentBlock */
+                                /** @var \Insyht\Larvelous\Models\Block $currentBlock */
                                 $currentBlock = $livewire->getMountedTableActionRecord();
-                                /** @var \App\Models\Page $currentPage */
+                                /** @var \Insyht\Larvelous\Models\Page $currentPage */
                                 $currentPage = $livewire->getOwnerRecord();
                                 $fields = [
                                     Hidden::make('block_id'),
@@ -72,9 +72,9 @@ class BlocksRelationManager extends RelationManager
 
                                 return $fields;
                             })->mutateRecordDataUsing(function (array $data, RelationManager $livewire) {
-                                /** @var \App\Models\Block $currentBlock */
+                                /** @var \Insyht\Larvelous\Models\Block $currentBlock */
                                 $currentBlock = $livewire->getMountedTableActionRecord();
-                                /** @var \App\Models\Page $currentPage */
+                                /** @var \Insyht\Larvelous\Models\Page $currentPage */
                                 $currentPage = $livewire->getOwnerRecord();
 
                                 $blockTemplate = BlockTemplate::where('block_id', $currentBlock->id)

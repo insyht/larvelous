@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace Insyht\Larvelous\Filament\Resources;
 
-use App\Filament\LanguageFormField;
-use App\Filament\Resources\PageResource\Pages\CreatePage;
-use App\Filament\Resources\PageResource\Pages\EditPage;
-use App\Filament\Resources\PageResource\Pages\ListPages;
-use App\Filament\Resources\PageResource\Pages\ViewPage;
-use App\Filament\Resources\PageResource\RelationManagers\BlocksRelationManager;
-use App\Forms\Components\Dropdown;
-use App\Forms\Components\TextInput;
-use App\Models\Page;
-use App\Models\Template;
+use Insyht\Larvelous\Filament\LanguageFormField;
+use Insyht\Larvelous\Filament\Resources\PageResource\Pages\CreatePage;
+use Insyht\Larvelous\Filament\Resources\PageResource\Pages\EditPage;
+use Insyht\Larvelous\Filament\Resources\PageResource\Pages\ListPages;
+use Insyht\Larvelous\Filament\Resources\PageResource\Pages\ViewPage;
+use Insyht\Larvelous\Filament\Resources\PageResource\RelationManagers\BlocksRelationManager;
+use Insyht\Larvelous\Forms\Components\Dropdown;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\Page;
+use Insyht\Larvelous\Models\Template;
 use Closure;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Resources\Form;

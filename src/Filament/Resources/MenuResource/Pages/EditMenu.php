@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\MenuResource\Pages;
+namespace Insyht\Larvelous\Filament\Resources\MenuResource\Pages;
 
-use App\Filament\Resources\MenuResource;
+use Insyht\Larvelous\Filament\Resources\MenuResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 

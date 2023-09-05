@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament;
+namespace Insyht\Larvelous\Filament;
 
-use App\Forms\Components\Hidden;
-use App\Models\Language;
+use Insyht\Larvelous\Forms\Components\Hidden;
+use Insyht\Larvelous\Models\Language;
 use Filament\Forms\Components\Field;
 
 class LanguageFormField

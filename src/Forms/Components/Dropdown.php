@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Forms\Components;
+namespace Insyht\Larvelous\Forms\Components;
 
-use App\Models\BlockVariableOption;
-use App\Models\BlockVariableValue;
+use Insyht\Larvelous\Models\BlockVariableOption;
+use Insyht\Larvelous\Models\BlockVariableValue;
 
 class Dropdown extends \Filament\Forms\Components\Select implements BlockFieldInterface
 {

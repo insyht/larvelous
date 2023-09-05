@@ -3,7 +3,7 @@
 namespace Insyht\Larvelous\Http\Controllers\Website;
 
 use Illuminate\Routing\Controller;
-use App\Models\Page;
+use Insyht\Larvelous\Models\Page;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 

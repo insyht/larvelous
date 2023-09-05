@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace Insyht\Larvelous\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Forms\Components\Dropdown;
-use App\Forms\Components\TextInput;
+use Insyht\Larvelous\Filament\Resources\UserResource\Pages;
+use Insyht\Larvelous\Filament\Resources\UserResource\RelationManagers;
+use Insyht\Larvelous\Forms\Components\Dropdown;
+use Insyht\Larvelous\Forms\Components\TextInput;
 use App\Models\User;
 use Filament\Notifications\Notification;
 use Filament\Resources\Form;

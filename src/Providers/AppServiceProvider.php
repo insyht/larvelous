@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace Insyht\Larvelous\Providers;
 
-use App\Models\Plugin;
+use Insyht\Larvelous\Models\Plugin;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
 

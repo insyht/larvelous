@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Forms\Components;
+namespace Insyht\Larvelous\Forms\Components;
 
-use App\Models\BlockVariableValue;
+use Insyht\Larvelous\Models\BlockVariableValue;
 use Closure;
 use Filament\Forms\Components\FileUpload;
 use Storage;

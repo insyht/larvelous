@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\TemplateResource\RelationManagers;
+namespace Insyht\Larvelous\Filament\Resources\TemplateResource\RelationManagers;
 
-use App\Forms\Components\Hidden;
-use App\Forms\Components\TextInput;
-use App\Models\BlockTemplate;
+use Insyht\Larvelous\Forms\Components\Hidden;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\BlockTemplate;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;

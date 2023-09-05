@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Custom;
+namespace Insyht\Larvelous\Custom;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

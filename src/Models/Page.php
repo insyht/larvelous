@@ -2,8 +2,8 @@
 
 namespace Insyht\Larvelous\Models;
 
-use App\Custom\HasManyThroughMultipleTrait;
-use App\Traits\IsMenuItemable;
+use Insyht\Larvelous\Custom\HasManyThroughMultipleTrait;
+use Insyht\Larvelous\Traits\IsMenuItemable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

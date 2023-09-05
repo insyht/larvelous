@@ -158,8 +158,8 @@ class CreateCmsTables extends Migration
 
             $table->unique(['classname']);
         });
-        $type = new \App\Models\MenuItemType();
-        $type->classname = '\App\Models\Page::class';
+        $type = new \Insyht\Larvelous\Models\MenuItemType();
+        $type->classname = '\Insyht\Larvelous\Models\Page::class';
         $type->title_column = 'title';
         $type->save();
     }

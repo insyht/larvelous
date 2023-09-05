@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\MenuResource\RelationManagers;
+namespace Insyht\Larvelous\Filament\Resources\MenuResource\RelationManagers;
 
-use App\Forms\Components\TextInput;
-use App\Models\MenuItemType;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\MenuItemType;
 use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\MorphToSelect\Type;
 use Filament\Resources\Form;

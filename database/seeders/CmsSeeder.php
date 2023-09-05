@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Forms\Components\Dropdown;
-use App\Forms\Components\ExistingImageUpload;
-use App\Models\BlockVariableType;
-use App\Models\Language;
-use App\Models\Menu;
-use App\Forms\Components\Textarea;
-use App\Forms\Components\TextInput;
+use Insyht\Larvelous\Forms\Components\Dropdown;
+use Insyht\Larvelous\Forms\Components\ExistingImageUpload;
+use Insyht\Larvelous\Models\BlockVariableType;
+use Insyht\Larvelous\Models\Language;
+use Insyht\Larvelous\Models\Menu;
+use Insyht\Larvelous\Forms\Components\Textarea;
+use Insyht\Larvelous\Forms\Components\TextInput;
 use Illuminate\Database\Seeder;
 
 class CmsSeeder extends Seeder

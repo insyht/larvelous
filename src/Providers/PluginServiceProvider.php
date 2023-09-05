@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Insyht\Larvelous\Providers;
 
-use App;
-use App\Models\Plugin;
+use Insyht\Larvelous\Models\Plugin;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 use const DIRECTORY_SEPARATOR;

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace Insyht\Larvelous\Filament\Resources;
 
-use App\Filament\Resources\TemplateResource\Pages\CreateTemplate;
-use App\Filament\Resources\TemplateResource\Pages\EditTemplate;
-use App\Filament\Resources\TemplateResource\Pages\ListTemplates;
-use App\Filament\Resources\TemplateResource\Pages\ViewTemplate;
-use App\Filament\Resources\TemplateResource\RelationManagers\BlocksRelationManager;
-use App\Forms\Components\TextInput;
-use App\Models\Template;
+use Insyht\Larvelous\Filament\Resources\TemplateResource\Pages\CreateTemplate;
+use Insyht\Larvelous\Filament\Resources\TemplateResource\Pages\EditTemplate;
+use Insyht\Larvelous\Filament\Resources\TemplateResource\Pages\ListTemplates;
+use Insyht\Larvelous\Filament\Resources\TemplateResource\Pages\ViewTemplate;
+use Insyht\Larvelous\Filament\Resources\TemplateResource\RelationManagers\BlocksRelationManager;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\Template;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;

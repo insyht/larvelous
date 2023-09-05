@@ -8,7 +8,6 @@
 
 
 Larvelous package:
-- Alle namespaces nalopen, met name die beginnen met "App/". "App/" moet "Insyht/Larvelous/" worden
 - Alle views moeten nu met namespace (insyht-larvelous::) genoemd worden
 - composer.json van iwscms2 nalopen en opschonen
 - Checken of alles op iwscms2.local net zo werkt als op iwscms.local

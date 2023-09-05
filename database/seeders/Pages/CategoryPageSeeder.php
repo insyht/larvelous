@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Pages;
 
-use App\Models\Language;
-use App\Models\Page;
-use App\Models\Template;
+use Insyht\Larvelous\Models\Language;
+use Insyht\Larvelous\Models\Page;
+use Insyht\Larvelous\Models\Template;
 use Illuminate\Database\Seeder;
 
 class CategoryPageSeeder extends Seeder

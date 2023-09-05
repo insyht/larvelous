@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Forms\Components;
+namespace Insyht\Larvelous\Forms\Components;
 
 
-use App\Models\BlockVariableValue;
+use Insyht\Larvelous\Models\BlockVariableValue;
 
 interface BlockFieldInterface
 {

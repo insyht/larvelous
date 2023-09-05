@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\PageResource\Pages;
+namespace Insyht\Larvelous\Filament\Resources\PageResource\Pages;
 
-use App\Filament\Resources\PageResource;
+use Insyht\Larvelous\Filament\Resources\PageResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 

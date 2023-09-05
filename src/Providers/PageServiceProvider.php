@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Insyht\Larvelous\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -39,7 +39,7 @@ class PageServiceProvider extends ServiceProvider
             }
             $page = $view->offsetGet('page');
             if (is_object($page)) {
-                /** @var \App\Models\Page $page */
+                /** @var \Insyht\Larvelous\Models\Page $page */
                 // Fetch all values for all blocks of this page and save it to those blocks so the views can show them
                 $page->setContents($view);
             }
