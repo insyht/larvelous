@@ -2,6 +2,8 @@
 
 namespace Insyht\Larvelous\Http\Controllers;
 
+use Illuminate\Routing\Controller;
+
 class HomeController extends Controller
 {
     /**

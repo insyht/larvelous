@@ -3,6 +3,7 @@
 namespace Insyht\Larvelous\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Routing\Controller;
 use ReflectionClass;
 
 abstract class AbstractPluginController extends Controller
