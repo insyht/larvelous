@@ -16,7 +16,7 @@ class HomePageSeeder extends Seeder
         $template = new Template();
         $template->resource_id = 'iws_home';
         $template->label = 'Homepage template';
-        $template->view = 'base';
+        $template->view = 'insyht-larvelous::base';
         $template->save();
         $template->refresh();
 

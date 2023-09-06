@@ -16,7 +16,7 @@ class CategoryPageSeeder extends Seeder
         $template = new Template();
         $template->resource_id = 'iws_category';
         $template->label = 'Category template';
-        $template->view = 'base';
+        $template->view = 'insyht-larvelous::base';
         $template->save();
         $template->refresh();
 

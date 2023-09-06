@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('insyht-larvelous::layouts.website')
 @section('content')
     <h1>Winkelwagen</h1>
     <div class="row d-none d-sm-flex">

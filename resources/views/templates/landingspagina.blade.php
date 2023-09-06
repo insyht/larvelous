@@ -1,4 +1,4 @@
-@extends('layouts.landingpage')
+@extends('insyht-larvelous::layouts.landingpage')
 @section('header')
         <div class="col-12 col-sm-4 offset-sm- mt-sm-5 mb-sm-5">
             <h1 class="font-special">De beste kralen, de mooiste kleuren</h1>

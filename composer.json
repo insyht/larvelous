@@ -24,7 +24,8 @@
     "laravel/ui": "^4.0",
     "livewire/livewire": "^2.12",
     "sentry/sentry-laravel": "^3.6",
-    "spatie/laravel-permission": "^5.10"
+    "spatie/laravel-permission": "^5.10",
+    "insyht/larvelous-base-blocks": "dev-master"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.8",
@@ -56,8 +57,13 @@
       ]
     }
   },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../larvelous-base-blocks"
+    }
+  ],
   "minimum-stability": "dev",
-  "prefer-stable": true,
   "config": {
     "allow-plugins": {
       "php-http/discovery": true

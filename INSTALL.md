@@ -11,3 +11,5 @@
 
 - Run a password reset for the IWS account, so that a new password can be set
 
+## Other steps
+- Remove the default Laravel "/" route from routes/web.php

@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // 'base', 'name', 'path', 'github_url', 'active', 'author'
         Schema::create('plugins', function (Blueprint $table) {
             $table->id();
             $table->string('base', 50);

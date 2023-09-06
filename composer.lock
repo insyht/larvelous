@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cd1d9d307e159b24b0ce89bd5235c35",
+    "content-hash": "39ac5704b3436ad4c2f05f66343a16a7",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2473,6 +2473,41 @@
                 "source": "https://github.com/http-interop/http-factory-guzzle/tree/1.2.0"
             },
             "time": "2021-07-21T13:50:14+00:00"
+        },
+        {
+            "name": "insyht/larvelous-base-blocks",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../larvelous-base-blocks",
+                "reference": "4350b4dc7c63d36fca10705e34739cf023dd9145"
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Insyht\\LarvelousBaseBlocks\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Insyht\\LarvelousBaseBlocks\\Tests\\": "tests"
+                }
+            },
+            "description": "Basic blocks for the Larvelous CMS.",
+            "keywords": [
+                "blocks",
+                "cms",
+                "larvelous"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -12847,7 +12882,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
