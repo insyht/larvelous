@@ -52,8 +52,11 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Insyht\\Larvelous\\Providers\\LarvelousServiceProvider"
-
+        "Insyht\\Larvelous\\Providers\\LarvelousServiceProvider",
+        "Insyht\\Larvelous\\Providers\\AppServiceProvider",
+        "Insyht\\Larvelous\\Providers\\EventServiceProvider",
+        "Insyht\\Larvelous\\Providers\\PageServiceProvider",
+        "Insyht\\Larvelous\\Providers\\PluginServiceProvider"
       ]
     }
   },
