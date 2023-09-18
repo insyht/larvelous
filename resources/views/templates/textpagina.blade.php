@@ -1,6 +1,6 @@
 @extends('insyht-larvelous::layouts.website')
 @section('content')
     <h1>Tekstpagina</h1>
-    @include('blocks/paragraph')
-    @include('blocks/cta')
+    @include('insyht-larvelous::blocks/paragraph')
+    @include('insyht-larvelous::blocks/cta')
 @endsection

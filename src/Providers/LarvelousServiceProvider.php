@@ -16,10 +16,11 @@ class LarvelousServiceProvider extends ServiceProvider
     {
         $this->publishes(
             [
-                __DIR__ . '/../../resources/js' => public_path('js/insyht/larvelous'),
+                __DIR__ . '/../../public/images' => public_path('storage/images'),
                 __DIR__ . '/../../config/insyht-larvelous.php' => config_path('insyht-larvelous.php'),
+                __DIR__ . '/../../public/vendor/insyht/larvelous' => public_path('vendor/insyht/larvelous')
             ],
-            'insyht-larvelous-shop'
+            'insyht-larvelous'
         );
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');

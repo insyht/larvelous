@@ -23,8 +23,8 @@
         </div>
 @endsection
 @section('content')
-    @include('blocks/brands')
-    @include('blocks/usps')
-    @include('blocks/paragraph')
-    @include('blocks/cta')
+    @include('insyht-larvelous::blocks/brands')
+    @include('insyht-larvelous::blocks/usps')
+    @include('insyht-larvelous::blocks/paragraph')
+    @include('insyht-larvelous::blocks/cta')
 @endsection

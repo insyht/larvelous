@@ -132,20 +132,20 @@
 
         <div class="col">
             <div class="row mb-5">
-                @include('blocks.product.category')
-                @include('blocks.product.category')
+                @include('insyht-larvelous::blocks.product.category')
+                @include('insyht-larvelous::blocks.product.category')
             </div>
 
             <div class="row">
-                @include('blocks.product.product')
-                @include('blocks.product.product', ['sale' => true])
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
-                @include('blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product', ['sale' => true])
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
+                @include('insyht-larvelous::blocks.product.product')
             </div>
 
             <div class="row">

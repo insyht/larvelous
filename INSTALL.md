@@ -7,9 +7,16 @@
 - php artisan storage:link
 
 ## Build the CSS and JS
+### First, run this from within the plugin directory:
+- npm run build
+### Next, run this from within the project:
+- php artisan vendor:publish --tag=insyht-larvelous
 - npm run build
 
-- Run a password reset for the IWS account, so that a new password can be set
+## Set locale language to Dutch
+/config/app.php Change 'locale' to 'nl'
 
 ## Other steps
+- Run a password reset for the IWS account, so that a new password can be set
 - Remove the default Laravel "/" route from routes/web.php
+
