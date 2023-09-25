@@ -11,7 +11,6 @@
 - npm run build
 ### Next, run this from within the project:
 - php artisan vendor:publish --tag=insyht-larvelous
-- npm run build
 
 ## Set locale language to Dutch
 /config/app.php Change 'locale' to 'nl'
