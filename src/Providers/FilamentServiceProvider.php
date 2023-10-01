@@ -6,6 +6,7 @@ use Insyht\Larvelous\Filament\Resources\MenuResource;
 use Insyht\Larvelous\Filament\Resources\PageResource;
 use Insyht\Larvelous\Filament\Resources\TemplateResource;
 use Insyht\Larvelous\Filament\Resources\UserResource;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentServiceProvider extends \Filament\PluginServiceProvider
 {
