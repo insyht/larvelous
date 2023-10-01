@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Insyht\Larvelous\Forms\Components\Dropdown;
+use Insyht\Larvelous\Forms\Components\ExistingImageUpload;
+use Insyht\Larvelous\Forms\Components\Textarea;
+use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Models\BlockVariableType;
 
 class CreateCmsTables extends Migration
 {
@@ -26,6 +31,25 @@ class CreateCmsTables extends Migration
             $table->string('name', 50)->primary();
             $table->text('fqn');
         });
+        $blockVariableTypeTextfield = new BlockVariableType();
+        $blockVariableTypeTextfield->name = BlockVariableType::TYPE_TEXTFIELD;
+        $blockVariableTypeTextfield->fqn = TextInput::class;
+        $blockVariableTypeTextfield->save();
+
+        $blockVariableTypeTextarea = new BlockVariableType();
+        $blockVariableTypeTextarea->name = BlockVariableType::TYPE_TEXTAREA;
+        $blockVariableTypeTextfield->fqn = Textarea::class;
+        $blockVariableTypeTextarea->save();
+
+        $blockVariableTypeImage = new BlockVariableType();
+        $blockVariableTypeImage->name = BlockVariableType::TYPE_IMAGE;
+        $blockVariableTypeTextfield->fqn = ExistingImageUpload::class;
+        $blockVariableTypeImage->save();
+
+        $blockVariableTypeDropdown = new BlockVariableType();
+        $blockVariableTypeDropdown->name = BlockVariableType::TYPE_DROPDOWN;
+        $blockVariableTypeTextfield->fqn = Dropdown::class;
+        $blockVariableTypeDropdown->save();
 
         Schema::create('block_variables', function (Blueprint $table) {
             $table->id();

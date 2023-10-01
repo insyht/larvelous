@@ -15,6 +15,7 @@ class CmsSeeder extends Seeder
 {
     public function run()
     {
+        var_dump('Hoooooi');
         $language = new Language();
         $language->name = 'Nederlands';
         $language->abbreviation = 'nl';
@@ -32,25 +33,5 @@ class CmsSeeder extends Seeder
         $footerMenu->name = 'Footer menu';
         $footerMenu->position = 'footer_menu';
         $footerMenu->save();
-
-        $blockVariableTypeTextfield = new BlockVariableType();
-        $blockVariableTypeTextfield->name = BlockVariableType::TYPE_TEXTFIELD;
-        $blockVariableTypeTextfield->fqn = TextInput::class;
-        $blockVariableTypeTextfield->save();
-
-        $blockVariableTypeTextarea = new BlockVariableType();
-        $blockVariableTypeTextarea->name = BlockVariableType::TYPE_TEXTAREA;
-        $blockVariableTypeTextfield->fqn = Textarea::class;
-        $blockVariableTypeTextarea->save();
-
-        $blockVariableTypeImage = new BlockVariableType();
-        $blockVariableTypeImage->name = BlockVariableType::TYPE_IMAGE;
-        $blockVariableTypeTextfield->fqn = ExistingImageUpload::class;
-        $blockVariableTypeImage->save();
-
-        $blockVariableTypeDropdown = new BlockVariableType();
-        $blockVariableTypeDropdown->name = BlockVariableType::TYPE_DROPDOWN;
-        $blockVariableTypeTextfield->fqn = Dropdown::class;
-        $blockVariableTypeDropdown->save();
     }
 }
