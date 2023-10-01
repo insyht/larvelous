@@ -34,9 +34,9 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label(__('cms.title')),
+                TextColumn::make('title')->label(__('insyht-larvelous::cms.title')),
                 TextColumn::make('template.label'),
-                TextColumn::make('url')->label(__('cms.url')),
+                TextColumn::make('url')->label(__('insyht-larvelous::cms.url')),
             ])
             ->filters([
                 //
@@ -69,7 +69,7 @@ class PageResource extends Resource
                                       ->prefix(env('APP_URL') . '/')
                                       ->suffixAction(
                                           function (?string $state): Action {
-                                              return Action::make(__('cms.viewPage'))
+                                              return Action::make(__('insyht-larvelous::cms.viewPage'))
                                                            ->icon('heroicon-s-external-link')
                                                            ->url(
                                                                filled($state)
@@ -82,7 +82,7 @@ class PageResource extends Resource
                                       ->rules('alpha_dash'),
                 Dropdown::make('template_id')->required()
                                              ->options(Template::all()->pluck('label', 'id'))
-                                             ->label(__('cms.template')),
+                                             ->label(__('insyht-larvelous::cms.template')),
                 LanguageFormField::create(),
             ]);
     }
@@ -107,11 +107,11 @@ class PageResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('cms.page');
+        return __('insyht-larvelous::cms.page');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('cms.pages');
+        return __('insyht-larvelous::cms.pages');
     }
 }

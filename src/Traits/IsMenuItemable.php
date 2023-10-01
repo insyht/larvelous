@@ -8,6 +8,6 @@ trait IsMenuItemable
 {
     public function getTypeTranslation(): string
     {
-        return __('cms.' . strtolower((new ReflectionClass($this))->getShortName()));
+        return __('insyht-larvelous::cms.' . strtolower((new ReflectionClass($this))->getShortName()));
     }
 }

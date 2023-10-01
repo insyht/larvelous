@@ -33,11 +33,11 @@ class MenuResource extends Resource
                  TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->label(__('cms.name')),
+                    ->label(__('insyht-larvelous::cms.name')),
                  Dropdown::make('position')
                     ->options(static::$positionOptions)
                     ->required()
-                    ->label(__('cms.position')),
+                    ->label(__('insyht-larvelous::cms.position')),
             ]);
     }
 
@@ -46,12 +46,12 @@ class MenuResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                                         ->label(__('cms.name'))
+                                         ->label(__('insyht-larvelous::cms.name'))
                                          ->sortable()
                                          ->searchable(isIndividual: true),
                 TextColumn::make('position')
                                          ->enum(static::$positionOptions)
-                                         ->label(__('cms.position'))
+                                         ->label(__('insyht-larvelous::cms.position'))
                                          ->sortable(),
 
 
@@ -98,11 +98,11 @@ class MenuResource extends Resource
 
     public static function getModelLabel() : string
     {
-        return __('cms.menu');
+        return __('insyht-larvelous::cms.menu');
     }
 
     public static function getPluralModelLabel() : string
     {
-        return __('cms.menus');
+        return __('insyht-larvelous::cms.menus');
     }
 }

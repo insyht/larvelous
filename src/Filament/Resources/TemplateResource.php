@@ -30,16 +30,16 @@ class TemplateResource extends Resource
                 TextInput::make('resource_id')
                     ->required()
                     ->maxLength(100)
-                    ->label(__('cms.resourceId')),
+                    ->label(__('insyht-larvelous::cms.resourceId')),
                 TextInput::make('label')
                     ->required()
                     ->maxLength(100)
-                    ->label(__('cms.label')),
+                    ->label(__('insyht-larvelous::cms.label')),
                 TextInput::make('view')
                     ->required()
                     ->maxLength(100)
                     ->default('base')
-                    ->label(__('cms.templateView')),
+                    ->label(__('insyht-larvelous::cms.templateView')),
             ]);
     }
 

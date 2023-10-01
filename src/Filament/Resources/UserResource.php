@@ -33,19 +33,19 @@ class UserResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->label(__('cms.name')),
+                    ->label(__('insyht-larvelous::cms.name')),
                 TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255)
-                    ->label(__('cms.emailAddress')),
+                    ->label(__('insyht-larvelous::cms.emailAddress')),
                 TextInput::make('password')
                     ->password()
                     ->required()
                     ->maxLength(255)
-                    ->label(__('cms.password'))
+                    ->label(__('insyht-larvelous::cms.password'))
                     ->autocomplete('new-password'),
-                Dropdown::make('role')->required()->options(Role::all()->pluck('name', 'id'))->label(__('cms.role')),
+                Dropdown::make('role')->required()->options(Role::all()->pluck('name', 'id'))->label(__('insyht-larvelous::cms.role')),
             ]);
     }
 
@@ -53,8 +53,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label(__('cms.name')),
-                TextColumn::make('email')->label(__('cms.emailAddress')),
+                TextColumn::make('name')->label(__('insyht-larvelous::cms.name')),
+                TextColumn::make('email')->label(__('insyht-larvelous::cms.emailAddress')),
                 IconColumn::make('email_verified_at')
                           ->options([
                             'heroicon-o-check-circle',
@@ -62,8 +62,8 @@ class UserResource extends Resource
                           ])->colors([
                               'success',
                               'danger' => null
-                          ])->label(__('cms.emailVerified')),
-                TextColumn::make('roles')->label(__('cms.role'))->getStateUsing(function (Model $record) {
+                          ])->label(__('insyht-larvelous::cms.emailVerified')),
+                TextColumn::make('roles')->label(__('insyht-larvelous::cms.role'))->getStateUsing(function (Model $record) {
                     // Technically, a user can have multiple roles, but we limit it to 1
                     return $record->roles()->first()?->name;
                 })
@@ -82,18 +82,18 @@ class UserResource extends Resource
                               TextInput::make('name')
                                        ->required()
                                        ->maxLength(255)
-                                       ->label(__('cms.name')),
+                                       ->label(__('insyht-larvelous::cms.name')),
                               TextInput::make('email')
                                        ->email()
                                        ->required()
                                        ->maxLength(255)
-                                       ->label(__('cms.emailAddress')),
+                                       ->label(__('insyht-larvelous::cms.emailAddress')),
                               TextInput::make('password')
                                        ->password()
                                        ->maxLength(255)
-                                       ->label(__('cms.password'))
-                                       ->autocomplete('new-password')->hint(__('cms.passwordOnlyOnChange')),
-                              Dropdown::make('role')->required()->options(Role::all()->pluck('name', 'id'))->label(__('cms.role'))
+                                       ->label(__('insyht-larvelous::cms.password'))
+                                       ->autocomplete('new-password')->hint(__('insyht-larvelous::cms.passwordOnlyOnChange')),
+                              Dropdown::make('role')->required()->options(Role::all()->pluck('name', 'id'))->label(__('insyht-larvelous::cms.role'))
                           ])->using(function (Model $record, array $data): Model {
                                 $newPassword = $data['password'];
                                 if ($newPassword === null) {
@@ -107,7 +107,7 @@ class UserResource extends Resource
                           }),
                 DeleteAction::make()->before(function (DeleteAction $action) {
                     if ($action->getRecord()->name === 'IWS') {
-                        Notification::make()->warning()->body(__('cms.errors.deleteIwsAccountNotAllowed'))->send();
+                        Notification::make()->warning()->body(__('insyht-larvelous::cms.errors.deleteIwsAccountNotAllowed'))->send();
                         $action->halt();
                     }
                 }),

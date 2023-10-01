@@ -34,8 +34,8 @@ class BlocksRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                TextColumn::make('label')->label(__('cms.name')),
-                TextColumn::make('description')->label(__('cms.description')),
+                TextColumn::make('label')->label(__('insyht-larvelous::cms.name')),
+                TextColumn::make('description')->label(__('insyht-larvelous::cms.description')),
             ])
             ->actions([
                   EditAction::make()
@@ -196,12 +196,12 @@ class BlocksRelationManager extends RelationManager
 
     public static function getModelLabel(): string
     {
-        return __('cms.block');
+        return __('insyht-larvelous::cms.block');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('cms.blocks');
+        return __('insyht-larvelous::cms.blocks');
     }
 
     protected static function createFormField(BlockVariableValue $data, array $existingFields): Field

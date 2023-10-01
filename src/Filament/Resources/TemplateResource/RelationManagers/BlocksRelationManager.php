@@ -34,8 +34,8 @@ class BlocksRelationManager extends RelationManager
                       ->offColor('danger')
                       ->required()
                       ->inline(false)
-                      ->label(__('cms.enabled')),
-                TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
+                      ->label(__('insyht-larvelous::cms.enabled')),
+                TextInput::make('ordering')->required()->numeric()->label(__('insyht-larvelous::cms.ordering')),
                 Hidden::make('template_id'),
                 Hidden::make('pivot_ordering'),
             ]);
@@ -46,8 +46,8 @@ class BlocksRelationManager extends RelationManager
         return $table
             ->columns([
                 TextColumn::make('label'),
-                ToggleColumn::make('enabled')->label(__('cms.enabled')),
-                TextColumn::make('ordering')->label(__('cms.ordering')),
+                ToggleColumn::make('enabled')->label(__('insyht-larvelous::cms.enabled')),
+                TextColumn::make('ordering')->label(__('insyht-larvelous::cms.ordering')),
             ])
             ->filters([
                 //
@@ -58,13 +58,13 @@ class BlocksRelationManager extends RelationManager
                             ->form(function (AttachAction $action): array {
                                 return [
                                     $action->getRecordSelect(),
-                                    TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
+                                    TextInput::make('ordering')->required()->numeric()->label(__('insyht-larvelous::cms.ordering')),
                                     Toggle::make('enabled')
                                           ->required()
                                           ->default(true)
                                           ->onColor('success')
                                           ->offColor('danger')
-                                          ->label(__('cms.enabled')),
+                                          ->label(__('insyht-larvelous::cms.enabled')),
                                 ];
                             }),
             ])
@@ -95,12 +95,12 @@ class BlocksRelationManager extends RelationManager
 
     public static function getModelLabel(): string
     {
-        return __('cms.block');
+        return __('insyht-larvelous::cms.block');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('cms.blocks');
+        return __('insyht-larvelous::cms.blocks');
     }
 
 

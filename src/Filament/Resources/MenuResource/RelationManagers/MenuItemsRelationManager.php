@@ -57,17 +57,17 @@ class MenuItemsRelationManager extends RelationManager
                                          ->getStateUsing(function (Model $record): string {
                                              return $record->menuitemable->title;
                                          })
-                                         ->label(__('cms.title'))
+                                         ->label(__('insyht-larvelous::cms.title'))
                                          ->sortable()
                                          ->searchable(isIndividual: true, isGlobal: false),
                 TextColumn::make('type')
                                          ->getStateUsing(function (Model $record): string {
                                              return __($record->menuitemable->getTypeTranslation());
                                          })
-                                         ->label(__('cms.type'))
+                                         ->label(__('insyht-larvelous::cms.type'))
                                          ->sortable()
                                          ->searchable(isIndividual: true, isGlobal: false),
-                TextColumn::make('ordering')->label(__('cms.ordering'))->sortable(),
+                TextColumn::make('ordering')->label(__('insyht-larvelous::cms.ordering'))->sortable(),
             ])
             ->filters([
                 //
@@ -76,9 +76,9 @@ class MenuItemsRelationManager extends RelationManager
                 CreateAction::make()->form(fn (CreateAction $action): array => [
                     MorphToSelect::make('menuitemable')
                                  ->types(static::getMenuItemTypes())
-                                 ->label(__('cms.menuItemType'))
+                                 ->label(__('insyht-larvelous::cms.menuItemType'))
                                  ->required(),
-                    TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
+                    TextInput::make('ordering')->required()->numeric()->label(__('insyht-larvelous::cms.ordering')),
                 ])
             ])
             ->actions([
@@ -87,9 +87,9 @@ class MenuItemsRelationManager extends RelationManager
                     return [
                         MorphToSelect::make('menuitemable')
                                      ->types(static::getMenuItemTypes())
-                                     ->label(__('cms.menuItemType'))
+                                     ->label(__('insyht-larvelous::cms.menuItemType'))
                                      ->required(),
-                        TextInput::make('ordering')->required()->numeric()->label(__('cms.ordering')),
+                        TextInput::make('ordering')->required()->numeric()->label(__('insyht-larvelous::cms.ordering')),
                     ];
                 }),
                 Tables\Actions\DeleteAction::make(),
@@ -106,11 +106,11 @@ class MenuItemsRelationManager extends RelationManager
 
     public static function getModelLabel() : string
     {
-        return __('cms.item');
+        return __('insyht-larvelous::cms.item');
     }
 
     public static function getPluralModelLabel() : string
     {
-        return __('cms.items');
+        return __('insyht-larvelous::cms.items');
     }
 }
