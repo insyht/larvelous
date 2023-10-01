@@ -29,12 +29,6 @@ class LarvelousServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'insyht-larvelous');
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'insyht-larvelous');
 
-        $this->publishes([
-                             __DIR__ . '/../database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName(
-                                 'create_permission_tables.php'
-                             ),
-                         ], 'permission-migrations');
-
         if ($this->app->runningInConsole()) {
             $this->commands(
                 [
