@@ -34,7 +34,6 @@ class CreateCmsTables extends Migration
             $table->string('label', 100);
             $table->string('type', 50);
             $table->boolean('required')->unsigned();
-            $table->integer('required')->unsigned();
 
             $table->unique(['block_id', 'name', 'ordering']);
             $table->index('block_id');
