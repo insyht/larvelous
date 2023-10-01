@@ -38,17 +38,17 @@ class CreateCmsTables extends Migration
 
         $blockVariableTypeTextarea = new BlockVariableType();
         $blockVariableTypeTextarea->name = BlockVariableType::TYPE_TEXTAREA;
-        $blockVariableTypeTextfield->fqn = Textarea::class;
+        $blockVariableTypeTextarea->fqn = Textarea::class;
         $blockVariableTypeTextarea->save();
 
         $blockVariableTypeImage = new BlockVariableType();
         $blockVariableTypeImage->name = BlockVariableType::TYPE_IMAGE;
-        $blockVariableTypeTextfield->fqn = ExistingImageUpload::class;
+        $blockVariableTypeImage->fqn = ExistingImageUpload::class;
         $blockVariableTypeImage->save();
 
         $blockVariableTypeDropdown = new BlockVariableType();
         $blockVariableTypeDropdown->name = BlockVariableType::TYPE_DROPDOWN;
-        $blockVariableTypeTextfield->fqn = Dropdown::class;
+        $blockVariableTypeDropdown->fqn = Dropdown::class;
         $blockVariableTypeDropdown->save();
 
         Schema::create('block_variables', function (Blueprint $table) {
