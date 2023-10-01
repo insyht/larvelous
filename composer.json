@@ -56,15 +56,24 @@
         "Insyht\\Larvelous\\Providers\\AppServiceProvider",
         "Insyht\\Larvelous\\Providers\\EventServiceProvider",
         "Insyht\\Larvelous\\Providers\\PageServiceProvider",
-        "Insyht\\Larvelous\\Providers\\PluginServiceProvider"
+        "Insyht\\Larvelous\\Providers\\PluginServiceProvider",
+        "Insyht\\Larvelous\\Providers\\FilamentServiceProvider"
       ]
     }
   },
   "repositories": [
-    {
-      "type": "path",
-      "url": "../larvelous-base-blocks"
-    }
+        {
+            "type": "path",
+            "url": "../larvelous-shop"
+        },
+        {
+            "type": "path",
+            "url": "../larvelous"
+        },
+        {
+            "type": "path",
+            "url": "../larvelous-base-blocks"
+        }
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,

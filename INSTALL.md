@@ -10,7 +10,7 @@
 ### First, run this from within the plugin directory:
 - npm run build
 ### Next, run this from within the project:
-- php artisan vendor:publish --tag=insyht-larvelous
+- php artisan vendor:publish --tag=insyht-larvelous --force
 
 ## Set locale language to Dutch
 /config/app.php Change 'locale' to 'nl'
