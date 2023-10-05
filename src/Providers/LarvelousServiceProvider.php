@@ -19,7 +19,7 @@ class LarvelousServiceProvider extends ServiceProvider
                 __DIR__ . '/../../public/images' => public_path('storage/images'),
                 __DIR__ . '/../../config/insyht-larvelous.php' => config_path('insyht-larvelous.php'),
                 __DIR__ . '/../../public/vendor/insyht/larvelous' => public_path('vendor/insyht/larvelous'),
-                __DIR__ . '/../../public/vendor/insyht/larvelous/database/migrations/add_iws_admin_user.php.stub' => $this->generateMigrationName('add_iws_admin_user.php'),
+                __DIR__ . '/../../database/migrations/add_iws_admin_user.php.stub' => $this->generateMigrationName('add_iws_admin_user.php'),
             ],
             'insyht-larvelous'
         );

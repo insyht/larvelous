@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\View\View;
+use InvalidArgumentException;
 
 class Page extends Model
 {
@@ -63,6 +64,12 @@ class Page extends Model
                     $blockValue = $pageBlockVariable->blockVariableValues()
                                                     ->forPageAndBlockTemplate($this, $blockTemplate)
                                                     ->first();
+                    if (!$blockValue && !$pageBlockVariable->required) {
+                        continue;
+                    } elseif (!$blockValue && $pageBlockVariable->required !== 0) {
+                        // This block variable is required but does not have a value
+                        throw new InvalidArgumentException('This block variable is required but does not have a value');
+                    }
                     if (isset($blockValues->{$pageBlockVariable->name})) {
                         if (!is_array($blockValues->{$pageBlockVariable->name})) {
                             $backup = $blockValues->{$pageBlockVariable->name};

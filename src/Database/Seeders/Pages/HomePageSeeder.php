@@ -1,21 +1,21 @@
 <?php
 
-namespace Database\Seeders\Pages;
+namespace Insyht\Larvelous\Database\Seeders\Pages;
 
 use Insyht\Larvelous\Models\Language;
 use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Template;
 use Illuminate\Database\Seeder;
 
-class CategoryPageSeeder extends Seeder
+class HomePageSeeder extends Seeder
 {
     public function run()
     {
         $language = Language::where('name', 'Nederlands')->first();
 
         $template = new Template();
-        $template->resource_id = 'iws_category';
-        $template->label = 'Category template';
+        $template->resource_id = 'iws_home';
+        $template->label = 'Homepage template';
         $template->view = 'insyht-larvelous::base';
         $template->save();
         $template->refresh();
@@ -23,8 +23,8 @@ class CategoryPageSeeder extends Seeder
         $page = new Page();
         $page->language_id = $language->id;
         $page->template_id = $template->id;
-        $page->title = 'Categorie';
-        $page->url = 'categorie';
+        $page->title = 'Home';
+        $page->url = '';
         $page->save();
     }
 }

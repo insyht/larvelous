@@ -8,10 +8,7 @@
 
 
 Larvelous package:
-- Alle views moeten nu met namespace (insyht-larvelous::) genoemd worden
-- composer.json van iwscms2 nalopen en opschonen
-- Checken of alles op iwscms2.local net zo werkt als op iwscms.local
-- Kijken of ik met een script o.i.d. de standaard / route uit routes/web.php kan slopen van een Laravel installatie. Hij staat nu nog als handmatige stap in INSTALL.md
-- larvelous-base-blocks moet een dependency krijgen op larvelous via Composer. Dat werkte niet goed wanneer ik dat deed en ik bijv een composer update deed in iwscms2
-- Kaal Laravel project starten en dan kijken wat ik moet doen om Larvelous erin werkend te krijgen, en dit noteren in een .md in Larvelous
-- Het menu op iwscms2.local/admin is leeg, waarschijnlijk omdat ie alle Filament dingen in larvelous-shop niet inlaadt
+- larvelous-base-blocks mergen in larvelous
+- Zie de todo in Larvelous DatabaseSeeder
+- Alle migraties en seeders opschonen en misschien mergen/verplaatsen? Ook kijken wat ik nog meer kan seeden door af te kijken bij iwscms2.local
+- Een installatiescriptje maken voor alles in INSTALL.md

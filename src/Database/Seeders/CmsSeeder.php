@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Insyht\Larvelous\Database\Seeders;
 
 use Insyht\Larvelous\Forms\Components\Dropdown;
 use Insyht\Larvelous\Forms\Components\ExistingImageUpload;
@@ -15,7 +15,6 @@ class CmsSeeder extends Seeder
 {
     public function run()
     {
-        var_dump('Hoooooi');
         $language = new Language();
         $language->name = 'Nederlands';
         $language->abbreviation = 'nl';
