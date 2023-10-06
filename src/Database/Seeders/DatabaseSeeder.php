@@ -3,12 +3,14 @@
 namespace Insyht\Larvelous\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use Insyht\Larvelous\Database\Seeders\Home\BlockTemplateSeeder as HomeBlockTemplateSeeder;
 use Insyht\Larvelous\Database\Seeders\Home\BlockVariableValueSeeder as HomeBlockVariableValueSeeder;
 use Insyht\Larvelous\Database\Seeders\Category\BlockTemplateSeeder as CategoryBlockTemplateSeeder;
 use Insyht\Larvelous\Database\Seeders\Category\BlockVariableValueSeeder as CategoryBlockVariableValueSeeder;
 use Insyht\Larvelous\Database\Seeders\Pages\CategoryPageSeeder;
 use Insyht\Larvelous\Database\Seeders\Pages\HomePageSeeder;
+use Insyht\Larvelous\Models\Plugin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +31,13 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoryBlockTemplateSeeder::class);
         $this->call(CategoryBlockVariableValueSeeder::class);
 
-        // todo Load the seeders for every module
-        // $this->call(\Insyht\Package\Database\Seeders\DatabaseSeeder::class);
+        // Load the seeder(s) of every module
+        if (Schema::hasTable('plugins')) {
+        foreach (Plugin::active()->get() as $plugin) {
+            $namespace = $plugin->namespace . '\\Database\\Seeders\\DatabaseSeeder';
+            if (class_exists($namespace)) {
+                $this->call($namespace);
+            }
+        }
     }
 }

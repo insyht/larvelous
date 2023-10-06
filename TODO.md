@@ -7,6 +7,5 @@
 
 
 Larvelous package:
-- Zie de todo in Larvelous DatabaseSeeder
 - Alle migraties en seeders opschonen en misschien mergen/verplaatsen? Ook kijken wat ik nog meer kan seeden door af te kijken bij iwscms2.local
 - Een installatiescriptje maken voor alles in INSTALL.md
