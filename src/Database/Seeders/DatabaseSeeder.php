@@ -2,9 +2,13 @@
 
 namespace Insyht\Larvelous\Database\Seeders;
 
+use Illuminate\Database\Seeder;
+use Insyht\Larvelous\Database\Seeders\Home\BlockTemplateSeeder as HomeBlockTemplateSeeder;
+use Insyht\Larvelous\Database\Seeders\Home\BlockVariableValueSeeder as HomeBlockVariableValueSeeder;
+use Insyht\Larvelous\Database\Seeders\Category\BlockTemplateSeeder as CategoryBlockTemplateSeeder;
+use Insyht\Larvelous\Database\Seeders\Category\BlockVariableValueSeeder as CategoryBlockVariableValueSeeder;
 use Insyht\Larvelous\Database\Seeders\Pages\CategoryPageSeeder;
 use Insyht\Larvelous\Database\Seeders\Pages\HomePageSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,17 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(HomePageSeeder::class);
         $this->call(CategoryPageSeeder::class);
 
-        // todo This should be loaded dynamically, in a nicer way, for every module
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/DatabaseSeeder.php';
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/UserSeeder.php';
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/home/BlockTemplateSeeder.php';
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/home/BlockVariableValueSeeder.php';
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/category/BlockTemplateSeeder.php';
-//        require_once __DIR__ . '/../../vendor/insyht/larvelous-base-blocks/database/seeders/category/BlockVariableValueSeeder.php';
-//        \Illuminate\Support\Facades\Artisan::call(
-//            'migrate',
-//            ['--path' => 'vendor/insyht/larvelous-base-blocks/database/migrations', '--force' => true]
-//        );
-        $this->call(\Insyht\LarvelousBaseBlocks\Database\Seeders\DatabaseSeeder::class);
+        $this->call(UserSeeder::class);
+        // Homepage
+        $this->call(HomeBlockTemplateSeeder::class);
+        $this->call(HomeBlockVariableValueSeeder::class);
+        // Category page
+        $this->call(CategoryBlockTemplateSeeder::class);
+        $this->call(CategoryBlockVariableValueSeeder::class);
+
+        // todo Load the seeders for every module
+        // $this->call(\Insyht\Package\Database\Seeders\DatabaseSeeder::class);
     }
 }

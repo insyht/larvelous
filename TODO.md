@@ -3,12 +3,10 @@
   - php artisan vendor:publish --tag=insyht-larvelous-shop --force
 - Even de TODOs nalopen in larvelous-shop
 - Deployment werkt niet meer, hij loopt te zeuren over een missende versie van insyht/larvelous
-- Larvelous-base-blocks (en Larvelous zelf) ombouwen tot Laravel packages: https://laravel.com/docs/10.x/packages
 - Unit en feature test in larvelous-shop werkend maken
 
 
 Larvelous package:
-- larvelous-base-blocks mergen in larvelous
 - Zie de todo in Larvelous DatabaseSeeder
 - Alle migraties en seeders opschonen en misschien mergen/verplaatsen? Ook kijken wat ik nog meer kan seeden door af te kijken bij iwscms2.local
 - Een installatiescriptje maken voor alles in INSTALL.md
