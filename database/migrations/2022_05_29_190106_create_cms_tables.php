@@ -9,7 +9,11 @@ use Insyht\Larvelous\Forms\Components\ExistingImageUpload;
 use Insyht\Larvelous\Forms\Components\Textarea;
 use Insyht\Larvelous\Forms\Components\TextInput;
 use Insyht\Larvelous\Models\Block;
+use Insyht\Larvelous\Models\BlockTemplate;
+use Insyht\Larvelous\Models\BlockVariable;
+use Insyht\Larvelous\Models\BlockVariableOption;
 use Insyht\Larvelous\Models\BlockVariableType;
+use Insyht\Larvelous\Models\Template;
 
 class CreateCmsTables extends Migration
 {
@@ -184,7 +188,7 @@ class CreateCmsTables extends Migration
 
         Schema::create('menu_item_types', function (Blueprint $table) {
             $table->id();
-            $table->string('classname');
+            $table->string('classname')->default('');
             $table->string('title_column');
 
             $table->unique(['classname']);
@@ -193,6 +197,17 @@ class CreateCmsTables extends Migration
         $type->classname = '\Insyht\Larvelous\Models\Page::class';
         $type->title_column = 'title';
         $type->save();
+
+        Schema::create('plugins', function (Blueprint $table) {
+            $table->id();
+            $table->string('base', 50);
+            $table->string('name', 50);
+            $table->string('path', 50);
+            $table->text('namespace');
+            $table->text('github_url');
+            $table->boolean('active')->default(1);
+            $table->string('author', 100);
+        });
     }
 
     protected function destroyLarvelousStructure(): void
@@ -359,7 +374,7 @@ class CreateCmsTables extends Migration
         $blockVariable->save();
     }
 
-    protected function creatNewsletterBlock(): void
+    protected function createNewsletterBlock(): void
     {
         // blocks
         $newsletterBlock = new Block();
@@ -777,6 +792,7 @@ class CreateCmsTables extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('plugins');
         $this->destroyBlocks();
         $this->destroyLarvelousStructure();
     }

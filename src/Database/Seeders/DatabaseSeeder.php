@@ -33,10 +33,11 @@ class DatabaseSeeder extends Seeder
 
         // Load the seeder(s) of every module
         if (Schema::hasTable('plugins')) {
-        foreach (Plugin::active()->get() as $plugin) {
-            $namespace = $plugin->namespace . '\\Database\\Seeders\\DatabaseSeeder';
-            if (class_exists($namespace)) {
-                $this->call($namespace);
+            foreach (Plugin::active()->get() as $plugin) {
+                $namespace = $plugin->namespace . '\\Database\\Seeders\\DatabaseSeeder';
+                if (class_exists($namespace)) {
+                    $this->call($namespace);
+                }
             }
         }
     }
