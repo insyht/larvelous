@@ -7,5 +7,6 @@
 
 
 Larvelous package:
-- Alle migraties en seeders opschonen en misschien mergen/verplaatsen? Ook kijken wat ik nog meer kan seeden door af te kijken bij iwscms2.local
+- Alle migraties en seeders opschonen en misschien mergen/verplaatsen?
+- Alle data in de seeders aanpassen zodat het algemenere informatie is, dus niet meer dingen als linda@musthaves4u.nl. Misschien d.m.v. Faker?
 - Een installatiescriptje maken voor alles in INSTALL.md

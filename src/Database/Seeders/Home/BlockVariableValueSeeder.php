@@ -60,16 +60,15 @@ class BlockVariableValueSeeder extends Seeder
         $newsletterImageLeftBlockVariable = BlockVariable::where('name', 'image_left')
                                                          ->where('block_id', $newsletterBlock->id)
                                                          ->first();
-        $newsletterTitleBlockVariable = BlockVariable::where('name', 'title')
-                                                     ->where('block_id', $newsletterBlock->id)
-                                                     ->first();
-        $newsletterTextBlockVariable = BlockVariable::where('name', 'text')
-                                                    ->where('block_id', $newsletterBlock->id)
-                                                    ->first();
         $newsletterImageRightBlockVariable = BlockVariable::where('name', 'image_right')
                                                           ->where('block_id', $newsletterBlock->id)
                                                           ->first();
-
+        $newsletterTextBlockVariable = BlockVariable::where('name', 'text')
+                                                    ->where('block_id', $newsletterBlock->id)
+                                                    ->first();
+        $newsletterTitleBlockVariable = BlockVariable::where('name', 'title')
+                                                     ->where('block_id', $newsletterBlock->id)
+                                                     ->first();
         $ctaTitleBlockVariable = BlockVariable::where('name', 'title')->where('block_id', $ctaBlock->id)->first();
         $ctaTextBlockVariable = BlockVariable::where('name', 'text')->where('block_id', $ctaBlock->id)->first();
         $ctaImageBlockVariable = BlockVariable::where('name', 'image')->where('block_id', $ctaBlock->id)->first();
@@ -107,6 +106,30 @@ class BlockVariableValueSeeder extends Seeder
                                               ->where('template_id', $template->id)
                                               ->first();
 
+        // Image attention
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $attentionImageLeftBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
+        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $attentionImageRightTopBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
+        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $attentionImageRightBottomBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
+        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->save();
 
         // First paragraph
         $blockVariableValue = new BlockVariableValue();
@@ -116,7 +139,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
@@ -125,7 +147,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
         $blockVariableValue->value = 'Consectetur adipiscing elit. Proin ut magna et nibh dictum dignissim. Curabitur imperdiet tellus ac dolor dictum consequat. Morbi placerat mauris ac eros tincidunt, ut tristique sem ornare. Cras vitae libero dolor. Vestibulum blandit dapibus mi, in aliquam metus. Nulla tristique fermentum massa a interdum. Nullam lectus quam, hendrerit sollicitudin aliquet vitae, luctus sollicitudin massa. Nullam et volutpat lacus. Nam faucibus lorem mauris, vitae ornare ligula maximus facilisis.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
@@ -134,16 +155,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
-
-        $blockVariableValue = new BlockVariableValue(); // id=18
-        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
-        $blockVariableValue->language_id = $language->id;
-        $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
-        $blockVariableValue->value = 'left';
-        $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
@@ -152,7 +163,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
         $blockVariableValue->value = '/home';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
@@ -161,7 +171,14 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
         $blockVariableValue->value = 'Lees meer';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue(); // id=18
+        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'left';
+        $blockVariableValue->save();
 
         // Second paragraph
         $blockVariableValue = new BlockVariableValue();
@@ -171,7 +188,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
@@ -180,7 +196,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
         $blockVariableValue->value = 'Consectetur adipiscing elit. Proin ut magna et nibh dictum dignissim. Curabitur imperdiet tellus ac dolor dictum consequat. Morbi placerat mauris ac eros tincidunt, ut tristique sem ornare. Cras vitae libero dolor. Vestibulum blandit dapibus mi, in aliquam metus. Nulla tristique fermentum massa a interdum. Nullam lectus quam, hendrerit sollicitudin aliquet vitae, luctus sollicitudin massa. Nullam et volutpat lacus. Nam faucibus lorem mauris, vitae ornare ligula maximus facilisis.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
@@ -189,7 +204,22 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '/home';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = 'Lees meer';
+        $blockVariableValue->save();
 
         $blockVariableValue = new BlockVariableValue(); // id=21
         $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
@@ -198,7 +228,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
         $blockVariableValue->value = 'right';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         // Third paragraph
         $blockVariableValue = new BlockVariableValue();
@@ -208,7 +237,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
@@ -217,7 +245,38 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
         $blockVariableValue->value = 'Consectetur adipiscing elit. Proin ut magna et nibh dictum dignissim. Curabitur imperdiet tellus ac dolor dictum consequat. Morbi placerat mauris ac eros tincidunt, ut tristique sem ornare. Cras vitae libero dolor. Vestibulum blandit dapibus mi, in aliquam metus. Nulla tristique fermentum massa a interdum. Nullam lectus quam, hendrerit sollicitudin aliquet vitae, luctus sollicitudin massa. Nullam et volutpat lacus. Nam faucibus lorem mauris, vitae ornare ligula maximus facilisis.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
+        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
+        $blockVariableValue->value = '/home';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
+        $blockVariableValue->value = 'Lees meer';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue(); // id=18
+        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock3->id;
+        $blockVariableValue->value = 'left';
+        $blockVariableValue->save();
 
         // Fourth paragraph
         $blockVariableValue = new BlockVariableValue();
@@ -227,7 +286,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
@@ -236,35 +294,38 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
         $blockVariableValue->value = 'Consectetur adipiscing elit. Proin ut magna et nibh dictum dignissim. Curabitur imperdiet tellus ac dolor dictum consequat. Morbi placerat mauris ac eros tincidunt, ut tristique sem ornare. Cras vitae libero dolor. Vestibulum blandit dapibus mi, in aliquam metus. Nulla tristique fermentum massa a interdum. Nullam lectus quam, hendrerit sollicitudin aliquet vitae, luctus sollicitudin massa. Nullam et volutpat lacus. Nam faucibus lorem mauris, vitae ornare ligula maximus facilisis.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
-
-        // Image attention
-        $blockVariableValue = new BlockVariableValue();
-        $blockVariableValue->block_variable_id = $attentionImageLeftBlockVariable->id;
-        $blockVariableValue->language_id = $language->id;
-        $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
-        $blockVariableValue->value = 'images/placeholder.jpg';
-        $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
-        $blockVariableValue->block_variable_id = $attentionImageRightTopBlockVariable->id;
+        $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
         $blockVariableValue->language_id = $language->id;
         $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
-        $blockVariableValue->block_variable_id = $attentionImageRightBottomBlockVariable->id;
+        $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
         $blockVariableValue->language_id = $language->id;
         $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseImageAttentionTemplateBlock->id;
-        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
+        $blockVariableValue->value = '/home';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
+        $blockVariableValue->value = 'Lees meer';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue(); // id=21
+        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock4->id;
+        $blockVariableValue->value = 'right';
+        $blockVariableValue->save();
 
         // Newsletter
         $blockVariableValue = new BlockVariableValue();
@@ -274,25 +335,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
-
-        $blockVariableValue = new BlockVariableValue();
-        $blockVariableValue->block_variable_id = $newsletterTitleBlockVariable->id;
-        $blockVariableValue->language_id = $language->id;
-        $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
-        $blockVariableValue->value = 'Aanmelden nieuwsbrief';
-        $blockVariableValue->save();
-        $blockVariableValue->refresh();
-
-        $blockVariableValue = new BlockVariableValue();
-        $blockVariableValue->block_variable_id = $newsletterTextBlockVariable->id;
-        $blockVariableValue->language_id = $language->id;
-        $blockVariableValue->page_id = $page->id;
-        $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
-        $blockVariableValue->value = 'Voor info over de nieuwste musthaves!';
-        $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $newsletterImageRightBlockVariable->id;
@@ -301,7 +343,22 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $newsletterTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
+        $blockVariableValue->value = 'Voor info over de nieuwste musthaves!';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $newsletterTitleBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseNewsletterTemplateBlock->id;
+        $blockVariableValue->value = 'Aanmelden nieuwsbrief';
+        $blockVariableValue->save();
 
         // CTA
         $blockVariableValue = new BlockVariableValue();
@@ -311,7 +368,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaTextBlockVariable->id;
@@ -320,7 +376,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut magna et nibh.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaImageBlockVariable->id;
@@ -329,7 +384,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaNameBlockVariable->id;
@@ -338,7 +392,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'Linda Vishers';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaFunctionBlockVariable->id;
@@ -347,7 +400,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'CEO';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaPhoneBlockVariable->id;
@@ -356,7 +408,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = '06 12 34 56 78';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaEmailBlockVariable->id;
@@ -365,7 +416,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'linda@musthaves4u.nl';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaUrlBlockVariable->id;
@@ -374,7 +424,6 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = '/contact';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
 
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $ctaUrlTextBlockVariable->id;
@@ -383,6 +432,5 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->block_template_id = $baseCtaTemplateBlock->id;
         $blockVariableValue->value = 'Neem contact op';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
     }
 }

@@ -1,4 +1,4 @@
-<div class="row header pt-3 pt-sm-0 pb-3 mt-0 pb-sm-0 text-center text-sm-start" style="background-image:url('{{ url('/images/fader.png') }}')@if(isset($block->getBlockValues()->image)), url('{{ url($block->getBlockValues()->image) }}')@endif;">
+<div class="row header pt-3 pt-sm-0 pb-3 mt-0 pb-sm-0 text-center text-sm-start" style="background-image:url('{{ url('/storage/images/fader.png') }}')@if(isset($block->getBlockValues()->image)), url('{{ url($block->getBlockValues()->image) }}')@endif;">
     <div class="col-12 col-sm-4 offset-sm- mt-sm-5 mb-sm-5">
         <h1 class="font-special">{{ $block->getBlockValues()->title }}</h1>
         <p class="fst-italic text-muted">{{ $block->getBlockValues()->subtitle }}</p>

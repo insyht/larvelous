@@ -33,6 +33,23 @@ class BlockVariableValueSeeder extends Seeder
                                           ->where('template_id', $template->id)
                                           ->first();
 
+        $paragraphBlock = Block::where('resource_id', 'iws_paragraph')->first();
+        $paragraphTitleBlockVariable = BlockVariable::where('name', 'title')->where('block_id', $paragraphBlock->id)->first();
+        $paragraphTextBlockVariable = BlockVariable::where('name', 'text')->where('block_id', $paragraphBlock->id)->first();
+        $paragraphImageBlockVariable = BlockVariable::where('name', 'image')->where('block_id', $paragraphBlock->id)->first();
+        $paragraphUrlBlockVariable = BlockVariable::where('name', 'url')->where('block_id', $paragraphBlock->id)->first();
+        $paragraphUrlTextBlockVariable = BlockVariable::where('name', 'url_text')->where('block_id', $paragraphBlock->id)->first();
+        $paragraphImagePositionBlockVariable1 = BlockVariable::where('name', 'image_position')->where('block_id', $paragraphBlock->id)->first();
+
+        $baseParagraphTemplateBlock1 = BlockTemplate::where('block_id', $paragraphBlock->id)
+                                                    ->where('template_id', $template->id)
+                                                    ->where('ordering', 2)
+                                                    ->first();
+        $baseParagraphTemplateBlock2 = BlockTemplate::where('block_id', $paragraphBlock->id)
+                                                    ->where('template_id', $template->id)
+                                                    ->where('ordering', 3)
+                                                    ->first();
+
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $heroImageBlockVariable->id;
         $blockVariableValue->language_id = $language->id;
@@ -40,15 +57,98 @@ class BlockVariableValueSeeder extends Seeder
         $blockVariableValue->value = 'images/placeholder.jpg';
         $blockVariableValue->block_template_id = $baseHeroTemplateBlock->id;
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
-
         $blockVariableValue = new BlockVariableValue();
         $blockVariableValue->block_variable_id = $heroTextBlockVariable->id;
         $blockVariableValue->language_id = $language->id;
         $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->value = 'Category text';
         $blockVariableValue->block_template_id = $baseHeroTemplateBlock->id;
-        $blockVariableValue->value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ullamcorper, purus a volutpat euismod, risus orci ultrices turpis, ut ornare elit quam tristique felis. Sed ac mauris efficitur, tempor ante ac, venenatis magna. Vestibulum eget faucibus mauris, et condimentum nibh. Duis gravida augue id pharetra semper. Cras imperdiet, purus non imperdiet ultricies, odio odio venenatis felis, vitae tempor tortor turpis eu turpis.';
         $blockVariableValue->save();
-        $blockVariableValue->refresh();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphTitleBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'Category titel';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'Category text';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'images/placeholder.jpg';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'category.com';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = 'category link';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue(); // id=18
+        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock1->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphTitleBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphImageBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue();
+        $blockVariableValue->block_variable_id = $paragraphUrlTextBlockVariable->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
+        $blockVariableValue = new BlockVariableValue(); // id=18
+        $blockVariableValue->block_variable_id = $paragraphImagePositionBlockVariable1->id;
+        $blockVariableValue->language_id = $language->id;
+        $blockVariableValue->page_id = $page->id;
+        $blockVariableValue->block_template_id = $baseParagraphTemplateBlock2->id;
+        $blockVariableValue->value = '';
+        $blockVariableValue->save();
     }
 }

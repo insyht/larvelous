@@ -13,6 +13,9 @@ use Insyht\Larvelous\Models\BlockTemplate;
 use Insyht\Larvelous\Models\BlockVariable;
 use Insyht\Larvelous\Models\BlockVariableOption;
 use Insyht\Larvelous\Models\BlockVariableType;
+use Insyht\Larvelous\Models\Language;
+use Insyht\Larvelous\Models\MenuItemType;
+use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Template;
 
 class CreateCmsTables extends Migration
@@ -25,6 +28,12 @@ class CreateCmsTables extends Migration
     public function up()
     {
         $this->createLarvelousStructure();
+
+        $language = new Language();
+        $language->name = 'Nederlands';
+        $language->abbreviation = 'nl';
+        $language->save();
+
         $this->createBlocks();
     }
 
@@ -193,8 +202,8 @@ class CreateCmsTables extends Migration
 
             $table->unique(['classname']);
         });
-        $type = new \Insyht\Larvelous\Models\MenuItemType();
-        $type->classname = '\Insyht\Larvelous\Models\Page::class';
+        $type = new MenuItemType();
+        $type->classname = Page::class;
         $type->title_column = 'title';
         $type->save();
 
@@ -426,35 +435,35 @@ class CreateCmsTables extends Migration
     protected function createCtaBlock(): void
     {
         // blocks
-        $newsletterBlock = new Block();
-        $newsletterBlock->resource_id = 'iws_cta';
-        $newsletterBlock->view = 'insyht-larvelous::blocks.cta';
-        $newsletterBlock->label = 'Call to action';
-        $newsletterBlock->description = 'Call to action';
-        $newsletterBlock->save();
-        $newsletterBlock->refresh();
+        $ctaBlock = new Block();
+        $ctaBlock->resource_id = 'iws_cta';
+        $ctaBlock->view = 'insyht-larvelous::blocks.cta';
+        $ctaBlock->label = 'Call to action';
+        $ctaBlock->description = 'Call to action';
+        $ctaBlock->save();
+        $ctaBlock->refresh();
 
         // blocks_variables
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'email';
         $blockVariable->label = 'cms.emailAddress';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
-        $blockVariable->ordering = 1;
+        $blockVariable->ordering = 7;
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'function';
         $blockVariable->label = 'cms.function';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
-        $blockVariable->ordering = 2;
+        $blockVariable->ordering = 5;
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'image';
         $blockVariable->label = 'cms.image';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
@@ -463,7 +472,7 @@ class CreateCmsTables extends Migration
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'name';
         $blockVariable->label = 'cms.name';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
@@ -472,34 +481,34 @@ class CreateCmsTables extends Migration
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'phone_number';
         $blockVariable->label = 'cms.phoneNumber';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
-        $blockVariable->required = 1;
-        $blockVariable->ordering = 5;
-        $blockVariable->save();
-
-        $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
-        $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
-        $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 1;
         $blockVariable->ordering = 6;
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
+        $blockVariable->name = 'text';
+        $blockVariable->label = 'cms.text';
+        $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
+        $blockVariable->required = 1;
+        $blockVariable->ordering = 2;
+        $blockVariable->save();
+
+        $blockVariable = new BlockVariable();
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'title';
         $blockVariable->label = 'cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
-        $blockVariable->ordering = 7;
+        $blockVariable->ordering = 1;
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'url';
         $blockVariable->label = 'cms.url';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
@@ -508,7 +517,7 @@ class CreateCmsTables extends Migration
         $blockVariable->save();
 
         $blockVariable = new BlockVariable();
-        $blockVariable->block_id = $newsletterBlock->id;
+        $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'url_text';
         $blockVariable->label = 'cms.urlText';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
@@ -552,10 +561,17 @@ class CreateCmsTables extends Migration
     {
         $template = new Template();
         $template->resource_id = 'iws_landing_page';
-        $template->label = 'Landing page';
+        $template->label = 'Landing page template';
         $template->view = 'insyht-larvelous::landingpage';
         $template->save();
         $template->refresh();
+
+        $page = new Page();
+        $page->language_id = Language::where('name', 'Nederlands')->first()->id;
+        $page->template_id = $template->id;
+        $page->title = 'Landingspagina';
+        $page->url = 'landingspagina';
+        $page->save();
 
         // Header block
         $landingPageHeaderBlock = new Block();
@@ -663,6 +679,7 @@ class CreateCmsTables extends Migration
         $variable->type = BlockVariableType::TYPE_TEXTFIELD;
         $variable->required = 1;
         $variable->ordering = 1;
+        $variable->save();
 
         for ($i = 2; $i <= 5; $i++) {
             $blockVariable = new BlockVariable();
@@ -717,7 +734,7 @@ class CreateCmsTables extends Migration
             $blockVariable->label = 'cms.icon';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
-            $blockVariable->ordering = $i;
+            $blockVariable->ordering = (($i - 1) * 3) + 1;
             $blockVariable->save();
 
             $blockVariable = new BlockVariable();
@@ -726,7 +743,7 @@ class CreateCmsTables extends Migration
             $blockVariable->label = 'cms.title';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
-            $blockVariable->ordering = $i + 1;
+            $blockVariable->ordering = (($i - 1) * 3) + 2;
             $blockVariable->save();
 
             $blockVariable = new BlockVariable();
@@ -735,7 +752,7 @@ class CreateCmsTables extends Migration
             $blockVariable->label = 'cms.text';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
-            $blockVariable->ordering = $i + 2;
+            $blockVariable->ordering = (($i - 1) * 3) + 3;
             $blockVariable->save();
         }
 
