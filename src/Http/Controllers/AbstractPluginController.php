@@ -3,7 +3,9 @@
 namespace Insyht\Larvelous\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Collection;
 use ReflectionClass;
 
 abstract class AbstractPluginController extends Controller
@@ -41,5 +43,21 @@ abstract class AbstractPluginController extends Controller
         }
 
         return $view;
+    }
+
+    protected function paginateCollection(Collection $collection, int $perPage = 10): LengthAwarePaginator
+    {
+        $page = LengthAwarePaginator::resolveCurrentPage();
+
+        return new LengthAwarePaginator(
+            $collection->forPage($page, $perPage)->values(),
+            $collection->count(),
+            $perPage,
+            $page,
+            [
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'pageName' => 'page',
+            ]
+        );
     }
 }
