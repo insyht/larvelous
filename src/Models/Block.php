@@ -21,6 +21,11 @@ class Block extends Model
         return $this->belongsToMany(Template::class)->using(BlockTemplate::class)->withPivot(['id', 'ordering']);
     }
 
+    public function themes()
+    {
+        return $this->belongsToMany(Theme::class)->withPivot('template_path');
+    }
+
     public function getDottedViewPath(): string
     {
         return str_replace('/', '.', $this->view);

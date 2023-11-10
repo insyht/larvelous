@@ -20,7 +20,21 @@ class BlockTemplate extends Pivot
 
     public function getView()
     {
-        return $this->block->view;
+        $view = $this->block->view;
+
+        // Use the active theme's Blade template for this block if it exists
+        $activeTheme = app('activeTheme');
+        if ($activeTheme->blocks->contains($this->block)) {
+            $templatePath = strtolower(str_replace('\\', '-', $activeTheme->namespace))
+                            . '::'
+                            . $activeTheme->blocks()->where('block_id', $this->block->id)->first()->pivot->template_path;
+
+            if (view()->exists($templatePath)) {
+                return $templatePath;
+            }
+        }
+
+        return $view;
     }
 
     public function template()

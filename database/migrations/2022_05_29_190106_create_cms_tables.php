@@ -217,6 +217,31 @@ class CreateCmsTables extends Migration
             $table->boolean('active')->default(1);
             $table->string('author', 100);
         });
+
+        Schema::create('themes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->string('path', 100);
+            $table->text('namespace');
+            $table->text('github_url');
+            $table->boolean('active')->default(1);
+            $table->string('author', 100);
+        });
+
+        Schema::create('block_theme', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('block_id', false, true);
+            $table->bigInteger('theme_id', false, true);
+            $table->text('template_path');
+
+            $table->unique(['block_id', 'theme_id']);
+            $table->index('block_id');
+            $table->index('theme_id');
+
+            $table->foreign('block_id')->references('id')->on('blocks')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('theme_id')->references('id')->on('themes')->onUpdate('cascade')->onDelete('cascade');
+        });
+
     }
 
     protected function destroyLarvelousStructure(): void

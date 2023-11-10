@@ -4,6 +4,7 @@ namespace Insyht\Larvelous\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Insyht\Larvelous\Console\Install;
+use Insyht\Larvelous\Models\Theme;
 
 class LarvelousServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,14 @@ class LarvelousServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'insyht-larvelous');
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'insyht-larvelous');
+        $this->loadViewsFrom(
+            base_path() . '/vendor/' . app('defaultTheme')->path,
+            strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
+        );
+        $this->loadViewsFrom(
+            base_path() . '/vendor/' . app('activeTheme')->path,
+            strtolower(str_replace('\\', '-', app('activeTheme')->namespace))
+        );
 
         if ($this->app->runningInConsole()) {
             $this->commands(
