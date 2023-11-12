@@ -36,6 +36,11 @@ return [
     'quote' => 'Quote',
     'city' => 'Woonplaats',
     'icon' => 'Icoon',
+    'theme' => 'Thema',
+    'themes' => 'Thema\'s',
+    'activate' => 'Activeer',
+    'delete' => 'Verwijder',
+    'active' => 'Actief',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',
