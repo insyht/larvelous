@@ -12,7 +12,7 @@ class Theme extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'path', 'namespace', 'github_url', 'active', 'author'];
+    protected $fillable = ['name', 'path', 'namespace', 'github_url', 'image', 'active', 'author'];
 
     protected $casts = [
         'active' => 'boolean',

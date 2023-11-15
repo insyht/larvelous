@@ -224,6 +224,7 @@ class CreateCmsTables extends Migration
             $table->string('path', 100);
             $table->text('namespace');
             $table->text('github_url');
+            $table->text('image')->nullable();
             $table->boolean('active')->default(1);
             $table->string('author', 100);
         });

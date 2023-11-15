@@ -4,6 +4,7 @@ namespace Insyht\Larvelous\Filament\Resources;
 
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Insyht\Larvelous\Filament\Resources\ThemeResource\Pages\ListThemes;
 use Insyht\Larvelous\Models\Theme;
@@ -11,6 +12,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class ThemeResource extends Resource
 {
@@ -37,6 +39,11 @@ class ThemeResource extends Resource
                                         return $record->active ? __('insyht-larvelous::cms.active') : '';
                                     }),
                           TextColumn::make('author')->extraAttributes(['class' => 'italic']),
+                          ImageColumn::make('image')
+                                     ->url(fn(Theme $record) => Storage::url($record->image))
+                                     ->width('500px')
+                                     ->height('250px')
+                          ->defaultImageUrl(Storage::url('images/placeholder.jpg'))
                       ])
             ->filters([])
             ->actions([

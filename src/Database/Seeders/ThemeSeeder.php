@@ -15,6 +15,7 @@ class ThemeSeeder extends Seeder
                 'path' => 'insyht/larvelous/resources/views',
                 'namespace' => 'Insyht\Larvelous',
                 'github_url' => '',
+                'image' => 'images/larvelous-theme.jpg',
                 'active' => true,
                 'author' => 'insyht',
             ]
