@@ -243,6 +243,14 @@ class CreateCmsTables extends Migration
             $table->foreign('theme_id')->references('id')->on('themes')->onUpdate('cascade')->onDelete('cascade');
         });
 
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->text('value');
+            $table->boolean('hidden')->default(true);
+            $table->index('name');
+            $table->unique(['name', 'value']);
+        });
     }
 
     protected function destroyLarvelousStructure(): void

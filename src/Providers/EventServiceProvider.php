@@ -5,6 +5,8 @@ namespace Insyht\Larvelous\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Insyht\Larvelous\Models\Setting;
+use Insyht\Larvelous\Observers\SettingObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Setting::observe(SettingObserver::class);
     }
 
     /**

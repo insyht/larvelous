@@ -12,6 +12,6 @@ class CreateTemplate extends CreateRecord
     public function mount() : void
     {
         parent::mount();
-        abort_unless(auth()->user()->hasRole('Admin'), 403);
+        abort_unless(auth()->user()->hasRole('admin'), 403);
     }
 }

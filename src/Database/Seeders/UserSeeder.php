@@ -2,8 +2,10 @@
 
 namespace Insyht\Larvelous\Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -27,5 +29,7 @@ class UserSeeder extends Seeder
                      );';
         DB::statement($query);
 
+        Role::create(['name' => 'admin']);
+        User::where('name', 'Jordy')->first()->assignRole('admin');
     }
 }

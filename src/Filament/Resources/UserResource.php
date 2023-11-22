@@ -133,7 +133,7 @@ class UserResource extends Resource
 
     protected static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('Admin');
+        return auth()->user()->hasRole('admin');
     }
 
     public static function getEloquentQuery() : \Illuminate\Database\Eloquent\Builder

@@ -15,6 +15,10 @@
 ## Set locale language to Dutch
 /config/app.php Change 'locale' to 'nl'
 
+## Setup queues
+php artisan queue:table
+php artisan migrate
+
 ## Other steps
 - Run a password reset for the IWS account, so that a new password can be set
 - Remove the default Laravel "/" route from routes/web.php
@@ -22,13 +26,15 @@
 # Install notes - beta
 - composer create-project laravel/laravel jordytest
 - correct .env (especially the database config)
-	APP_URL=https://jordytest.local
-	DB_CONNECTION=mysql
-	DB_HOST=mysql
-	DB_PORT=3306
-	DB_DATABASE=jordytest
-	DB_USERNAME=root
-	DB_PASSWORD=
+    APP_URL=https://jordytest.local
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=jordytest
+    DB_USERNAME=root
+    DB_PASSWORD=
+    QUEUE_CONNECTION=database
+
 
 - create database
 
@@ -68,3 +74,4 @@
 
 locale in config/app.php op 'nl' zetten (is standaard 'en')
 
+php artisan queue:work (in een screen draaien en/of als cronjob. Gebruik Supervisor: https://laravel.com/docs/10.x/queues#supervisor-configuration)

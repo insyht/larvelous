@@ -22,7 +22,7 @@ class ListUsers extends ListRecords
     public function mount() : void
     {
         parent::mount();
-        abort_unless(auth()->user()->hasRole('Admin'), 403);
+        abort_unless(auth()->user()->hasRole('admin'), 403);
     }
 
     public function isTableRecordSelectable(): ?Closure

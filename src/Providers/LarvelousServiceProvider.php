@@ -3,18 +3,23 @@
 namespace Insyht\Larvelous\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Insyht\Larvelous\Console\Commands\ResetColors;
 use Insyht\Larvelous\Console\Install;
-use Insyht\Larvelous\Models\Theme;
+use Insyht\Larvelous\Models\Setting;
 
 class LarvelousServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        //
+        $this->commands([ResetColors::class]);
     }
 
     public function boot()
     {
+        if (!file_exists(Setting::CUSTOM_COLORS_PATH)) {
+            file_put_contents(Setting::CUSTOM_COLORS_PATH, '');
+        }
+
         $this->publishes(
             [
                 __DIR__ . '/../../public/images' => public_path('images'),

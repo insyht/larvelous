@@ -20,6 +20,6 @@ class ViewUser extends ViewRecord
     public function mount($record) : void
     {
         parent::mount($record);
-        abort_unless(auth()->user()->hasRole('Admin'), 403);
+        abort_unless(auth()->user()->hasRole('admin'), 403);
     }
 }

@@ -1,21 +1,5 @@
 // Body
 $body-bg: #f8fafc;
 
-// Theme colors
-$primary: #f546aa;
-$primary-text: white;
-$primary-light: #ffe9f6;
-
-$secondary: #f762b7;
-$secondary-text: white;
-$secondary-light: #f499cc;
-
-$tertiary: $primary;
-$tertiary-text: $primary-text;
-$tertiary-light: $primary-light;
-
-$black: #ffe9f6;
-$white: white;
-
 // Fix color contrast errors (colors like $gray-100 can have no color contrast higher than 1:1)
 $min-contrast-ratio: 1;

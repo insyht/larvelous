@@ -22,8 +22,7 @@ class ThemeResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([]);
+        return $form->schema([]);
     }
 
     public static function table(Table $table): Table

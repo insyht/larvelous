@@ -82,11 +82,11 @@ class TemplateResource extends Resource
 
     protected static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('Admin');
+        return auth()->user()->hasRole('admin');
     }
 
     public function mount(): void
     {
-        abort_unless(auth()->user()->hasRole('Admin'), 403);
+        abort_unless(auth()->user()->hasRole('admin'), 403);
     }
 }

@@ -41,6 +41,8 @@ return [
     'activate' => 'Activeer',
     'delete' => 'Verwijder',
     'active' => 'Actief',
+    'setting' => 'Instelling',
+    'settings' => 'Instellingen',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

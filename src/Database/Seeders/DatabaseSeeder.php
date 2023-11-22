@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TextPageSeeder::class);
         $this->call(LandingPageSeeder::class);
         $this->call(ThemeSeeder::class);
+        $this->call(SettingsSeeder::class);
 
         $this->call(UserSeeder::class);
         // Homepage
