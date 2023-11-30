@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Insyht\Larvelous\Search\Collections\SearchResultCollection;
+use Insyht\Larvelous\Search\Interfaces\SearchableInterface;
+use Insyht\Larvelous\Search\Interfaces\SearchQueryInterface;
+use Insyht\Larvelous\Search\Interfaces\SearchResultInterface;
 
-class BlockVariableValue extends Model
+class BlockVariableValue extends Model implements SearchableInterface
 {
     use HasFactory;
 
@@ -66,5 +70,24 @@ class BlockVariableValue extends Model
     public function scopeForPageAndBlockTemplate(Builder $query, Page $page, BlockTemplate $blockTemplate)
     {
         return $query->where('page_id', $page->id)->where('block_template_id', $blockTemplate->id);
+    }
+
+
+    public function search(SearchQueryInterface $query): SearchResultCollection
+    {
+        $searchResults = new SearchResultCollection();
+        foreach ($query->getParamsForLike() as $like) {
+            $foundBlockValues = static::where('value', 'like', $like)->get();
+            foreach ($foundBlockValues as $foundBlockValue) {
+                $title = $foundBlockValue->page->title;
+                $description = $foundBlockValue->value;
+                $url = env('APP_URL') . '/' . $foundBlockValue->page->url;
+                $result = app(SearchResultInterface::class);
+                $result->setTitle($title)->setDescription($description)->setUrl($url);
+                $searchResults->add($result);
+            }
+        }
+
+        return $searchResults;
     }
 }

@@ -43,6 +43,9 @@ return [
     'active' => 'Actief',
     'setting' => 'Instelling',
     'settings' => 'Instellingen',
+    'search' => 'Zoeken',
+    'search_results_for' => 'Zoekresultaten voor ":query"',
+    'no_search_results' => 'Geen',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',

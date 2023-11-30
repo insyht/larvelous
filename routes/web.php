@@ -13,6 +13,7 @@ use Insyht\Larvelous\Http\Controllers\Dashboard\StatisticsController;
 use Insyht\Larvelous\Http\Controllers\Dashboard\TemplateController;
 use Insyht\Larvelous\Http\Controllers\HomeController;
 use Insyht\Larvelous\Http\Controllers\Website\PageController as WebsitePageController;
+use Insyht\Larvelous\Http\Controllers\Website\SearchController;
 use Insyht\Larvelous\Http\Controllers\Website\VoorbeeldController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/voorbeeld/textpagina', [VoorbeeldController::class, 'textpagina'])->name('voorbeeld-textpagina');
         Route::get('/voorbeeld/landingspagina', [VoorbeeldController::class, 'landingspagina'])->name('voorbeeld-landingspagina');
         Route::get('/voorbeeld/contact', [VoorbeeldController::class, 'contact'])->name('voorbeeld-contact');
+        Route::get('/search', [SearchController::class, 'search'])->name('insyht-larvelous-search');
         Route::get('/{page:url}', [WebsitePageController::class, 'load']);
         Route::any('/{pageName}', [WebsitePageController::class, 'load']);
     });

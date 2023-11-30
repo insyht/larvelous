@@ -5,7 +5,10 @@ namespace Insyht\Larvelous\Providers;
 use Illuminate\Support\ServiceProvider;
 use Insyht\Larvelous\Console\Commands\ResetColors;
 use Insyht\Larvelous\Console\Install;
+use Insyht\Larvelous\Models\BlockVariableValue;
+use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Setting;
+use Insyht\Larvelous\Search\Interfaces\SearchInterface;
 
 class LarvelousServiceProvider extends ServiceProvider
 {
@@ -49,6 +52,9 @@ class LarvelousServiceProvider extends ServiceProvider
                 ]
             );
         }
+
+        app(SearchInterface::class)->addSearchable(new Page());
+        app(SearchInterface::class)->addSearchable(new BlockVariableValue());
     }
 
     protected function generateMigrationName(string $originalName): string

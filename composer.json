@@ -56,6 +56,7 @@
         "Insyht\\Larvelous\\Providers\\EventServiceProvider",
         "Insyht\\Larvelous\\Providers\\PageServiceProvider",
         "Insyht\\Larvelous\\Providers\\PluginServiceProvider",
+        "Insyht\\Larvelous\\Search\\Providers\\SearchServiceProvider",
         "Insyht\\Larvelous\\Providers\\FilamentServiceProvider"
       ]
     }

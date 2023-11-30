@@ -2,18 +2,20 @@
 
 namespace Insyht\Larvelous\Models;
 
-use Insyht\Larvelous\Custom\HasManyThroughMultipleTrait;
-use Insyht\Larvelous\Traits\IsMenuItemable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\View\View;
+use Insyht\Larvelous\Custom\HasManyThroughMultipleTrait;
+use Insyht\Larvelous\Search\Collections\SearchResultCollection;
+use Insyht\Larvelous\Search\Interfaces\SearchableInterface;
+use Insyht\Larvelous\Search\Interfaces\SearchQueryInterface;
+use Insyht\Larvelous\Search\Interfaces\SearchResultInterface;
+use Insyht\Larvelous\Traits\IsMenuItemable;
 use InvalidArgumentException;
 
-class Page extends Model
+class Page extends Model implements SearchableInterface
 {
-    use HasFactory;
     use IsMenuItemable;
     use HasManyThroughMultipleTrait;
 
@@ -86,5 +88,23 @@ class Page extends Model
         }
 
         return $this;
+    }
+
+    public function search(SearchQueryInterface $query): SearchResultCollection
+    {
+        $searchResults = new SearchResultCollection();
+        foreach ($query->getParamsForLike() as $like) {
+            $foundPages = static::where('title', 'like', $like)->get();
+            foreach ($foundPages as $foundPage) {
+                $title = $foundPage->title;
+                $description = '';
+                $url = env('APP_URL') . '/' . $foundPage->url;
+                $result = app(SearchResultInterface::class);
+                $result->setTitle($title)->setDescription($description)->setUrl($url);
+                $searchResults->add($result);
+            }
+        }
+
+        return $searchResults;
     }
 }
