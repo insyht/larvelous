@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    maxInputsCounter();
+    // maxInputsCounter();
     beadsAmountAddColorChoosers();
     displayShippingAddressFields();
     var shippingAddressCheckbox = document.getElementById('invoice_is_not_shipping');
@@ -11,17 +11,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function maxInputsCounter() {
-    var inputsWithMaxLength = document.querySelectorAll("input[maxlength]");
-    inputsWithMaxLength.forEach(function (inputWithMaxLength) {
-        var counterEl = inputWithMaxLength.parentNode.querySelector('.input-group-text');
-        if (counterEl) {
-            inputWithMaxLength.addEventListener('input', function () {
-                counterEl.innerHTML = inputWithMaxLength.value.length + '/10'
-            });
-        }
-    });
-}
+// function maxInputsCounter() {
+//     var inputsWithMaxLength = document.querySelectorAll("input[maxlength]");
+//     inputsWithMaxLength.forEach(function (inputWithMaxLength) {
+//         var counterEl = inputWithMaxLength.parentNode.querySelector('.input-group-text');
+//         if (counterEl) {
+//             inputWithMaxLength.addEventListener('input', function () {
+//                 counterEl.innerHTML = inputWithMaxLength.value.length + '/10'
+//             });
+//         }
+//     });
+// }
 
 function beadsAmountAddColorChoosers() {
     var beadsAmountElements = document.querySelectorAll('input[name="beadsAmount"]');

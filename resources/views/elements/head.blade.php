@@ -9,12 +9,23 @@
 
     <title>{{ config('app.name', 'Laravel') }} - Homepage</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/m4u.js') }}" defer></script>
+    @if (isset($jsIncludes))
+        @foreach ($jsIncludes as $jsInclude)
+            <script src="{{ $jsInclude }}" defer></script>
+        @endforeach
+    @endif
+    @if (isset($cssIncludes))
+        @foreach ($cssIncludes as $cssInclude)
+            <link rel="stylesheet" href="{{ $cssInclude }}">
+        @endforeach
+    @endif
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{ Vite::useHotFile('vendor/insyht/larvelous/larvelous.hot')->useBuildDirectory("vendor/insyht/larvelous")->withEntryPoints(['resources/sass/app.scss', 'resources/js/app.js']) }}
+    @if (isset($viteIncludes))
+        @foreach ($viteIncludes as $viteInclude)
+            {{ Vite::useHotFile($viteInclude['hotFile'])->useBuildDirectory($viteInclude['buildDirectory'])->withEntryPoints($viteInclude['entryPoints']) }}
+        @endforeach
+    @endif
 </head>
 <body>
     <div id="app">
