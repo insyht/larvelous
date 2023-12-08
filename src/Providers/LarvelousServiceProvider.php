@@ -36,14 +36,19 @@ class LarvelousServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'insyht-larvelous');
-        $this->loadViewsFrom(
-            base_path() . '/vendor/' . app('defaultTheme')->path,
-            strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
-        );
-        $this->loadViewsFrom(
-            base_path() . '/vendor/' . app('activeTheme')->path,
-            strtolower(str_replace('\\', '-', app('activeTheme')->namespace))
-        );
+
+        if (app()->bound('defaultTheme')) {
+            $this->loadViewsFrom(
+                base_path() . '/vendor/' . app('defaultTheme')->path,
+                strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
+            );
+        }
+        if (app()->bound('activeTheme')) {
+            $this->loadViewsFrom(
+                base_path() . '/vendor/' . app('activeTheme')->path,
+                strtolower(str_replace('\\', '-', app('activeTheme')->namespace))
+            );
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands(
