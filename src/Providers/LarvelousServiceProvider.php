@@ -37,13 +37,13 @@ class LarvelousServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'insyht-larvelous');
 
-        if (app()->bound('defaultTheme')) {
+        if (app()->bound('defaultTheme') && app('defaultTheme')) {
             $this->loadViewsFrom(
                 base_path() . '/vendor/' . app('defaultTheme')->path,
                 strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
             );
         }
-        if (app()->bound('activeTheme')) {
+        if (app()->bound('activeTheme') && app('activeTheme')) {
             $this->loadViewsFrom(
                 base_path() . '/vendor/' . app('activeTheme')->path,
                 strtolower(str_replace('\\', '-', app('activeTheme')->namespace))

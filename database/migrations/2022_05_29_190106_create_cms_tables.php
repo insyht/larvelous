@@ -149,7 +149,7 @@ class CreateCmsTables extends Migration
             $table->bigInteger('language_id', false, true);
             $table->bigInteger('page_id', false, true);
             $table->bigInteger('block_template_id', false, true);
-            $table->text('value')->default('');
+            $table->text('value');
 
             $table->index('block_variable_id');
             $table->index('language_id');
@@ -246,7 +246,7 @@ class CreateCmsTables extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->text('value');
+            $table->string('value', 250);
             $table->boolean('hidden')->default(true);
             $table->index('name');
             $table->unique(['name', 'value']);
