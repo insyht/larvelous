@@ -7,11 +7,14 @@
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.5",
     "axios": "^1.1.2",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
     "laravel-vite-plugin": "^0.7.8",
     "sass": "^1.56.1",
+    "semantic-release": "^22.0.10",
     "vite": "^4.3.9"
   },
   "dependencies": {
