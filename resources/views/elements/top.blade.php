@@ -52,25 +52,6 @@
             </nav>
         </div>
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-              <a class="navbar-brand" href="#">Musthaves4U</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    @inject('helper', '\Insyht\Larvelous\Helpers\LarvelousHelper')
-                  @foreach($helper->getMenu('main_menu')->items as $item)
-                      <li class="nav-item @if ($item->isActive()) active @endif">
-                        <a class="nav-link" href="{{ $item->getUrl() }}">{{ $item->getTitle() }}</a>
-                      </li>
-                  @endforeach
-                </ul>
-              </div>
-            </nav>
-        </div>
-        <div class="row">
             <div class="col-sm text-center">
                 <i class="bi bi-stopwatch"></i> Op werkdagen voor 15:00 besteld, morgen in huis
             </div>
