@@ -25,7 +25,7 @@ class CmsSeeder extends Seeder
 
         $item = new MenuItem();
         $item->item_id = $homepage->id;
-        $item->item_type = substr(Page::class, 1); // todo Is dit met of zonder beginnende backslash?
+        $item->item_type = Page::class;
         $item->ordering = 1;
         $topMenu->items()->save($item);
 
@@ -38,7 +38,7 @@ class CmsSeeder extends Seeder
 
         $item = new MenuItem();
         $item->item_id = $homepage->id;
-        $item->item_type = substr(Page::class, 1); // todo Is dit met of zonder beginnende backslash?
+        $item->item_type = Page::class;
         $item->ordering = 1;
         $footerMenu->items()->save($item);
     }
