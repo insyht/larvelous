@@ -19,4 +19,23 @@ class MenuItem extends Model
         return $this->belongsTo(Menu::class);
     }
 
+    public function getTitleColumn()
+    {
+        return MenuItemType::where('classname', $this->item_type)->first()?->title_column ?? 'title';
+    }
+
+    public function isActive()
+    {
+        // todo If this item is linked to the page we are on now, return true
+        return false;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->menuitemable->getUrl() ?? 'test';
+    }
+    public function getTitle(): string
+    {
+        return $this->menuitemable->{$this->getTitleColumn()};
+    }
 }

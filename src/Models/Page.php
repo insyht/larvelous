@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\View\View;
 use Insyht\Larvelous\Custom\HasManyThroughMultipleTrait;
+use Insyht\Larvelous\Interfaces\MenuItemInterface;
 use Insyht\Larvelous\Search\Collections\SearchResultCollection;
 use Insyht\Larvelous\Search\Interfaces\SearchableInterface;
 use Insyht\Larvelous\Search\Interfaces\SearchQueryInterface;
 use Insyht\Larvelous\Search\Interfaces\SearchResultInterface;
-use Insyht\Larvelous\Traits\IsMenuItemable;
 use InvalidArgumentException;
+use ReflectionClass;
 
-class Page extends Model implements SearchableInterface
+class Page extends Model implements SearchableInterface, MenuItemInterface
 {
-    use IsMenuItemable;
     use HasManyThroughMultipleTrait;
 
     public $timestamps = false;
@@ -38,7 +38,7 @@ class Page extends Model implements SearchableInterface
         return $this->template->blockTemplates;
     }
 
-    public function menuitems(): MorphMany
+    public function menuItems(): MorphMany
     {
         return $this->morphMany(MenuItem::class, 'menuitemable');
     }
@@ -106,5 +106,21 @@ class Page extends Model implements SearchableInterface
         }
 
         return $searchResults;
+    }
+
+    public function getUrl(): string
+    {
+        $url = $this->url;
+
+        if ($url === '') {
+            // This is the homepage, convert it to the proper url
+            $url = '/';
+        }
+        return $url;
+    }
+
+    public function getTypeTranslation(): string
+    {
+        return __('insyht-larvelous::cms.' . strtolower((new ReflectionClass($this))->getShortName()));
     }
 }

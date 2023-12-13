@@ -2,7 +2,9 @@
 
 namespace Insyht\Larvelous\Filament\Resources\MenuResource\RelationManagers;
 
+use Illuminate\Support\Facades\Log;
 use Insyht\Larvelous\Forms\Components\TextInput;
+use Insyht\Larvelous\Interfaces\MenuItemInterface;
 use Insyht\Larvelous\Models\MenuItemType;
 use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\MorphToSelect\Type;
@@ -29,8 +31,12 @@ class MenuItemsRelationManager extends RelationManager
             $classname = $type->classname;
             $column = $type->title_column;
             $menuItemObject = new $classname();
-            $label = $menuItemObject->getTypeTranslation();
-            $typesArray[] = Type::make($classname)->titleColumnName($column)->label($label);
+            if ($menuItemObject instanceof MenuItemInterface) {
+                $label = $menuItemObject->getTypeTranslation();
+                $typesArray[] = Type::make($classname)->titleColumnName($column)->label($label);
+            } else {
+                Log::warning('Class ' . $classname . ' does not implement MenuItemInterface');
+            }
         }
 
         return $typesArray;
@@ -55,7 +61,7 @@ class MenuItemsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('title')
                                          ->getStateUsing(function (Model $record): string {
-                                             return $record->menuitemable->title;
+                                             return $record->menuitemable->{$record->getTitleColumn()};
                                          })
                                          ->label(__('insyht-larvelous::cms.title'))
                                          ->sortable()

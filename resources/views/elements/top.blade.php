@@ -8,8 +8,14 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    @inject('helper', '\Insyht\Larvelous\Helpers\LarvelousHelper')
+                    @foreach($helper->getMenu('main_menu')->items as $item)
+                        <li class="nav-item @if ($item->isActive()) active @endif">
+                            <a class="nav-link" href="{{ $item->getUrl() }}">{{ $item->getTitle() }}</a>
+                        </li>
+                    @endforeach
                   <li class="nav-item active">
-                    <a class="nav-link" href="/">Homepage</a>
+                    <a class="nav-link" href="/">|| Homepage</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,6 +47,25 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('voorbeeld-contact') }}">Contact</a>
                   </li>
+                </ul>
+              </div>
+            </nav>
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+              <a class="navbar-brand" href="#">Musthaves4U</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    @inject('helper', '\Insyht\Larvelous\Helpers\LarvelousHelper')
+                  @foreach($helper->getMenu('main_menu')->items as $item)
+                      <li class="nav-item @if ($item->isActive()) active @endif">
+                        <a class="nav-link" href="{{ $item->getUrl() }}">{{ $item->getTitle() }}</a>
+                      </li>
+                  @endforeach
                 </ul>
               </div>
             </nav>
