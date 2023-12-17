@@ -2,3 +2,7 @@
   background-color: grey;
   color: white;
 }
+
+.nav-item.active a {
+  color: $primary-text;
+}

@@ -26,8 +26,17 @@ class MenuItem extends Model
 
     public function isActive()
     {
-        // todo If this item is linked to the page we are on now, return true
-        return false;
+        $currentUrl = url()->current();
+        $menuItemUrl = env('APP_URL') . '/' .
+                       (substr($this->getUrl(), 0, 1) === '/'
+                            ? substr($this->getUrl(), 1)
+                            : $this->getUrl());
+        // Strip ending slash if it exists
+        $menuItemUrl = substr($menuItemUrl, -1, 1) === '/'
+                            ? substr($menuItemUrl, 0, -1)
+                            : $menuItemUrl;
+
+        return $currentUrl === $menuItemUrl;
     }
 
     public function getUrl(): string
