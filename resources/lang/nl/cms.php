@@ -59,6 +59,7 @@ return [
     'function' => 'Functie',
     'phoneNumber' => 'Telefoonnummer',
     'urlText' => 'Url tekst',
+    'parentMenu' => 'Bovenliggend menu',
 
     // Block variable options labels
     'left' => 'Links',

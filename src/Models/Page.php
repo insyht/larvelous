@@ -14,6 +14,7 @@ use Insyht\Larvelous\Search\Interfaces\SearchQueryInterface;
 use Insyht\Larvelous\Search\Interfaces\SearchResultInterface;
 use InvalidArgumentException;
 use ReflectionClass;
+use Insyht\Larvelous\Collections\MenuItemCollection;
 
 class Page extends Model implements SearchableInterface, MenuItemInterface
 {
@@ -122,5 +123,15 @@ class Page extends Model implements SearchableInterface, MenuItemInterface
     public function getTypeTranslation(): string
     {
         return __('insyht-larvelous::cms.' . strtolower((new ReflectionClass($this))->getShortName()));
+    }
+
+    public function getChildren(): MenuItemCollection
+    {
+        return new MenuItemCollection();
+    }
+
+    public function canHaveChildren(): bool
+    {
+        return false;
     }
 }

@@ -23,8 +23,16 @@ class LarvelousServiceProvider extends ServiceProvider
             file_put_contents(Setting::CUSTOM_COLORS_PATH, '');
         }
 
+        if (file_exists(__DIR__ . '/../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')) {
+            copy(
+                __DIR__ . '/../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+                __DIR__ . '/../../resources/js/bootstrap.bundle.min.js'
+            );
+        }
+
         $this->publishes(
             [
+                __DIR__ . '/../../resources/js' => public_path() . '/../resources/js',
                 __DIR__ . '/../../public/images' => public_path('images'),
                 __DIR__ . '/../../config/insyht-larvelous.php' => config_path('insyht-larvelous.php'),
                 __DIR__ . '/../../public/vendor/insyht/larvelous' => public_path('vendor/insyht/larvelous'),

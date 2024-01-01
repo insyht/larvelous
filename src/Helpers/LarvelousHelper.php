@@ -2,10 +2,12 @@
 
 namespace Insyht\Larvelous\Helpers;
 
+use Insyht\Larvelous\Models\Menu;
+
 class LarvelousHelper
 {
     public function getMenu(string $position)
     {
-        return \Insyht\Larvelous\Models\Menu::where('position', $position)->first();
+        return Menu::where('position', $position)->first();
     }
 }

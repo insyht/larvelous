@@ -174,10 +174,13 @@ class CreateCmsTables extends Migration
             $table->id();
             $table->bigInteger('language_id', false, true);
             $table->string('name');
-            $table->string('position');
+            $table->string('position')->nullable()->default(null);
+            $table->bigInteger('menu_id', false, true)->nullable()->default(null);
 
             $table->index('language_id');
+            $table->index('menu_id');
             $table->foreign('language_id')->references('id')->on('languages')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('menu_id')->references('id')->on('menus')->cascadeOnUpdate()->nullOnDelete();
         });
 
         Schema::create('menu_items', function (Blueprint $table) {
