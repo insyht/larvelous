@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\View\View;
-use Insyht\Larvelous\Custom\HasManyThroughMultipleTrait;
 use Insyht\Larvelous\Interfaces\MenuItemInterface;
 use Insyht\Larvelous\Search\Collections\SearchResultCollection;
 use Insyht\Larvelous\Search\Interfaces\SearchableInterface;
@@ -18,8 +17,6 @@ use Insyht\Larvelous\Collections\MenuItemCollection;
 
 class Page extends Model implements SearchableInterface, MenuItemInterface
 {
-    use HasManyThroughMultipleTrait;
-
     public $timestamps = false;
 
     protected $fillable = ['language_id', 'template_id', 'title', 'url'];
