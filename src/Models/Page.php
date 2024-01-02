@@ -108,13 +108,7 @@ class Page extends Model implements SearchableInterface, MenuItemInterface
 
     public function getUrl(): string
     {
-        $url = $this->url;
-
-        if ($url === '') {
-            // This is the homepage, convert it to the proper url
-            $url = '/';
-        }
-        return $url;
+        return $this->url;
     }
 
     public function getTypeTranslation(): string
