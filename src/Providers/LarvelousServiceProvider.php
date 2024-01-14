@@ -23,8 +23,16 @@ class LarvelousServiceProvider extends ServiceProvider
             file_put_contents(Setting::CUSTOM_COLORS_PATH, '');
         }
 
+        if (file_exists(__DIR__ . '/../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')) {
+            copy(
+                __DIR__ . '/../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+                __DIR__ . '/../../resources/js/bootstrap.bundle.min.js'
+            );
+        }
+
         $this->publishes(
             [
+                __DIR__ . '/../../resources/js' => public_path() . '/../resources/js',
                 __DIR__ . '/../../public/images' => public_path('images'),
                 __DIR__ . '/../../config/insyht-larvelous.php' => config_path('insyht-larvelous.php'),
                 __DIR__ . '/../../public/vendor/insyht/larvelous' => public_path('vendor/insyht/larvelous'),
@@ -36,14 +44,19 @@ class LarvelousServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'insyht-larvelous');
-        $this->loadViewsFrom(
-            base_path() . '/vendor/' . app('defaultTheme')->path,
-            strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
-        );
-        $this->loadViewsFrom(
-            base_path() . '/vendor/' . app('activeTheme')->path,
-            strtolower(str_replace('\\', '-', app('activeTheme')->namespace))
-        );
+
+        if (app()->bound('defaultTheme') && app('defaultTheme')) {
+            $this->loadViewsFrom(
+                base_path() . '/vendor/' . app('defaultTheme')->path,
+                strtolower(str_replace('\\', '-', app('defaultTheme')->namespace))
+            );
+        }
+        if (app()->bound('activeTheme') && app('activeTheme')) {
+            $this->loadViewsFrom(
+                base_path() . '/vendor/' . app('activeTheme')->path,
+                strtolower(str_replace('\\', '-', app('activeTheme')->namespace))
+            );
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands(

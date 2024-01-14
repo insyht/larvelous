@@ -2,19 +2,20 @@
 
 namespace Insyht\Larvelous\Filament\Resources;
 
+use Filament\Resources\Form;
+use Filament\Resources\Resource;
+use Filament\Resources\Table;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Insyht\Larvelous\Filament\LanguageFormField;
 use Insyht\Larvelous\Filament\Resources\MenuResource\Pages;
 use Insyht\Larvelous\Filament\Resources\MenuResource\RelationManagers;
 use Insyht\Larvelous\Forms\Components\Dropdown;
 use Insyht\Larvelous\Forms\Components\TextInput;
 use Insyht\Larvelous\Models\Menu;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
 
 class MenuResource extends Resource
 {
@@ -35,8 +36,12 @@ class MenuResource extends Resource
                     ->label(__('insyht-larvelous::cms.name')),
                  Dropdown::make('position')
                     ->options(static::$positionOptions)
-                    ->required()
+                    ->nullable()
                     ->label(__('insyht-larvelous::cms.position')),
+                 Dropdown::make('menu_id')
+                    ->options(Menu::all()->pluck('name', 'id')->toArray())
+                    ->nullable()
+                    ->label(__('insyht-larvelous::cms.parentMenu')),
             ]);
     }
 
@@ -45,22 +50,25 @@ class MenuResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                                         ->label(__('insyht-larvelous::cms.name'))
-                                         ->sortable()
-                                         ->searchable(isIndividual: true),
+                          ->label(__('insyht-larvelous::cms.name'))
+                          ->sortable()
+                          ->searchable(isIndividual: true),
                 TextColumn::make('position')
-                                         ->enum(static::$positionOptions)
-                                         ->label(__('insyht-larvelous::cms.position'))
-                                         ->sortable(),
-
-
-
+                          ->enum(static::$positionOptions)
+                          ->label(__('insyht-larvelous::cms.position'))
+                          ->sortable(),
+                TextColumn::make('menu_item')
+                            ->label(__('insyht-larvelous::cms.parentMenu'))
+                            ->getStateUsing(function (Menu $record) {
+                                return $record->menu?->name;
+                            }),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 ViewAction::make(),
+                EditAction::make(),
             ])
             ->bulkActions([
                 DeleteBulkAction::make(),
@@ -86,12 +94,12 @@ class MenuResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function canEdit(Model $record) : bool
     {
-        return false;
+        return true;
     }
 
 

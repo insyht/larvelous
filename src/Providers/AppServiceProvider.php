@@ -4,6 +4,7 @@ namespace Insyht\Larvelous\Providers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
+use Insyht\Larvelous\Helpers\LarvelousHelper;
 use Insyht\Larvelous\Models\Plugin;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
@@ -18,17 +19,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('defaultTheme', function (Application $app) {
-            return Theme::where('name', 'Default')->where('namespace', 'Insyht\Larvelous')->first();
-        });
-        $this->app->singleton('activeTheme', function (Application $app) {
-            $activeTheme = Theme::active()->first();
-            if (!$activeTheme) {
-                $activeTheme = app('defaultTheme');
-            }
+        if (Schema::hasTable('themes')) {
+            $this->app->singleton('defaultTheme', function (Application $app) {
+                return Theme::where('name', 'Default')->where('namespace', 'Insyht\Larvelous')->first();
+            });
+            $this->app->singleton('activeTheme', function (Application $app) {
+                $activeTheme = Theme::active()->first();
+                if (!$activeTheme) {
+                    $activeTheme = app('defaultTheme');
+                }
 
-            return $activeTheme;
-        });
+                return $activeTheme;
+            });
+            $this->app->singleton(LarvelousHelper::class, function (Application $app) {
+                return new LarvelousHelper();
+            });
+        }
     }
 
     /**
