@@ -218,7 +218,7 @@ Database opbouw:
   blocks
       id
       resource_id (hiermee kan een template specifieke data opvragen)
-      view (pad van de Blade view vanaf de root, bijvoorbeeld insyht/larvelous-base-blocks/resources/views/paragraph voor vendor/insyht/larvelous-base-blocks/resources/views/paragraph.blade.php)
+      view (pad van de Blade view vanaf de root, bijvoorbeeld insyht/larvelous-shop/resources/views/paragraph voor vendor/insyht/larvelous-shop/resources/views/paragraph.blade.php)
       label
       description  
   

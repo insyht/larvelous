@@ -14,7 +14,18 @@
             <script src="{{ $jsInclude }}" defer></script>
         @endforeach
     @endif
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @if (isset($cssIncludes))
+        @foreach ($cssIncludes as $cssInclude)
+            <link rel="stylesheet" href="{{ $cssInclude }}">
+        @endforeach
+    @endif
+
+    {{ Vite::useHotFile('vendor/insyht/larvelous/larvelous.hot')->useBuildDirectory("vendor/insyht/larvelous")->withEntryPoints(['resources/sass/app.scss', 'resources/js/app.js']) }}
+    @if (isset($viteIncludes))
+        @foreach ($viteIncludes as $viteInclude)
+            {{ Vite::useHotFile($viteInclude['hotFile'])->useBuildDirectory($viteInclude['buildDirectory'])->withEntryPoints($viteInclude['entryPoints']) }}
+        @endforeach
+    @endif
 </head>
 <body>
     <div id="app">

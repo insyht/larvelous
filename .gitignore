@@ -17,6 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+#/resources/sass/custom/*.scss
 
 .php_cs.cache
 .htaccess

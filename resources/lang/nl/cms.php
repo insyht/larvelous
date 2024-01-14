@@ -36,6 +36,16 @@ return [
     'quote' => 'Quote',
     'city' => 'Woonplaats',
     'icon' => 'Icoon',
+    'theme' => 'Thema',
+    'themes' => 'Thema\'s',
+    'activate' => 'Activeer',
+    'delete' => 'Verwijder',
+    'active' => 'Actief',
+    'setting' => 'Instelling',
+    'settings' => 'Instellingen',
+    'search' => 'Zoeken',
+    'search_results_for' => 'Zoekresultaten voor ":query"',
+    'no_search_results' => 'Geen',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',
@@ -49,6 +59,7 @@ return [
     'function' => 'Functie',
     'phoneNumber' => 'Telefoonnummer',
     'urlText' => 'Url tekst',
+    'parentMenu' => 'Bovenliggend menu',
 
     // Block variable options labels
     'left' => 'Links',

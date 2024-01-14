@@ -1,10 +1,25 @@
 <?php
 
-namespace Tests;
+namespace Insyht\Larvelous\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Insyht\Larvelous\LarvelousServiceProvider;
 
-abstract class TestCase extends BaseTestCase
+class TestCase extends \Orchestra\Testbench\TestCase
 {
-    use CreatesApplication;
+    public function setUp(): void
+    {
+        parent::setUp();
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            LarvelousServiceProvider::class,
+        ];
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+
+    }
 }
