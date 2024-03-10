@@ -218,6 +218,7 @@ class CreateCmsTables extends Migration
             $table->text('namespace');
             $table->text('github_url');
             $table->boolean('active')->default(1);
+            $table->boolean('fresh_install')->default(1);
             $table->string('author', 100);
         });
 

@@ -12,7 +12,7 @@ class Plugin extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['base', 'name', 'path', 'namespace', 'github_url', 'active', 'author'];
+    protected $fillable = ['base', 'name', 'path', 'namespace', 'github_url', 'active', 'author', 'fresh_install'];
 
     protected $casts = [
         'active' => 'boolean',

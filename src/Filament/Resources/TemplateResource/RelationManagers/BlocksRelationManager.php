@@ -108,4 +108,9 @@ class BlocksRelationManager extends RelationManager
     {
         return parent::getTableQuery()->with('templates');
     }
+
+    protected function getTableReorderColumn(): ?string
+    {
+        return 'ordering';
+    }
 }
