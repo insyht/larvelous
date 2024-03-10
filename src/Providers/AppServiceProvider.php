@@ -5,6 +5,7 @@ namespace Insyht\Larvelous\Providers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
 use Insyht\Larvelous\Helpers\LarvelousHelper;
+use Insyht\Larvelous\Helpers\PackageHelper;
 use Insyht\Larvelous\Models\Plugin;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
             });
             $this->app->singleton(LarvelousHelper::class, function (Application $app) {
                 return new LarvelousHelper();
+            });
+            $this->app->singleton(PackageHelper::class, function (Application $app) {
+                return new PackageHelper();
             });
         }
     }

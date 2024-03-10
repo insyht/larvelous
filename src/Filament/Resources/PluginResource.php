@@ -2,6 +2,7 @@
 
 namespace Insyht\Larvelous\Filament\Resources;
 
+use Filament\Notifications\Notification;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 use Insyht\Larvelous\Filament\Resources\PluginResource\Pages;
 use Insyht\Larvelous\Forms\Components\TextInput;
 use Insyht\Larvelous\Helpers\LarvelousHelper;
+use Insyht\Larvelous\Helpers\PackageHelper;
 use Insyht\Larvelous\Models\Plugin;
 
 class PluginResource extends Resource
@@ -53,13 +55,13 @@ class PluginResource extends Resource
                           ->label(__('insyht-larvelous::cms.isUpToDate'))
                           ->sortable()
                           ->getStateUsing(function (Model $record): bool {
-                              $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames();
+                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
 
                               return !in_array($record->path, array_column($updateablePackages, 'name'));
                           })
                           ->tooltip(function (Model $record): string {
-                              $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames();
-                              $label = app(LarvelousHelper::class)->getCurrentPluginVersion($record);
+                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
+                              $label = app(PackageHelper::class)->getCurrentPackageVersion($record->path);
                               $packageIsUpdateable = in_array($record->path, array_column($updateablePackages, 'name'));
                               if ($packageIsUpdateable) {
                                   $package = array_filter($updateablePackages, function ($package) use ($record) {
@@ -75,11 +77,18 @@ class PluginResource extends Resource
             ])
             ->filters([])
             ->actions([
-                DeleteAction::make(),
+                DeleteAction::make()
+                            ->before(function (Model $record, DeleteAction $action) {
+                                if (!app(LarvelousHelper::class)->deletePlugin($record)) {
+                                    Notification::make()
+                                                ->danger()
+                                                ->body(__('insyht-larvelous::cms.deletePluginFailed'))
+                                                ->send();
+                                    $action->cancel();
+                                }
+                            }),
             ])
-            ->bulkActions([
-                DeleteBulkAction::make(),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getPages(): array

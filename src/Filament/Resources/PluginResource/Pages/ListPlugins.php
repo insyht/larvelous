@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Insyht\Larvelous\Filament\Resources\PluginResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Insyht\Larvelous\Helpers\LarvelousHelper;
+use Insyht\Larvelous\Helpers\PackageHelper;
 use Throwable;
 
 class ListPlugins extends ListRecords
@@ -21,7 +21,7 @@ class ListPlugins extends ListRecords
             Actions\CreateAction::make()->label(__('insyht-larvelous::cms.install')),
         ];
 
-        $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames();
+        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
         if (!empty($updateablePackages)) {
             $actions[] = Action::make('updateSystem')
                                ->label(__('insyht-larvelous::cms.updateSystem'))

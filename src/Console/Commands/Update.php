@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
-use Insyht\Larvelous\Helpers\LarvelousHelper;
+use Insyht\Larvelous\Helpers\PackageHelper;
 
 class Update extends Command
 {
@@ -21,7 +21,7 @@ class Update extends Command
     {
         Log::info('Updating system...');
         $success = true;
-        $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames(false);
+        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames(false);
         Log::info(sprintf('Found %d updateable packages', count($updateablePackages)));
         $process = Process::path(base_path());
         // todo Make a backup (database, composer.lock, all files in a zip?) first?

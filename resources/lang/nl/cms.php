@@ -59,6 +59,7 @@ return [
     'updateFailed' => 'Niet alle updates konden geïnstalleerd worden. Bekijk de logbestanden voor meer info.',
     'updateSuccess' => 'Update wordt op de achtergrond uitgevoerd.',
     'isUpToDate' => 'Up to date?',
+    'deletePluginFailed' => 'Fout: Plugin kon niet verwijderd worden.',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',
