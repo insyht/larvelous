@@ -50,23 +50,23 @@ class PluginResource extends Resource
                           ->sortable(),
                 IconColumn::make('update')
                           ->boolean()
-                          ->label(__('insyht-larvelous::cms.updateAvailable'))
+                          ->label(__('insyht-larvelous::cms.isUpToDate'))
                           ->sortable()
                           ->getStateUsing(function (Model $record): bool {
                               $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames();
 
-                              return in_array($record->path, array_column($updateablePackages, 'name'));
+                              return !in_array($record->path, array_column($updateablePackages, 'name'));
                           })
                           ->tooltip(function (Model $record): string {
                               $updateablePackages = app(LarvelousHelper::class)->getUpdateablePackageNames();
-                              $label = '';
+                              $label = app(LarvelousHelper::class)->getCurrentPluginVersion($record);
                               $packageIsUpdateable = in_array($record->path, array_column($updateablePackages, 'name'));
                               if ($packageIsUpdateable) {
                                   $package = array_filter($updateablePackages, function ($package) use ($record) {
                                       return $package['name'] === $record->path;
                                   });
                                   if (isset($package[0])) {
-                                    $label = $package[0]['current']  . ' -> ' . $package[0]['latest'];
+                                      $label = $package[0]['current'] . ' -> ' . $package[0]['latest'];
                                   }
                               }
 

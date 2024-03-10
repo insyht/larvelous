@@ -84,4 +84,20 @@ class LarvelousHelper
             return $url !== '';
         });
     }
+
+    public function getCurrentPluginVersion(Plugin $plugin): string
+    {
+        $version = '';
+        $composerLockFilePath = sprintf('%s/composer.lock', base_path());
+        $composerLockJson = json_decode(file_get_contents($composerLockFilePath), true);
+        $package = array_filter($composerLockJson['packages'], function ($package) use ($plugin) {
+            return $package['name'] === $plugin->path;
+        });
+
+        if (is_array($package) && !empty($package)) {
+            $package = array_values($package);
+            $version = $package[0]['version'];
+        }
+        return $version;
+    }
 }

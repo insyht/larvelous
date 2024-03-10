@@ -58,7 +58,7 @@ return [
     'updateSystem' => 'Update systeem',
     'updateFailed' => 'Niet alle updates konden geïnstalleerd worden. Bekijk de logbestanden voor meer info.',
     'updateSuccess' => 'Update wordt op de achtergrond uitgevoerd.',
-    'updateAvailable' => 'Update?',
+    'isUpToDate' => 'Up to date?',
 
     // Block variable labels
     'imagePosition' => 'Afbeeldingspositie',
