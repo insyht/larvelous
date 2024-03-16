@@ -39,10 +39,10 @@ class Update extends Command
                 }
             );
             if ($result->successful()) {
-                $a = $result->output();
+                Log::debug(sprintf('Successfully updated package %s. Only the migration remains', $package['name']));
                 $this->callSilently('migrate');
             } else {
-                $a = $result->errorOutput();
+                Log::error(sprintf('Failed to update package %s: %s', $package['name'], $result->errorOutput()));
                 $success = false;
             }
         }

@@ -3,9 +3,12 @@
 namespace Insyht\Larvelous\Filament\Resources\PluginResource\Pages;
 
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Insyht\Larvelous\Filament\Resources\PluginResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
+use Insyht\Larvelous\Helpers\PackageHelper;
 
 class InstallPlugin extends CreateRecord
 {
@@ -54,6 +57,19 @@ class InstallPlugin extends CreateRecord
         ];
 
         $result = parent::handleRecordCreation($data);
+
+        Log::info(sprintf('Installed plugin %s in the plugins table', $metaData['name']));
+
+        if (class_exists(sprintf('%s\Console\InstallPlugin', $metaData['namespace']))) {
+            $success = Artisan::call(sprintf('%s\Console\InstallPlugin', $metaData['namespace']));
+            if (!$success) {
+                Log::error(sprintf('Failed to run InstallPlugin command for plugin %s', $metaData['name']));
+            } else {
+                Log::info(sprintf('Ran InstallPlugin command for plugin %s', $metaData['name']));
+            }
+        } else {
+            Log::info(sprintf('No InstallPlugin command found for plugin %s, continuing..', $metaData['name']));
+        }
 
         return $result;
     }
