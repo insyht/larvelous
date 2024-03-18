@@ -6,7 +6,9 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Insyht\Larvelous\Filament\Resources\ThemeResource\Pages\InstallTheme;
 use Insyht\Larvelous\Filament\Resources\ThemeResource\Pages\ListThemes;
+use Insyht\Larvelous\Forms\Components\TextInput;
 use Insyht\Larvelous\Models\Theme;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -20,9 +22,16 @@ class ThemeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
-    public static function form(Form $form): Form
+     public static function form(Form $form): Form
     {
-        return $form->schema([]);
+        return $form
+            ->schema([
+                TextInput::make('github_url')
+                         ->required()
+                         ->label(__('insyht-larvelous::cms.githubUrl'))
+                         ->prefix('git@github.com:')
+                         ->suffix('.git'),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -65,12 +74,13 @@ class ThemeResource extends Resource
     {
         return [
             'index' => ListThemes::route('/'),
+            'create' => InstallTheme::route('/create'),
         ];
     }
 
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function canEdit(Model $record) : bool

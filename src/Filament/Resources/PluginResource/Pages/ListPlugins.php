@@ -18,14 +18,14 @@ class ListPlugins extends ListRecords
     protected function getActions(): array
     {
         $actions = [
-            Actions\CreateAction::make()->label(__('insyht-larvelous::cms.install')),
+            Actions\CreateAction::make()->label(__('insyht-larvelous::cms.install_plugin')),
         ];
 
-        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
+        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNamesForPlugins();
         if (!empty($updateablePackages)) {
-            $actions[] = Action::make('updateSystem')
-                               ->label(__('insyht-larvelous::cms.updateSystem'))
-                               ->action('updateSystem')
+            $actions[] = Action::make('update')
+                               ->label(__('insyht-larvelous::cms.updatePlugins'))
+                               ->action('update')
                                ->color('success')
                                ->icon('heroicon-s-refresh');
         }
@@ -33,15 +33,15 @@ class ListPlugins extends ListRecords
         return $actions;
     }
 
-    public function updateSystem()
+    public function update()
     {
-        Artisan::queue('larvelous:update');
+        Artisan::queue('larvelous:update-plugins');
         $success = true;
         try {
-            Artisan::call('larvelous:update');
+            Artisan::call('larvelous:update-plugins');
         } catch (Throwable $t) {
             $success = false;
-            Log::warning(sprintf('Failed to update system: %s', $t->getMessage()));
+            Log::warning(sprintf('Failed to update plugins: %s', $t->getMessage()));
         }
         if ($success) {
             $this->notify('success', __('insyht-larvelous::cms.updateSuccess'));

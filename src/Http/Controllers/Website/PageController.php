@@ -45,7 +45,16 @@ class PageController extends Controller
             }
         }
 
-        return view($page->template->view, ['page' => $page]);
+        $prefix = '';
+        if (app()->bound('activeTheme') && app('activeTheme')) {
+            $prefix = app('activeTheme')->blade_prefix;
+        }
+
+        $viewpath = view()->exists($prefix . '::' . $page->template->view)
+            ? $prefix . '::' . $page->template->view
+            : app('defaultTheme')->blade_prefix . '::' . $page->template->view;
+
+        return view($viewpath, ['page' => $page]);
     }
 
     protected function loadFromPlugins(string $slug)

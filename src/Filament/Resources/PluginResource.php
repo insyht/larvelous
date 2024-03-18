@@ -54,12 +54,12 @@ class PluginResource extends Resource
                           ->label(__('insyht-larvelous::cms.isUpToDate'))
                           ->sortable()
                           ->getStateUsing(function (Model $record): bool {
-                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
+                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNamesForPlugins();
 
                               return !in_array($record->path, array_column($updateablePackages, 'name'));
                           })
                           ->tooltip(function (Model $record): string {
-                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames();
+                              $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNamesForPlugins();
                               $label = app(PackageHelper::class)->getCurrentPackageVersion($record->path);
                               $packageIsUpdateable = in_array($record->path, array_column($updateablePackages, 'name'));
                               if ($packageIsUpdateable) {

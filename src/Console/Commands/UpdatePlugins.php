@@ -8,25 +8,25 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
 use Insyht\Larvelous\Helpers\PackageHelper;
 
-class Update extends Command
+class UpdatePlugins extends Command
 {
-    protected $signature = 'larvelous:update';
+    protected $signature = 'larvelous:update-plugins';
 
-    protected $description = 'Update Larvelous and all currently installed plugins';
+    protected $description = 'Update all currently installed plugins';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        Log::info('Updating system...');
+        Log::info('Updating plugins...');
         $success = true;
-        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNames(false);
-        Log::info(sprintf('Found %d updateable packages', count($updateablePackages)));
+        $updateablePackages = app(PackageHelper::class)->getUpdateablePackageNamesForPlugins(false);
+        Log::info(sprintf('Found %d updateable plugin packages', count($updateablePackages)));
         $process = Process::path(base_path());
         // todo Make a backup (database, composer.lock, all files in a zip?) first?
         foreach ($updateablePackages as $package) {
-            $logPrefix = sprintf('Updating package %s: ', $package['name']);
+            $logPrefix = sprintf('Updating plugin package %s: ', $package['name']);
             $result = $process->run(
                 sprintf('composer update %s', $package['name']),
                 function (string $type, string $buffer) use ($logPrefix, &$success) {
@@ -39,10 +39,15 @@ class Update extends Command
                 }
             );
             if ($result->successful()) {
-                Log::debug(sprintf('Successfully updated package %s. Only the migration remains', $package['name']));
+                Log::debug(
+                    sprintf(
+                        'Successfully updated plugin package %s. Only the migration remains',
+                        $package['name']
+                    )
+                );
                 $this->callSilently('migrate');
             } else {
-                Log::error(sprintf('Failed to update package %s: %s', $package['name'], $result->errorOutput()));
+                Log::error(sprintf('Failed to update plugin package %s: %s', $package['name'], $result->errorOutput()));
                 $success = false;
             }
         }

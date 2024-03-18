@@ -21,7 +21,7 @@ class PackageHelper
         );
     }
 
-    public function getUpdateablePackageNames(bool $useCache = true): array
+    protected function getUpdateablePackageNames(bool $useCache = true): array
     {
         if (!$useCache) {
             return $this->getUpdateablesFromComposer();
@@ -66,6 +66,26 @@ class PackageHelper
         }
 
         return $updateablePackageNames;
+    }
+
+    public function getUpdateablePackageNamesForPlugins(bool $useCache = true): array
+    {
+        $packageNames = collect($this->getUpdateablePackageNames($useCache));
+        $packageNames->reject(function ($package) {
+            return Plugin::where('path', $package['name'])->first() === null;
+        });
+
+        return $packageNames->toArray();
+    }
+
+    public function getUpdateablePackageNamesForThemes(bool $useCache = true): array
+    {
+        $packageNames = collect($this->getUpdateablePackageNames($useCache));
+        $packageNames->reject(function ($package) {
+            return Theme::where('path', $package['name'] . '/resources/views')->first() === null;
+        });
+
+        return $packageNames->toArray();
     }
 
     protected function extractComposerPackageNames(array $urls): array

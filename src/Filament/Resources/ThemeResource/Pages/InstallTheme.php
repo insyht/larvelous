@@ -1,17 +1,17 @@
 <?php
 
-namespace Insyht\Larvelous\Filament\Resources\PluginResource\Pages;
+namespace Insyht\Larvelous\Filament\Resources\ThemeResource\Pages;
 
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
-use Insyht\Larvelous\Filament\Resources\PluginResource;
+use Insyht\Larvelous\Filament\Resources\ThemeResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 
-class InstallPlugin extends CreateRecord
+class InstallTheme extends CreateRecord
 {
-    protected static string $resource = PluginResource::class;
+    protected static string $resource = ThemeResource::class;
 
     public function mount(): void
     {
@@ -31,8 +31,8 @@ class InstallPlugin extends CreateRecord
             $splitGithubPart[0],
             $splitGithubPart[1],
         );
-        $pluginMetaDataUrl = sprintf('%s/blob/master/plugin.json?raw=true', $githubHttpUrl);
-        $ch = curl_init($pluginMetaDataUrl);
+        $themeMetaDataUrl = sprintf('%s/blob/master/theme.json?raw=true', $githubHttpUrl);
+        $ch = curl_init($themeMetaDataUrl);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
@@ -46,28 +46,29 @@ class InstallPlugin extends CreateRecord
         $this->validateMetaData($metaData);
 
         $data = [
-            'base' => $metaData['base'],
             'name' => $metaData['name'],
             'path' => $metaData['path'],
             'namespace' => $metaData['namespace'],
+            'blade_prefix' => $metaData['blade_prefix'],
             'github_url' => $githubUrl,
+            'image' => $metaData['image'], // todo upload it to storage
             'active' => true,
             'author' => $metaData['author'],
         ];
 
         $result = parent::handleRecordCreation($data);
 
-        Log::info(sprintf('Installed plugin %s in the plugins table', $metaData['name']));
+        Log::info(sprintf('Installed theme %s in the themes table', $metaData['name']));
 
-        if (class_exists(sprintf('%s\Console\InstallPlugin', $metaData['namespace']))) {
-            $success = Artisan::call(sprintf('%s\Console\InstallPlugin', $metaData['namespace']));
+        if (class_exists(sprintf('%s\Console\InstallTheme', $metaData['namespace']))) {
+            $success = Artisan::call(sprintf('%s\Console\InstallTheme', $metaData['namespace']));
             if (!$success) {
-                Log::error(sprintf('Failed to run InstallPlugin command for plugin %s', $metaData['name']));
+                Log::error(sprintf('Failed to run InstallTheme command for theme %s', $metaData['name']));
             } else {
-                Log::info(sprintf('Ran InstallPlugin command for plugin %s', $metaData['name']));
+                Log::info(sprintf('Ran InstallTheme command for theme %s', $metaData['name']));
             }
         } else {
-            Log::info(sprintf('No InstallPlugin command found for plugin %s, continuing..', $metaData['name']));
+            Log::info(sprintf('No InstallTheme command found for theme %s, continuing..', $metaData['name']));
         }
 
         return $result;
@@ -101,10 +102,10 @@ class InstallPlugin extends CreateRecord
     {
         if (
             !is_array($metaData) ||
-            !array_key_exists('base', $metaData) ||
             !array_key_exists('name', $metaData) ||
             !array_key_exists('path', $metaData) ||
             !array_key_exists('namespace', $metaData) ||
+            !array_key_exists('image', $metaData) ||
             !array_key_exists('author', $metaData)
         ) {
             Notification::make()

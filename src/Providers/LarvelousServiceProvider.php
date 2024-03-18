@@ -5,7 +5,7 @@ namespace Insyht\Larvelous\Providers;
 use Illuminate\Support\ServiceProvider;
 use Insyht\Larvelous\Console\Commands\HasUpdates;
 use Insyht\Larvelous\Console\Commands\ResetColors;
-use Insyht\Larvelous\Console\Commands\Update;
+use Insyht\Larvelous\Console\Commands\UpdateLarvelous;
 use Insyht\Larvelous\Console\Install;
 use Insyht\Larvelous\Models\BlockVariableValue;
 use Insyht\Larvelous\Models\Page;
@@ -16,7 +16,7 @@ class LarvelousServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->commands([ResetColors::class, Update::class, Update::class]);
+        $this->commands([ResetColors::class, UpdateLarvelous::class]);
     }
 
     public function boot()

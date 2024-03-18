@@ -227,6 +227,7 @@ class CreateCmsTables extends Migration
             $table->string('name', 100);
             $table->string('path', 100);
             $table->text('namespace');
+            $table->text('blade_prefix');
             $table->text('github_url');
             $table->text('image')->nullable();
             $table->boolean('active')->default(1);
