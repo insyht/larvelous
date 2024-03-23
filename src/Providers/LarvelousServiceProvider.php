@@ -7,6 +7,7 @@ use Insyht\Larvelous\Console\Commands\HasUpdates;
 use Insyht\Larvelous\Console\Commands\ResetColors;
 use Insyht\Larvelous\Console\Commands\UpdateLarvelous;
 use Insyht\Larvelous\Console\Install;
+use Insyht\Larvelous\CoreOverrides\BladeCompiler;
 use Insyht\Larvelous\Models\BlockVariableValue;
 use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Setting;
@@ -70,6 +71,12 @@ class LarvelousServiceProvider extends ServiceProvider
 
         app(SearchInterface::class)->addSearchable(new Page());
         app(SearchInterface::class)->addSearchable(new BlockVariableValue());
+
+        // Override the default Blade compiler with our custom compiler so that
+        // we can set the Blade namespace to the active theme
+        $this->app->singleton('blade.compiler', function ($app) {
+            return new BladeCompiler($app['files'], $app['config']['view.compiled']);
+        });
     }
 
     protected function generateMigrationName(string $originalName): string

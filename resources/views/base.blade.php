@@ -1,4 +1,4 @@
-@extends('insyht-larvelous::layouts.website')
+@extends('layouts.website')
 @section('content')
     @foreach ($page->getBlocks() as $block)
         @include("{$block->getView()}")

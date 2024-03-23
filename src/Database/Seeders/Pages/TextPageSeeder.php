@@ -20,7 +20,7 @@ class TextPageSeeder extends Seeder
         $template = new Template();
         $template->resource_id = 'iws_textual_page';
         $template->label = 'Textual page template';
-        $template->view = 'insyht-larvelous::base';
+        $template->view = 'base';
         $template->save();
         $template->refresh();
 

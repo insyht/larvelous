@@ -1,4 +1,4 @@
-@extends('insyht-larvelous::layouts.website')
+@extends('layouts.website')
 
 @section('content')
 <div class="container">

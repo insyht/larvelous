@@ -18,7 +18,7 @@ class CategoryPageSeeder extends Seeder
         $template = new Template();
         $template->resource_id = 'iws_category';
         $template->label = 'Category template';
-        $template->view = 'insyht-larvelous::base';
+        $template->view = 'base';
         $template->save();
         $template->refresh();
         $paragraphBlock = Block::where('resource_id', 'iws_paragraph')->first();

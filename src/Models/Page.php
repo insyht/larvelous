@@ -58,7 +58,13 @@ class Page extends Model implements SearchableInterface, MenuItemInterface
     public function setContents(View $view): static
     {
         foreach ($this->template->blockTemplates as $blockTemplate) {
-            if ($view->getName() === $blockTemplate->block->getDottedViewPath()) {
+            $possibleViews = [
+                app('defaultTheme')->blade_prefix . '::' . $blockTemplate->block->getDottedViewPath(),
+            ];
+            if (app()->bound('activeTheme') && app('activeTheme')) {
+                $possibleViews[] = app('activeTheme')->blade_prefix . '::' . $blockTemplate->block->getDottedViewPath();
+            }
+            if (in_array($view->getName(), $possibleViews)) {
                 $blockValues = new BlockValues();
                 foreach ($blockTemplate->block->blockVariables()->get() as $pageBlockVariable) {
                     $blockValue = $pageBlockVariable->blockVariableValues()

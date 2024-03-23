@@ -29,13 +29,22 @@ class PageController extends Controller
             }
         }
 
+
+        $prefix = '';
+        if (app()->bound('activeTheme') && app('activeTheme')) {
+            $prefix = app('activeTheme')->blade_prefix;
+        }
+
         // Check if all required views actually exist before loading the page. If not, show a 404 page
         foreach ($page->template->blocks()->get() as $block) {
-            if (!view()->exists($block->view)) {
+            $viewpath = view()->exists($prefix . '::' . $block->view)
+                ? $prefix . '::' . $block->view
+                : app('defaultTheme')->blade_prefix . '::' . $block->view;
+            if (!view()->exists($viewpath)) {
                 Log::warning(
                     sprintf(
                         'Failed to find view "%s" for block "%s" on page "%s" (block id: %d)',
-                        $block->view,
+                        $viewpath,
                         $block->resource_id,
                         $page->title,
                         $block->id
@@ -43,11 +52,6 @@ class PageController extends Controller
                 );
                 App::abort(404);
             }
-        }
-
-        $prefix = '';
-        if (app()->bound('activeTheme') && app('activeTheme')) {
-            $prefix = app('activeTheme')->blade_prefix;
         }
 
         $viewpath = view()->exists($prefix . '::' . $page->template->view)

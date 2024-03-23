@@ -307,7 +307,7 @@ class CreateCmsTables extends Migration
         // blocks
         $paragraphBlock = new Block();
         $paragraphBlock->resource_id = 'iws_paragraph';
-        $paragraphBlock->view = 'insyht-larvelous::blocks.paragraph';
+        $paragraphBlock->view = 'blocks.paragraph';
         $paragraphBlock->label = 'Alinea';
         $paragraphBlock->description = 'Alinea';
         $paragraphBlock->save();
@@ -387,7 +387,7 @@ class CreateCmsTables extends Migration
         // blocks
         $imageAttentionBlock = new Block();
         $imageAttentionBlock->resource_id = 'iws_image_attention';
-        $imageAttentionBlock->view = 'insyht-larvelous::blocks.image_attention';
+        $imageAttentionBlock->view = 'blocks.image_attention';
         $imageAttentionBlock->label = 'ImageAttention';
         $imageAttentionBlock->description = 'Afbeeldingen aandachtstrekker';
         $imageAttentionBlock->save();
@@ -427,7 +427,7 @@ class CreateCmsTables extends Migration
         // blocks
         $newsletterBlock = new Block();
         $newsletterBlock->resource_id = 'iws_newsletter';
-        $newsletterBlock->view = 'insyht-larvelous::blocks.newsletter';
+        $newsletterBlock->view = 'blocks.newsletter';
         $newsletterBlock->label = 'Newsletter';
         $newsletterBlock->description = 'Nieuwsbrief';
         $newsletterBlock->save();
@@ -476,7 +476,7 @@ class CreateCmsTables extends Migration
         // blocks
         $ctaBlock = new Block();
         $ctaBlock->resource_id = 'iws_cta';
-        $ctaBlock->view = 'insyht-larvelous::blocks.cta';
+        $ctaBlock->view = 'blocks.cta';
         $ctaBlock->label = 'Call to action';
         $ctaBlock->description = 'Call to action';
         $ctaBlock->save();
@@ -570,7 +570,7 @@ class CreateCmsTables extends Migration
         // blocks
         $heroImageBlock = new Block();
         $heroImageBlock->resource_id = 'iws_hero';
-        $heroImageBlock->view = 'insyht-larvelous::blocks.hero';
+        $heroImageBlock->view = 'blocks.hero';
         $heroImageBlock->label = 'Hero';
         $heroImageBlock->description = 'A large image with some text below it, usually at the top of the page';
         $heroImageBlock->save();
@@ -601,7 +601,7 @@ class CreateCmsTables extends Migration
         $template = new Template();
         $template->resource_id = 'iws_landing_page';
         $template->label = 'Landing page template';
-        $template->view = 'insyht-larvelous::landingpage';
+        $template->view = 'landingpage';
         $template->save();
         $template->refresh();
 
@@ -615,7 +615,7 @@ class CreateCmsTables extends Migration
         // Header block
         $landingPageHeaderBlock = new Block();
         $landingPageHeaderBlock->resource_id = 'iws_landing_page_header';
-        $landingPageHeaderBlock->view = 'insyht-larvelous::blocks.landing_page_header';
+        $landingPageHeaderBlock->view = 'blocks.landing_page_header';
         $landingPageHeaderBlock->label = 'Landing page header';
         $landingPageHeaderBlock->description = 'A header with a title, subtitle, text, quote, link button and background image';
         $landingPageHeaderBlock->save();
@@ -705,7 +705,7 @@ class CreateCmsTables extends Migration
         // Image tetralogy block
         $tetralogyBlock = new Block();
         $tetralogyBlock->resource_id = 'iws_image_tetralogy';
-        $tetralogyBlock->view = 'insyht-larvelous::blocks.image_tetralogy';
+        $tetralogyBlock->view = 'blocks.image_tetralogy';
         $tetralogyBlock->label = 'Image Tetralogy';
         $tetralogyBlock->description = 'A title with four images';
         $tetralogyBlock->save();
@@ -734,7 +734,7 @@ class CreateCmsTables extends Migration
         // Title+text block
         $titleTextBlock = new Block();
         $titleTextBlock->resource_id = 'iws_title_text';
-        $titleTextBlock->view = 'insyht-larvelous::blocks.title_text';
+        $titleTextBlock->view = 'blocks.title_text';
         $titleTextBlock->label = 'Title + text';
         $titleTextBlock->description = 'Title and a text';
         $titleTextBlock->save();
@@ -760,7 +760,7 @@ class CreateCmsTables extends Migration
 
         $uspsBlock = new Block();
         $uspsBlock->resource_id = 'iws_usps';
-        $uspsBlock->view = 'insyht-larvelous::blocks.usps';
+        $uspsBlock->view = 'blocks.usps';
         $uspsBlock->label = 'USPs';
         $uspsBlock->description = 'Three USPs';
         $uspsBlock->save();

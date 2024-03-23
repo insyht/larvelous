@@ -1,4 +1,4 @@
-@extends('insyht-larvelous::layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
     <div class="col-md-12">

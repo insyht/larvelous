@@ -20,21 +20,17 @@ class BlockTemplate extends Pivot
 
     public function getView()
     {
-        $view = $this->block->view;
-
-        // Use the active theme's Blade template for this block if it exists
-        $activeTheme = app('activeTheme');
-        if ($activeTheme->blocks->contains($this->block)) {
-            $templatePath = strtolower(str_replace('\\', '-', $activeTheme->namespace))
-                            . '::'
-                            . $activeTheme->blocks()->where('block_id', $this->block->id)->first()->pivot->template_path;
-
-            if (view()->exists($templatePath)) {
-                return $templatePath;
-            }
+        $prefix = '';
+        if (app()->bound('activeTheme') && app('activeTheme')) {
+            $prefix = app('activeTheme')->blade_prefix;
         }
 
-        return $view;
+        // If the active theme has a view override, use that. Else, use the default theme view
+        $templatePath = view()->exists($prefix . '::' . $this->block->view)
+            ? $prefix . '::' . $this->block->view
+            : app('defaultTheme')->blade_prefix . '::' . $this->block->view;
+
+        return $templatePath;
     }
 
     public function template()
