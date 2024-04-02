@@ -55,40 +55,32 @@ class Page extends Model implements SearchableInterface, MenuItemInterface
      * Get the template for this page and get all blocks within that template. Then fetch all values for all
      * blocks and save it to those blocks so that the views can show them
      */
-    public function setContents(View $view): static
+    public function setContents(): static
     {
         foreach ($this->template->blockTemplates as $blockTemplate) {
-            $possibleViews = [
-                app('defaultTheme')->blade_prefix . '::' . $blockTemplate->block->getDottedViewPath(),
-            ];
-            if (app()->bound('activeTheme') && app('activeTheme')) {
-                $possibleViews[] = app('activeTheme')->blade_prefix . '::' . $blockTemplate->block->getDottedViewPath();
-            }
-            if (in_array($view->getName(), $possibleViews)) {
-                $blockValues = new BlockValues();
-                foreach ($blockTemplate->block->blockVariables()->get() as $pageBlockVariable) {
-                    $blockValue = $pageBlockVariable->blockVariableValues()
-                                                    ->forPageAndBlockTemplate($this, $blockTemplate)
-                                                    ->first();
-                    if (!$blockValue && !$pageBlockVariable->required) {
-                        continue;
-                    } elseif (!$blockValue && $pageBlockVariable->required !== 0) {
-                        // This block variable is required but does not have a value
-                        throw new InvalidArgumentException('This block variable is required but does not have a value');
-                    }
-                    if (isset($blockValues->{$pageBlockVariable->name})) {
-                        if (!is_array($blockValues->{$pageBlockVariable->name})) {
-                            $backup = $blockValues->{$pageBlockVariable->name};
-                            $blockValues->{$pageBlockVariable->name} = [$backup];
-                        }
-                        $blockValues->{$pageBlockVariable->name}[] = $blockValue->value;
-                    } else {
-                        /** @var \Insyht\Larvelous\Models\BlockVariable $pageBlockVariable */
-                        $blockValues->{$pageBlockVariable->name} = $blockValue->value;
-                    }
+            $blockValues = new BlockValues();
+            foreach ($blockTemplate->block->blockVariables()->get() as $pageBlockVariable) {
+                $blockValue = $pageBlockVariable->blockVariableValues()
+                                                ->forPageAndBlockTemplate($this, $blockTemplate)
+                                                ->first();
+                if (!$blockValue && !$pageBlockVariable->required) {
+                    continue;
+                } elseif (!$blockValue && $pageBlockVariable->required !== 0) {
+                    // This block variable is required but does not have a value
+                    throw new InvalidArgumentException('This block variable is required but does not have a value');
                 }
-                $blockTemplate->addValues($blockValues);
+                if (isset($blockValues->{$pageBlockVariable->name})) {
+                    if (!is_array($blockValues->{$pageBlockVariable->name})) {
+                        $backup = $blockValues->{$pageBlockVariable->name};
+                        $blockValues->{$pageBlockVariable->name} = [$backup];
+                    }
+                    $blockValues->{$pageBlockVariable->name}[] = $blockValue->value;
+                } else {
+                    /** @var \Insyht\Larvelous\Models\BlockVariable $pageBlockVariable */
+                    $blockValues->{$pageBlockVariable->name} = $blockValue->value;
+                }
             }
+            $blockTemplate->addValues($blockValues);
         }
 
         return $this;

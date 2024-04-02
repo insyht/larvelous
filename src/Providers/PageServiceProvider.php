@@ -41,7 +41,7 @@ class PageServiceProvider extends ServiceProvider
             if (is_object($page)) {
                 /** @var \Insyht\Larvelous\Models\Page $page */
                 // Fetch all values for all blocks of this page and save it to those blocks so the views can show them
-                $page->setContents($view);
+                $page->setContents();
             }
         });
     }

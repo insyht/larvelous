@@ -53,17 +53,6 @@ class SearchController extends Controller
             }
         );
 
-        $template = 'layouts.search_results';
-        if (
-            app()->bound('activeTheme') &&
-            app('activeTheme') &&
-            view()->exists(app('activeTheme')->blade_prefix . '::' . $template)
-        ) {
-            $template = app('activeTheme')->blade_prefix . '::' . $template;
-        } elseif (view()->exists(app('defaultTheme')->blade_prefix . '::' . $template)) {
-            $template = app('defaultTheme')->blade_prefix . '::' . $template;
-        }
-
-        return view($template, ['searchQuery' => $query, 'results' => $groupedResults]);
+        return view('layouts.search_results', ['searchQuery' => $query, 'results' => $groupedResults]);
     }
 }

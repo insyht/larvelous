@@ -3,11 +3,10 @@
 namespace Insyht\Larvelous\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Insyht\Larvelous\Console\Commands\HasUpdates;
 use Insyht\Larvelous\Console\Commands\ResetColors;
 use Insyht\Larvelous\Console\Commands\UpdateLarvelous;
 use Insyht\Larvelous\Console\Install;
-use Insyht\Larvelous\CoreOverrides\BladeCompiler;
+use Insyht\Larvelous\CoreOverrides\LarvelousViewFactory;
 use Insyht\Larvelous\Models\BlockVariableValue;
 use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Setting;
@@ -72,10 +71,14 @@ class LarvelousServiceProvider extends ServiceProvider
         app(SearchInterface::class)->addSearchable(new Page());
         app(SearchInterface::class)->addSearchable(new BlockVariableValue());
 
-        // Override the default Blade compiler with our custom compiler so that
-        // we can set the Blade namespace to the active theme
-        $this->app->singleton('blade.compiler', function ($app) {
-            return new BladeCompiler($app['files'], $app['config']['view.compiled']);
+        $this->app->singleton('view', function ($app) {
+            // Override the default View Factory so that we can prefix the right namespace to every view
+            $factory = new LarvelousViewFactory($app['view.engine.resolver'], $app['view.finder'], $app['events']);
+
+            $factory->setContainer($app);
+            $factory->share('app', $app);
+
+            return $factory;
         });
     }
 

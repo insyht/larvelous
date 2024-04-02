@@ -29,36 +29,7 @@ class PageController extends Controller
             }
         }
 
-
-        $prefix = '';
-        if (app()->bound('activeTheme') && app('activeTheme')) {
-            $prefix = app('activeTheme')->blade_prefix;
-        }
-
-        // Check if all required views actually exist before loading the page. If not, show a 404 page
-        foreach ($page->template->blocks()->get() as $block) {
-            $viewpath = view()->exists($prefix . '::' . $block->view)
-                ? $prefix . '::' . $block->view
-                : app('defaultTheme')->blade_prefix . '::' . $block->view;
-            if (!view()->exists($viewpath)) {
-                Log::warning(
-                    sprintf(
-                        'Failed to find view "%s" for block "%s" on page "%s" (block id: %d)',
-                        $viewpath,
-                        $block->resource_id,
-                        $page->title,
-                        $block->id
-                    )
-                );
-                App::abort(404);
-            }
-        }
-
-        $viewpath = view()->exists($prefix . '::' . $page->template->view)
-            ? $prefix . '::' . $page->template->view
-            : app('defaultTheme')->blade_prefix . '::' . $page->template->view;
-
-        return view($viewpath, ['page' => $page]);
+        return view($page->template->view, ['page' => $page]);
     }
 
     protected function loadFromPlugins(string $slug)

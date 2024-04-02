@@ -20,17 +20,7 @@ class BlockTemplate extends Pivot
 
     public function getView()
     {
-        $prefix = '';
-        if (app()->bound('activeTheme') && app('activeTheme')) {
-            $prefix = app('activeTheme')->blade_prefix;
-        }
-
-        // If the active theme has a view override, use that. Else, use the default theme view
-        $templatePath = view()->exists($prefix . '::' . $this->block->view)
-            ? $prefix . '::' . $this->block->view
-            : app('defaultTheme')->blade_prefix . '::' . $this->block->view;
-
-        return $templatePath;
+        return $this->block->view;
     }
 
     public function template()
