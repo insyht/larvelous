@@ -5,6 +5,7 @@ namespace Insyht\Larvelous\Filament\Resources\ThemeResource\Pages;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
+use Insyht\Larvelous\Console\Commands\InstallPackage;
 use Insyht\Larvelous\Filament\Resources\ThemeResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -52,13 +53,16 @@ class InstallTheme extends CreateRecord
             'blade_prefix' => $metaData['blade_prefix'],
             'github_url' => $githubUrl,
             'image' => $metaData['image'], // todo upload it to storage
-            'active' => true,
+            'active' => false,
             'author' => $metaData['author'],
         ];
 
         $result = parent::handleRecordCreation($data);
 
         Log::info(sprintf('Installed theme %s in the themes table', $metaData['name']));
+
+        // Add the package to the codebase
+        $success = Artisan::call(InstallPackage::class, ['uri' => $data['github_url']]);
 
         if (class_exists(sprintf('%s\Console\InstallTheme', $metaData['namespace']))) {
             $success = Artisan::call(sprintf('%s\Console\InstallTheme', $metaData['namespace']));

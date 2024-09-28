@@ -15,4 +15,5 @@
 - Themas
   - Installeren
   - Updaten van themes testen (en misschien ook die van plugins weer opnieuw testen vanwege alle wijzigingen)
-  - Activeerknop op overzicht
+  - Skeleton theme maken
+  - Nieuwe theme maken gebaseerd op https://tailoredtots.ca
