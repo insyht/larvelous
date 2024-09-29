@@ -1,6 +1,6 @@
-@include('insyht-larvelous::elements/head')
-@include('insyht-larvelous::elements/top')
-@include('insyht-larvelous::elements/breadcrumb')
+@include('elements/head')
+@include('elements/top')
+@include('elements/breadcrumb')
 
 <div class="container">
     <h1>{{ __('insyht-larvelous::cms.search_results_for', ['query' => $searchQuery]) }} ({{ count($results) }})</h1>
@@ -26,5 +26,5 @@
     </div>
 </div>
 
-@include('insyht-larvelous::elements/footer')
-@include('insyht-larvelous::elements/bottom')
+@include('elements/footer')
+@include('elements/bottom')
