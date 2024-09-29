@@ -23,7 +23,7 @@ class InstallPackage extends Command
         $process = Process::path(base_path());
         $logPrefix = sprintf('Installing package %s: ', $uri);
         $result = $process->run(
-            sprintf('composer require %s', $uri),
+            sprintf('composer require %s:*', $uri),
             function (string $type, string $buffer) use ($logPrefix, &$success) {
                 if ($type === 'stderr') {
                     Log::error($logPrefix . $buffer);
