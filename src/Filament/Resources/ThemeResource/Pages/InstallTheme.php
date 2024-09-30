@@ -57,12 +57,16 @@ class InstallTheme extends CreateRecord
             'author' => $metaData['author'],
         ];
 
+        // Add the package to the codebase
+        $success = Artisan::call(InstallPackage::class, ['uri' => $uri]);
+        if (!$success) {
+            // todo Handle this better :P
+            die('Failed to install package');
+        }
+
         $result = parent::handleRecordCreation($data);
 
         Log::info(sprintf('Installed theme %s in the themes table', $metaData['name']));
-
-        // Add the package to the codebase
-        $success = Artisan::call(InstallPackage::class, ['uri' => $data['github_url']]);
 
         if (class_exists(sprintf('%s\Console\InstallTheme', $metaData['namespace']))) {
             $success = Artisan::call(sprintf('%s\Console\InstallTheme', $metaData['namespace']));

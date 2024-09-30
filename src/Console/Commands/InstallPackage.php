@@ -29,7 +29,7 @@ class InstallPackage extends Command
                     Log::error($logPrefix . $buffer);
                     $success = false;
                 } else {
-                    Log::info($logPrefix . $buffer);
+                    Log::debug($logPrefix . $buffer);
                 }
             }
         );
