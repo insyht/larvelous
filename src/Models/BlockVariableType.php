@@ -13,6 +13,7 @@ class BlockVariableType extends Model
     public const TYPE_TEXTAREA = 'textarea';
     public const TYPE_IMAGE = 'image';
     public const TYPE_DROPDOWN = 'dropdown';
+    public const TYPE_SLIDE = 'slide';
 
     public $timestamps = false;
     public $incrementing = false;
