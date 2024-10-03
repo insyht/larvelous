@@ -43,4 +43,10 @@ class ExistingImageUpload extends FileUpload implements BlockFieldInterface
 
         return Storage::url($value);
     }
+
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }

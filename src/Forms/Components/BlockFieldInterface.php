@@ -11,4 +11,6 @@ interface BlockFieldInterface
 
     /** This function is used to modify a BlockVariableValue's value if needed */
     public function modify($value);
+
+    public function save(BlockVariableValue $data): BlockVariableValue;
 }
