@@ -6,9 +6,11 @@ use Closure;
 use Filament\Forms\Components\Repeater;
 use Insyht\Larvelous\Models\BlockVariableValue;
 
-class Slide extends Repeater implements BlockFieldInterface
+class Slider extends Repeater implements BlockFieldInterface
 {
     protected string|Closure|null $value = '';
+    protected string|Closure|null $itemLabel = 'Slide';
+    protected string $name = 'Slider';
 
     protected function setUp(): void
     {
@@ -20,8 +22,8 @@ class Slide extends Repeater implements BlockFieldInterface
         ]);
 
         $this->cloneable();
-        $this->orderable();
-        $this->itemLabel('Slide');
+        $this->orderable('ordering');
+        $this->relationship('slides');
     }
 
     public function setExtraData(BlockVariableValue $data): static
@@ -33,4 +35,11 @@ class Slide extends Repeater implements BlockFieldInterface
     {
         return $value;
     }
+
+    public function name(string $name): static
+    {
+        // The model name/class is a fixed value, we won't allow it to be changed
+        return $this;
+    }
+
 }
