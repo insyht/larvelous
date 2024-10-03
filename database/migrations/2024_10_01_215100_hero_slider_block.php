@@ -35,7 +35,7 @@ class HeroSliderBlock extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $heroSliderBlock->id;
         $blockVariable->name = 'slide';
-        $blockVariable->label = 'cms.slide';
+        $blockVariable->label = 'cms.slider';
         $blockVariable->type = BlockVariableType::TYPE_SLIDE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;

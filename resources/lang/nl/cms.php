@@ -83,4 +83,5 @@ return [
     'right' => 'Rechts',
 
     'slide' => 'Slide',
+    'slider' => 'Slider',
 ];

@@ -4,6 +4,7 @@ namespace Insyht\Larvelous\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Repeater;
+use Illuminate\Database\Eloquent\Model;
 use Insyht\Larvelous\Models\BlockVariableValue;
 
 class Slider extends Repeater implements BlockFieldInterface
@@ -15,12 +16,6 @@ class Slider extends Repeater implements BlockFieldInterface
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->schema([
-            'image' => ExistingImageUpload::class,
-            'text' => Textarea::class,
-        ]);
-
         $this->cloneable();
         $this->orderable('ordering');
         $this->relationship('slides');
@@ -42,4 +37,20 @@ class Slider extends Repeater implements BlockFieldInterface
         return $this;
     }
 
+    public function getModelInstance(): ?Model
+    {
+        return app(\Insyht\Larvelous\Models\Slider::class);
+    }
+
+    public function schema(array|Closure $components): static
+    {
+        $this->childComponents(
+            [
+                'image' => ExistingImageUpload::class,
+                'text' => Textarea::class,
+            ]
+        );
+
+        return $this;
+    }
 }
