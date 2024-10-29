@@ -174,6 +174,11 @@ class BlocksRelationManager extends RelationManager
                                     if ($value === null) {
                                         $blockVariableValue->value = '';
                                     }
+
+                                    $blockVariableTypeClass = BlockVariableType::where('name', $blockVariable->type)->first()?->fqn ?? null;
+                                    if ($blockVariableTypeClass !== null && is_subclass_of($blockVariableTypeClass, BlockFieldInterface::class)) {
+                                        app()->makeWith($blockVariableTypeClass, ['name' => ''])->save($blockVariableValue);
+                                    }
                                     $blockVariableValue->save();
                                 }
 
@@ -220,7 +225,7 @@ class BlocksRelationManager extends RelationManager
         if ($fieldNameAlreadyExists) {
             $fieldName .= '[' . $data->blockVariable->ordering . ']';
         }
-        $field = $type->fqn::make($fieldName);
+        $field = $type->fqn::make($fieldName)->schema([]);
         $field->label(__($data->blockVariable->label));
         if ($data->blockVariable->required) {
             $field->required();

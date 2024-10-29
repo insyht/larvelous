@@ -317,7 +317,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $paragraphBlock->id;
         $blockVariable->name = 'title';
-        $blockVariable->label = 'cms.title';
+        $blockVariable->label = 'insyht-larvelous::cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -326,7 +326,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $paragraphBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 2;
         $blockVariable->ordering = 2;
@@ -335,7 +335,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $paragraphBlock->id;
         $blockVariable->name = 'image';
-        $blockVariable->label = 'cms.image';
+        $blockVariable->label = 'insyht-larvelous::cms.image';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 0;
         $blockVariable->ordering = 3;
@@ -344,7 +344,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $paragraphBlock->id;
         $blockVariable->name = 'url';
-        $blockVariable->label = 'cms.url';
+        $blockVariable->label = 'insyht-larvelous::cms.url';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 4;
@@ -353,7 +353,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $paragraphBlock->id;
         $blockVariable->name = 'url_text';
-        $blockVariable->label = 'cms.urlText';
+        $blockVariable->label = 'insyht-larvelous::cms.urlText';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 5;
@@ -362,7 +362,7 @@ class CreateCmsTables extends Migration
         $imagePositionBlockVariable = new BlockVariable();
         $imagePositionBlockVariable->block_id = $paragraphBlock->id;
         $imagePositionBlockVariable->name = 'image_position';
-        $imagePositionBlockVariable->label = 'cms.imagePosition';
+        $imagePositionBlockVariable->label = 'insyht-larvelous::cms.imagePosition';
         $imagePositionBlockVariable->type = BlockVariableType::TYPE_DROPDOWN;
         $imagePositionBlockVariable->required = 0;
         $imagePositionBlockVariable->ordering = 6;
@@ -372,12 +372,12 @@ class CreateCmsTables extends Migration
         // block_variable_options
         $blockVariableOption = new BlockVariableOption();
         $blockVariableOption->block_variable_id = $imagePositionBlockVariable->id;
-        $blockVariableOption->label = 'cms.links';
+        $blockVariableOption->label = 'insyht-larvelous::cms.links';
         $blockVariableOption->value = 'left';
         $blockVariableOption->save();
         $blockVariableOption = new BlockVariableOption();
         $blockVariableOption->block_variable_id = $imagePositionBlockVariable->id;
-        $blockVariableOption->label = 'cms.right';
+        $blockVariableOption->label = 'insyht-larvelous::cms.right';
         $blockVariableOption->value = 'right';
         $blockVariableOption->save();
     }
@@ -397,7 +397,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $imageAttentionBlock->id;
         $blockVariable->name = 'image_left';
-        $blockVariable->label = 'cms.leftImage';
+        $blockVariable->label = 'insyht-larvelous::cms.leftImage';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -406,7 +406,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $imageAttentionBlock->id;
         $blockVariable->name = 'image_right_top';
-        $blockVariable->label = 'cms.imageRightTop';
+        $blockVariable->label = 'insyht-larvelous::cms.imageRightTop';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 2;
@@ -415,7 +415,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $imageAttentionBlock->id;
         $blockVariable->name = 'image_right_bottom';
-        $blockVariable->label = 'cms.imageRightBottom';
+        $blockVariable->label = 'insyht-larvelous::cms.imageRightBottom';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 3;
@@ -437,7 +437,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $newsletterBlock->id;
         $blockVariable->name = 'image_left';
-        $blockVariable->label = 'cms.leftImage';
+        $blockVariable->label = 'insyht-larvelous::cms.leftImage';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 0;
         $blockVariable->ordering = 1;
@@ -446,7 +446,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $newsletterBlock->id;
         $blockVariable->name = 'image_right';
-        $blockVariable->label = 'cms.rightImage';
+        $blockVariable->label = 'insyht-larvelous::cms.rightImage';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 0;
         $blockVariable->ordering = 2;
@@ -455,7 +455,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $newsletterBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 1;
         $blockVariable->ordering = 3;
@@ -464,7 +464,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $newsletterBlock->id;
         $blockVariable->name = 'title';
-        $blockVariable->label = 'cms.title';
+        $blockVariable->label = 'insyht-larvelous::cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 4;
@@ -486,7 +486,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'email';
-        $blockVariable->label = 'cms.emailAddress';
+        $blockVariable->label = 'insyht-larvelous::cms.emailAddress';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 7;
@@ -495,7 +495,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'function';
-        $blockVariable->label = 'cms.function';
+        $blockVariable->label = 'insyht-larvelous::cms.function';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 5;
@@ -504,7 +504,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'image';
-        $blockVariable->label = 'cms.image';
+        $blockVariable->label = 'insyht-larvelous::cms.image';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 3;
@@ -513,7 +513,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'name';
-        $blockVariable->label = 'cms.name';
+        $blockVariable->label = 'insyht-larvelous::cms.name';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 4;
@@ -522,7 +522,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'phone_number';
-        $blockVariable->label = 'cms.phoneNumber';
+        $blockVariable->label = 'insyht-larvelous::cms.phoneNumber';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 6;
@@ -531,7 +531,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 1;
         $blockVariable->ordering = 2;
@@ -540,7 +540,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'title';
-        $blockVariable->label = 'cms.title';
+        $blockVariable->label = 'insyht-larvelous::cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -549,7 +549,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'url';
-        $blockVariable->label = 'cms.url';
+        $blockVariable->label = 'insyht-larvelous::cms.url';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 8;
@@ -558,7 +558,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $ctaBlock->id;
         $blockVariable->name = 'url_text';
-        $blockVariable->label = 'cms.urlText';
+        $blockVariable->label = 'insyht-larvelous::cms.urlText';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 9;
@@ -580,7 +580,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $heroImageBlock->id;
         $blockVariable->name = 'image';
-        $blockVariable->label = 'cms.image';
+        $blockVariable->label = 'insyht-larvelous::cms.image';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -589,7 +589,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $heroImageBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 0;
         $blockVariable->ordering = 2;
@@ -624,7 +624,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'title';
-        $blockVariable->label = 'cms.title';
+        $blockVariable->label = 'insyht-larvelous::cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -633,7 +633,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'subtitle';
-        $blockVariable->label = 'cms.subtitle';
+        $blockVariable->label = 'insyht-larvelous::cms.subtitle';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 2;
@@ -642,7 +642,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 1;
         $blockVariable->ordering = 3;
@@ -651,7 +651,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'quote';
-        $blockVariable->label = 'cms.quote';
+        $blockVariable->label = 'insyht-larvelous::cms.quote';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 0;
         $blockVariable->ordering = 4;
@@ -660,7 +660,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'quote_name';
-        $blockVariable->label = 'cms.name';
+        $blockVariable->label = 'insyht-larvelous::cms.name';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 5;
@@ -669,7 +669,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'quote_city';
-        $blockVariable->label = 'cms.city';
+        $blockVariable->label = 'insyht-larvelous::cms.city';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 6;
@@ -678,7 +678,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'url';
-        $blockVariable->label = 'cms.url';
+        $blockVariable->label = 'insyht-larvelous::cms.url';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 7;
@@ -687,7 +687,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'url_text';
-        $blockVariable->label = 'cms.urlText';
+        $blockVariable->label = 'insyht-larvelous::cms.urlText';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 0;
         $blockVariable->ordering = 8;
@@ -696,7 +696,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $landingPageHeaderBlock->id;
         $blockVariable->name = 'image';
-        $blockVariable->label = 'cms.image';
+        $blockVariable->label = 'insyht-larvelous::cms.image';
         $blockVariable->type = BlockVariableType::TYPE_IMAGE;
         $blockVariable->required = 0;
         $blockVariable->ordering = 9;
@@ -714,7 +714,7 @@ class CreateCmsTables extends Migration
         $variable = new BlockVariable();
         $variable->block_id = $tetralogyBlock->id;
         $variable->name = 'title';
-        $variable->label = 'cms.title';
+        $variable->label = 'insyht-larvelous::cms.title';
         $variable->type = BlockVariableType::TYPE_TEXTFIELD;
         $variable->required = 1;
         $variable->ordering = 1;
@@ -724,7 +724,7 @@ class CreateCmsTables extends Migration
             $blockVariable = new BlockVariable();
             $blockVariable->block_id = $tetralogyBlock->id;
             $blockVariable->name = 'image';
-            $blockVariable->label = 'cms.image';
+            $blockVariable->label = 'insyht-larvelous::cms.image';
             $blockVariable->type = BlockVariableType::TYPE_IMAGE;
             $blockVariable->required = 1;
             $blockVariable->ordering = $i;
@@ -743,7 +743,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $titleTextBlock->id;
         $blockVariable->name = 'title';
-        $blockVariable->label = 'cms.title';
+        $blockVariable->label = 'insyht-larvelous::cms.title';
         $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
@@ -752,7 +752,7 @@ class CreateCmsTables extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $titleTextBlock->id;
         $blockVariable->name = 'text';
-        $blockVariable->label = 'cms.text';
+        $blockVariable->label = 'insyht-larvelous::cms.text';
         $blockVariable->type = BlockVariableType::TYPE_TEXTAREA;
         $blockVariable->required = 1;
         $blockVariable->ordering = 2;
@@ -770,7 +770,7 @@ class CreateCmsTables extends Migration
             $blockVariable = new BlockVariable();
             $blockVariable->block_id = $uspsBlock->id;
             $blockVariable->name = 'icon';
-            $blockVariable->label = 'cms.icon';
+            $blockVariable->label = 'insyht-larvelous::cms.icon';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
             $blockVariable->ordering = (($i - 1) * 3) + 1;
@@ -779,7 +779,7 @@ class CreateCmsTables extends Migration
             $blockVariable = new BlockVariable();
             $blockVariable->block_id = $uspsBlock->id;
             $blockVariable->name = 'title';
-            $blockVariable->label = 'cms.title';
+            $blockVariable->label = 'insyht-larvelous::cms.title';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
             $blockVariable->ordering = (($i - 1) * 3) + 2;
@@ -788,7 +788,7 @@ class CreateCmsTables extends Migration
             $blockVariable = new BlockVariable();
             $blockVariable->block_id = $uspsBlock->id;
             $blockVariable->name = 'text';
-            $blockVariable->label = 'cms.text';
+            $blockVariable->label = 'insyht-larvelous::cms.text';
             $blockVariable->type = BlockVariableType::TYPE_TEXTFIELD;
             $blockVariable->required = 1;
             $blockVariable->ordering = (($i - 1) * 3) + 3;

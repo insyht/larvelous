@@ -9,13 +9,7 @@ class Slide extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-    public $fillable = ['image', 'text', 'ordering'];
-
-    public function slider()
-    {
-        return $this->belongsTo(Slider::class);
-    }
+    public $fillable = ['image', 'text'];
 
     public function getId(): int
     {

@@ -15,4 +15,10 @@ class TextInput extends \Filament\Forms\Components\TextInput implements BlockFie
     {
         return $value;
     }
+
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }

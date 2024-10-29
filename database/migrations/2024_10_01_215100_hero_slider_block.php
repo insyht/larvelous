@@ -35,27 +35,19 @@ class HeroSliderBlock extends Migration
         $blockVariable = new BlockVariable();
         $blockVariable->block_id = $heroSliderBlock->id;
         $blockVariable->name = 'slide';
-        $blockVariable->label = 'cms.slider';
+        $blockVariable->label = 'insyht-larvelous::cms.slider';
         $blockVariable->type = BlockVariableType::TYPE_SLIDE;
         $blockVariable->required = 1;
         $blockVariable->ordering = 1;
         $blockVariable->save();
-
-        Schema::create('sliders', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('block_template_id');
-            $table->timestamps();
-        });
 
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('slider_id');
             $table->text('image');
             $table->text('text');
-            $table->integer('ordering')->default(0);
             $table->timestamps();
             $table->index('slider_id');
-            $table->foreign('slider_id')->references('id')->on('sliders')->onDelete('cascade');
         });
     }
 
@@ -67,7 +59,6 @@ class HeroSliderBlock extends Migration
     public function down()
     {
         Schema::dropIfExists('slides');
-        Schema::dropIfExists('sliders');
         BlockVariable::where('name', 'slide')->delete();
         Block::where('resource_id', 'iws_hero_slider')->delete();
         BlockVariableType::where('fqn', Slider::class)->delete();

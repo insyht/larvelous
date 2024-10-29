@@ -15,4 +15,10 @@ class Hidden extends \Filament\Forms\Components\Hidden implements BlockFieldInte
     {
         return $value;
     }
+
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }
