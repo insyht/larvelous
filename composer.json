@@ -14,7 +14,7 @@
   "require": {
     "php": "^8.2",
     "barryvdh/laravel-ide-helper": "*",
-    "deployer/deployer": "^*",
+    "deployer/deployer": "*",
     "filament/filament": "^2.0",
     "guzzlehttp/guzzle": "*",
     "jeffgreco13/filament-breezy": "^1.5",
