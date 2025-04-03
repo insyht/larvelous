@@ -23,4 +23,10 @@ class Dropdown extends \Filament\Forms\Components\Select implements BlockFieldIn
     {
         return $value;
     }
+
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }

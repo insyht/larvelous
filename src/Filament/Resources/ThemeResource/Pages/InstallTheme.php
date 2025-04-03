@@ -5,6 +5,7 @@ namespace Insyht\Larvelous\Filament\Resources\ThemeResource\Pages;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
+use Insyht\Larvelous\Console\Commands\InstallPackage;
 use Insyht\Larvelous\Filament\Resources\ThemeResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -52,9 +53,16 @@ class InstallTheme extends CreateRecord
             'blade_prefix' => $metaData['blade_prefix'],
             'github_url' => $githubUrl,
             'image' => $metaData['image'], // todo upload it to storage
-            'active' => true,
+            'active' => false,
             'author' => $metaData['author'],
         ];
+
+        // Add the package to the codebase
+        $success = Artisan::call(InstallPackage::class, ['uri' => $uri]);
+        if (!$success) {
+            // todo Handle this better :P
+            die('Failed to install package');
+        }
 
         $result = parent::handleRecordCreation($data);
 

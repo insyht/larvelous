@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel');
+@import url('https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Lovers+Quarrel|Afacad+Flux');
 
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'variables';
@@ -279,4 +279,9 @@ a {
         border-color: $primary;
     }
   }
+}
+
+.nav-item {
+  font-family: 'Afacad Flux', cursive;
+  text-transform: uppercase;
 }

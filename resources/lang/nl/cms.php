@@ -81,4 +81,7 @@ return [
     // Block variable options labels
     'left' => 'Links',
     'right' => 'Rechts',
+
+    'slide' => 'Slide',
+    'slider' => 'Slider',
 ];

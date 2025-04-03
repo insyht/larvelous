@@ -6,7 +6,6 @@ use Illuminate\Routing\Controller;
 use Insyht\Larvelous\Models\Page;
 use Insyht\Larvelous\Models\Plugin;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {

@@ -6,3 +6,53 @@
 .nav-item.active a {
   color: $primary-text;
 }
+
+/** Larvelous hero slider styling **/
+.larvelous-slider {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .larvelous-slide {
+    /* todo deze slides allemaal dezelfde hoogte om verspringingen te voorkomen */
+    visibility: hidden;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    width: 0;
+    height: auto;
+    background-color: #f3f3f3;
+    flex: 0 1 auto;
+    align-self: auto;
+
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+  }
+
+  .larvelous-slide-text {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
+
+  .larvelous-slide-image {
+    width: auto;
+    height: auto;
+  }
+}

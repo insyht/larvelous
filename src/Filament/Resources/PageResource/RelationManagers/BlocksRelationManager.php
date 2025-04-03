@@ -62,7 +62,7 @@ class BlocksRelationManager extends RelationManager
                                         $blockValue->block_variable_id = $pageBlockVariable->id;
                                         $blockValue->language_id = $currentPage->language_id;
                                         $blockValue->page_id = $currentPage->id;
-                                        $blockValue->value = '';
+                                        $blockValue->value =  '';
                                         $blockValue->block_template_id = $blockTemplate->id;
                                         $blockValue->save();
                                         $blockValue->refresh();
@@ -111,11 +111,6 @@ class BlocksRelationManager extends RelationManager
                                             $ordering = $backup['block_variable_value_template_block_ordering'];
                                             $data['values'][$pageBlockVariable->name] = [];
                                             $data['values'][$pageBlockVariable->name][$ordering] = $backup;
-
-                                            //                                            $backup2 = $data[$pageBlockVariable->name];
-                                            //                                            $name = $pageBlockVariable->name . '[' . $ordering . ']';
-                                            //                                            unset($data[$pageBlockVariable->name]);
-                                            //                                            $data[$name] = $backup2;
                                         }
                                         $data['values'][$pageBlockVariable->name][$pageBlockVariable->ordering] = [
                                             'block_id' => $currentBlock->id,
@@ -179,6 +174,11 @@ class BlocksRelationManager extends RelationManager
                                     if ($value === null) {
                                         $blockVariableValue->value = '';
                                     }
+
+                                    $blockVariableTypeClass = BlockVariableType::where('name', $blockVariable->type)->first()?->fqn ?? null;
+                                    if ($blockVariableTypeClass !== null && is_subclass_of($blockVariableTypeClass, BlockFieldInterface::class)) {
+                                        app()->makeWith($blockVariableTypeClass, ['name' => ''])->save($blockVariableValue);
+                                    }
                                     $blockVariableValue->save();
                                 }
 
@@ -225,7 +225,7 @@ class BlocksRelationManager extends RelationManager
         if ($fieldNameAlreadyExists) {
             $fieldName .= '[' . $data->blockVariable->ordering . ']';
         }
-        $field = $type->fqn::make($fieldName);
+        $field = $type->fqn::make($fieldName)->schema([]);
         $field->label(__($data->blockVariable->label));
         if ($data->blockVariable->required) {
             $field->required();

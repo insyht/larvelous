@@ -15,4 +15,10 @@ class Textarea extends \Filament\Forms\Components\Textarea implements BlockField
     {
         return $value;
     }
+
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }

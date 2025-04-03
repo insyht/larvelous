@@ -16,4 +16,9 @@ class Toggle extends \Filament\Forms\Components\Toggle implements BlockFieldInte
         return $value;
     }
 
+    public function save(BlockVariableValue $data): BlockVariableValue
+    {
+        // Do nothing
+        return $data;
+    }
 }
