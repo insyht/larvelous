@@ -15,7 +15,7 @@
     "php": "^8.2",
     "barryvdh/laravel-ide-helper": "*",
     "deployer/deployer": "*",
-    "filament/filament": "*",
+    "filament/filament": "^2",
     "guzzlehttp/guzzle": "*",
     "jeffgreco13/filament-breezy": "*",
     "laravel/framework": "*",
